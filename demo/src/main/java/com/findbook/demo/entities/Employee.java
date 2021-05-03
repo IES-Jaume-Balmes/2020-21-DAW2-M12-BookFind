@@ -1,23 +1,29 @@
+package com.findbook.demo.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 @Entity
 public class Employee {
 
 
-
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long empleatId;
 
-    private String nom;
+    private String name;
     private String username;
     private String psw;
 
     public Employee() {
     }
 
-    public Employee(String nom, String username, String psw) {
+    public Employee(String name, String username, String psw) {
         super();
-        this.nom = nom;
+        this.name = name;
         this.username = username;
         this.psw = psw;
     }
@@ -30,12 +36,12 @@ public class Employee {
         this.empleatId = empleatId;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = nom;
     }
 
     public String getUsername() {
