@@ -11,6 +11,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long bookId;
     private String sn;
+    private String image; //aqui va la url de la imagen
     private String name;
     private int year;
     private String author;
@@ -20,9 +21,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(String sn, String name, int year, String author, String desc, float price) {
+    public Book(String sn, String image, String name, int year, String author, String desc, float price) {
         super();
         this.sn = sn;
+        this.image = image;
         this.name = name;
         this.year = year;
         this.author = author;
