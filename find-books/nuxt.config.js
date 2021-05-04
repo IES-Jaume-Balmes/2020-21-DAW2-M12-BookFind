@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
+// const url = 'https://www.etnassoft.com/api/v1/get/?'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
