@@ -1,6 +1,14 @@
 <template>
   <div>
-    {{ collectionParams }}
+    <!-- {{ collectionParams }} -->
+    <v-progress-circular
+      v-if="loading"
+      :size="100"
+      color="primary"
+      indeterminate
+      
+    ></v-progress-circular>
+      
     <v-card
       v-for="book in books"
       :key="book.ID"
@@ -27,19 +35,19 @@
               <v-card-subtitle style="display: flex">
                 <div style="margin-right: 15px">Author: {{ book.author }}</div>
 
-                <v-chip
+               
+              </v-card-subtitle>
+            </div>
+          </v-col>
+          <v-col cols="6" md="4">  
+            <v-chip
                   v-for="categoria in book.categories"
                   :key="categoria.categoria_id"
                   color="blue"
                   dense
                   outlined
                   small
-                  >{{ categoria.nicename }}</v-chip
-                >
-              </v-card-subtitle>
-            </div>
-          </v-col>
-          <v-col></v-col>
+                  >{{ categoria.nicename }}</v-chip></v-col>
         </v-row>
       </v-card-text>
     </v-card>
@@ -64,17 +72,21 @@ export default {
   data() {
     return {
       books: null,
+      loading: false,
     };
   },
 
   methods: {
     getBooks() {
+      this.loading=true
       this.$axios
         .get(
           `https://www.etnassoft.com/api/v1/get/?results_range=${this.collectionParams.page},${this.collectionParams.items}`
         )
         .then((response) => {
           this.books = response.data;
+          this.loading=false
+
         });
     },
   },

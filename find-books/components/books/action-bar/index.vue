@@ -9,9 +9,18 @@
         small-chips
         @change="(val) => (params.items = val)"
         :value="params.items"
+        style="width: 0;"
       ></v-select>
-
-      <!-- {{ params.page }} -->
+            <!-- v-model="values"
+            :items="items" -->
+      <v-autocomplete
+            :items="[]"
+            outlined
+            dense
+            chips
+            small-chips
+            label="Search"
+      ></v-autocomplete>
     </v-col>
     <v-col cols="6" md="4" class="d-flex flex-row-reverse">
       <v-btn icon v-if="btnFilters" @click="btnFilters = false">
