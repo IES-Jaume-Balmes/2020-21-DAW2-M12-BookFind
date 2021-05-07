@@ -1,79 +1,78 @@
 <template>
   <div>
-    {{ collectionParams }}
-    <v-card
-      v-for="book in books"
-      :key="book.ID"
-      outline
-      class="mx-auto"
-      style="margin-top: 15px"
-    >
-      <v-card-text>
-        <v-row>
-          <v-col cols="12" sm="6" md="8" style="display: flex">
-            <div>
-              <v-avatar color="primary" rounded size="56">
-                <span color="primary" class="white--text headline">F </span>
-              </v-avatar>
-            </div>
-            <div>
-              <v-card-title style="padding-top: 0">
-                {{ book.title }}·
-
-                <v-chip color="orange" dense outlined style="margin-left: 5px">
-                  #{{ book.ID }}
-                </v-chip>
-              </v-card-title>
-              <v-card-subtitle style="display: flex">
-                <div style="margin-right: 15px">Author: {{ book.author }}</div>
-
-                <v-chip
-                  v-for="categoria in book.categories"
-                  :key="categoria.categoria_id"
-                  color="blue"
-                  dense
-                  outlined
-                  small
-                  >{{ categoria.nicename }}</v-chip
-                >
-              </v-card-subtitle>
-            </div>
-          </v-col>
-          <v-col></v-col>
-        </v-row>
-      </v-card-text>
-    </v-card>
+    <v-progress-circular
+      v-if="loading"
+      :size="100"
+      color="primary"
+      indeterminate
+    ></v-progress-circular>
+    <div v-else>
+      <div v-if="books.length == 0">no hay resultados</div>
+      <div v-else>
+        <v-list v-for="book in books" :key="book.id">
+          <Book
+            :book="book"
+            @add-book="pushCarrito"
+            @del-book="deleteBook"
+            :carrito="carrito"
+          />
+          <!-- @add-book="(val) => carrito.push(val)" -->
+          <!-- @del-book="(val) => carrito.push(val)" -->
+          <v-divider></v-divider>
+        </v-list>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Book from "./book";
 export default {
+  components: { Book },
   props: ["collectionParams"],
+  mounted() {
+    this.getBooks();
+  },
   watch: {
     collectionParams: {
       handler() {
-        this.books = null;
         this.getBooks();
       },
       deep: true,
     },
-  },
-  mounted() {
-    this.getBooks();
+    carrito(val) {
+      // this.carrito.push(val);
+      console.info("carrito ", val);
+    },
   },
   data() {
     return {
-      books: null,
+      loading: false,
+      books: [],
+      carrito: [],
     };
   },
-
   methods: {
+    pushCarrito(book) {
+      
+      this.carrito.push(book);
+    },
+    deleteBook(book) {
+      console.info("borra este libro ", book);
+      this.carrito.forEach((b) => {
+        if (b === book) {
+          console.log("Existe Borralo");
+        }
+      });
+    },
     getBooks() {
+      this.loading = true;
       this.$axios
         .get(
           `https://www.etnassoft.com/api/v1/get/?results_range=${this.collectionParams.page},${this.collectionParams.items}`
         )
         .then((response) => {
+          this.loading = false;
           this.books = response.data;
         });
     },
