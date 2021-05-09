@@ -1,6 +1,7 @@
 module.exports = {
     themeConfig: {
-  /*      base: '/<publication-repo-name>/',*/
+        base: '/',
+        deploy: "npm run build && npx gh-pages docs/.vuepress/dist",
         logo: '/img/logo.png',
         sidebar: [
             {
