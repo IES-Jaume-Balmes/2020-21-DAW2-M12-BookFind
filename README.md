@@ -117,9 +117,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Members
 
-* Pol Barcia - [@your_twitter](https://twitter.com/your_username) - email@example.com
-* Christian Miranda - [@your_twitter](https://twitter.com/your_username) - email@example.com
-* Barbara Herrera - [@your_twitter](https://twitter.com/your_username) - email@example.com
+* Pol Barcia - [@PolBarcia](https://github.com/PolBarcia) - pbarcia18@jaumebalmes.net
+* Christian Miranda - [cmiran0](https://github.com/cmiran0) - cmidand0@jaumebalmes.net
+* Barbara Herrera - [@barbarahf](https://github.com/barbarahf) - bherrera19@jaumebalmes.net
 
 ## Mentor
 * Pere Guitart Colom
