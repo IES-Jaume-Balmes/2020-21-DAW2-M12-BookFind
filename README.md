@@ -10,7 +10,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/">
-    <img src="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/blob/main/Docs/logo_default.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/blob/main/Documents/logo_default.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">BookFind</h3>
@@ -62,7 +62,7 @@
 
 bookfind is a web application that have its own database, with bookfind a costumer can buy books directly on the
 website.
-## Documentation:
+### Documentation:
 https://ies-jaume-balmes.github.io/2020-21-DAW2-M12-BookFind/
 ### The main functionalities consist on:
 
