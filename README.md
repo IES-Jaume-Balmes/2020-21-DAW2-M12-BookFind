@@ -9,7 +9,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/">
     <img src="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/blob/main/Docs/logo_default.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -61,27 +61,35 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+# About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 bookfind is a web application that have its own database, with bookfind a costumer can buy books directly on the
 website.
 
-#### The main functionalities consist on:
+### The main functionalities consist on:
 
 * the user can sign up, search for books using filters and even put a rating to the bought books  :smile:
 
-#### Functionality:
+### Functionality:
 
 There will be 2 user profiles, normal customer and administrator.
 
-#### Normal user:
- * Registration: the user must be able to sign up.
- *
+### Normal user:
 
+* Registration: the user must be able to sign up.
+* Unsubscribe: a user who has registered must be able to unsubscribe (delete).
+* Login: the registered user must be able to log in.
+* Logout: the user must be able to log out.
 
-### Built With
+### Books:
+
+* Search: a registered user must be able to search the books in the database.
+* Buy: the user must be able to buy a selected book
+* Rate: the user must be able to rating books
+
+## Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the
 acknowledgements section. Here are a few examples.
@@ -90,6 +98,8 @@ acknowledgements section. Here are a few examples.
 * [JQuery](https://jquery.com)
 * [Laravel](https://laravel.com)
 
+## Application architecture
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 <!-- GETTING STARTED -->
 
 ## Getting Started
