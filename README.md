@@ -91,16 +91,16 @@ There will be 2 user profiles, normal customer and administrator.
 
 ## Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the
-acknowledgements section. Here are a few examples.
+Here you will find a list of some of technologies used in this project.
 
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [Spring](https://spring.io/)
+* [Vue.js](https://vuejs.org/)
 
 ## Application architecture
 [![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png)
-
+<a href="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png">
+<img src="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png" alt="Logo" width="80" height="80">
+</a>
 
 <!-- GETTING STARTED -->
 
