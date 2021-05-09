@@ -6,7 +6,7 @@ Se ha realizado un UML que cumple con los requisitos básicos de nuestra aplicac
 funcionamiento y la relación entre objectos. Por otro lado, debo recalcar que este UML puede variar durante el
 desarrollo de la misma, adaptándose a nuevas necesidades.
 
-Markup : ![uml](img/arquitectura.png "UML de la aplicacion")
+Markup : ![uml](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/blob/main/vuepress_book_find/img/uml.png "UML de la aplicacion")
 
 ### 2. Desarrollo de las entidades
 

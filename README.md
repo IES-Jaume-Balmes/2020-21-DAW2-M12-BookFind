@@ -62,7 +62,8 @@
 
 bookfind is a web application that have its own database, with bookfind a costumer can buy books directly on the
 website.
-
+## Documentation:
+https://ies-jaume-balmes.github.io/2020-21-DAW2-M12-BookFind/
 ### The main functionalities consist on:
 
 * the user can sign up, search for books using filters and even put a rating to the bought books  :smile:
@@ -93,7 +94,7 @@ Here you will find a list of some of technologies used in this project.
 
 ## Application architecture
 
-[![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png)
+[![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Documents/architecture.png)
 
 ## Roadmap
 

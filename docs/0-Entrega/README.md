@@ -1,11 +1,5 @@
 # ENTREGA 0
 
-## 0. Integrantes:
-
-* Barbara Herrera Flores
-* Cristian Miranda Balladares
-* Pol Barcia Torres
-
 ## 1. Descripción:
 
 Realizar una tienda de libros con su base de datos, donde el cliente puede comprar los libros directamente desde la
@@ -14,7 +8,7 @@ valorarlos e incluso comprarlos (o por lo menos tener un enlace a algún sitio d
 
 ## 2. Arquitectura de la aplicación:
 
-Markup : ![picture alt](img/arquitectura.png "Arquitectura de la aplicacion")
+Markup : ![picture alt](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/blob/main/vuepress_book_find/img/arquitectura.png "Arquitectura de la aplicacion")
 
 El usuario accederá a la aplicación a través del frontend web, que estará implementado en Vue. El frontend se comunicará
 con el backend, que será una aplicación de Spring y que tendrá acceso a una base de datos MySQL para almacenar la
