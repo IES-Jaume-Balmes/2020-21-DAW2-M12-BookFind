@@ -99,7 +99,7 @@ acknowledgements section. Here are a few examples.
 * [Laravel](https://laravel.com)
 
 ## Application architecture
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png)
 <!-- GETTING STARTED -->
 
 ## Getting Started
