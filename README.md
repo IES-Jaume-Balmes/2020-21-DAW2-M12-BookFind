@@ -100,6 +100,8 @@ acknowledgements section. Here are a few examples.
 
 ## Application architecture
 [![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png)
+
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -223,3 +225,4 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [linkedin-url]: https://linkedin.com/in/othneildrew
 
 [product-screenshot]: images/screenshot.png
+[web-architecture]: https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png
