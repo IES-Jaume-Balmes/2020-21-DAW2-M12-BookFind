@@ -29,8 +29,6 @@
   </p>
 
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -48,12 +46,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -99,10 +94,7 @@ Here you will find a list of some of technologies used in this project.
 ## Application architecture
 
 [![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png)
-<a href="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png">
-<img src="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/tree/main/Docs/architecture.png" alt="Logo" width="80" height="80">
-</a>
-
+ 
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -135,7 +127,7 @@ This is an example of how to list things you need to use the software and how to
    const API_KEY = 'ENTER YOUR API';
    ```
 
-<!-- USAGE EXAMPLES -->
+ 
 
 ## Roadmap
 
