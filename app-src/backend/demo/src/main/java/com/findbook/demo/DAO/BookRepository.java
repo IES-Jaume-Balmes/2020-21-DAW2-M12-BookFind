@@ -1,4 +1,4 @@
-package com.findbook.demo.dao;
+package com.findbook.demo.DAO;
 
 import com.findbook.demo.entities.Book;
 import org.springframework.data.repository.CrudRepository;

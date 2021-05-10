@@ -1,6 +1,6 @@
 package com.findbook.demo.controllers;
 
-import com.findbook.demo.dao.UserRepository;
+import com.findbook.demo.DAO.UserRepository;
 import com.findbook.demo.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

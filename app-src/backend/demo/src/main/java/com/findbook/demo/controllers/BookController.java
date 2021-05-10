@@ -1,6 +1,6 @@
 package com.findbook.demo.controllers;
 
-import com.findbook.demo.dao.BookRepository;
+import com.findbook.demo.DAO.BookRepository;
 import com.findbook.demo.entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("bookfind/books")
