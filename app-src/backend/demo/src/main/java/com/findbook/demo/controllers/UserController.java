@@ -16,14 +16,25 @@ public class UserController {
     UserService userService;
 
     // RequestBody transform an Httprequest into java object
-    @RequestMapping("/register")
+    @PostMapping("/register")
     @ResponseBody
     public Long registerUser(@RequestBody User user) {
         return userService.registerUser(user);
     }
 
-    @GetMapping("/list")
+    //Login
+/*    @PostMapping("user")
+    public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+
+        String token = getJWTToken(username);
+        User user = new User();
+        user.setUser(username);
+        user.setToken(token);
+        return user;
+
+    }*/
+/*    @GetMapping("/list")
     public String listOfUser() {
         return "";
-    }
+    }*/
 }
