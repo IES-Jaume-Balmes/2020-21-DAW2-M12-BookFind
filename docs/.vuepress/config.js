@@ -1,5 +1,6 @@
 module.exports = {
     themeConfig: {
+        base:'/2020-21-DAW2-M12-BookFind/',
         deploy: "npm run build && npx gh-pages docs/.vuepress/dist",
         logo: '/img/logo.png',
         sidebar: [
