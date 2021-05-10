@@ -1,0 +1,33 @@
+{
+  "name": "bookfind",
+  "version": "0.0.1",
+  "description": "bookfind is a web application that have its own database, with bookfind a costumer can buy books directly on the website.",
+  "main": "index.js",
+  "authors": [
+    {
+      "name": "cmiranda",
+      "email": "cmirand0@jaumebalmes.net"
+    },
+    {
+      "name": "pol",
+      "email": "pbarcia18@jaumebalmes.net"
+    },
+    {
+      "name": "barbara",
+      "email": "bherrera19@jaumebalmes.net"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "/BookFind"
+  },
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  },
+  "author": "pol barbara christian"
+}
