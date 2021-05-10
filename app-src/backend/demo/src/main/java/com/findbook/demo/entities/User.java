@@ -14,8 +14,8 @@ public class User {
     private String username;
     private String password;
     private String email;
-
     private String phone;
+    private String role;
 
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
@@ -24,13 +24,14 @@ public class User {
     public User() {
     }
 
-    public User(String name, String username, String password, String email, String phone) {
+    public User(String name, String username, String password, String email, String phone, String role) {
         super();
         this.name = name;
         this.username = username;
         this.password = password;
         this.email = email;
         this.phone = phone;
+        this.role = role;
 
 
     }
@@ -92,6 +93,20 @@ public class User {
         this.phone = phone;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", role='" + role + '\'' +
+                ", cart=" + cart +
+                '}';
+    }
 
-// </editor-fold>
+
+    // </editor-fold>
 }

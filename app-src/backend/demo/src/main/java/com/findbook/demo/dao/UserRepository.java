@@ -8,11 +8,10 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-/*
 
     @Override
-    public List<User> findAll();
-*/
+    public  List<User> findAll();
+
 
     User findOneByUsername(String username);
 }

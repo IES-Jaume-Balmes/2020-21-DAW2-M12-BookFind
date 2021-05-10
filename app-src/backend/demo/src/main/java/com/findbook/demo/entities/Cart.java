@@ -62,5 +62,21 @@ public class Cart {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public long getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(long cartId) {
+        this.cartId = cartId;
+    }
+
+    public List<LineItems> getLineItems() {
+        return lineItems;
+    }
+
+    public void setLineItems(List<LineItems> lineItems) {
+        this.lineItems = lineItems;
+    }
 // </editor-fold>
 }
