@@ -1,8 +1,8 @@
 package com.findbook.demo.entities;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Book {
@@ -10,25 +10,111 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long bookId;
-    private String sn;
-    private String image; //aqui va la url de la imagen
-    private String name;
-    private int year;
+    private String isbn;
+    private String image;
+    private String title;
+    private Date publishedDate;
     private String author;
-    private String desc;
+    private String description;
     private float price;
+
+
+    /**
+     * The relationship between book and items
+     */
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<LineItems> cartItems;
+
+    //The category
+
+    @ManyToMany
+    List<Category> categories;
 
     public Book() {
     }
 
-    public Book(String sn, String image, String name, int year, String author, String desc, float price) {
+    public Book(String isbn, String image, String name, Date year, String author, String desc, float price) {
         super();
-        this.sn = sn;
+        this.isbn = isbn;
         this.image = image;
-        this.name = name;
-        this.year = year;
+        this.title = name;
+        this.publishedDate = year;
         this.author = author;
-        this.desc = desc;
+        this.description = desc;
         this.price = price;
     }
+
+    // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
+    public long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(long bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String name) {
+        this.title = name;
+    }
+
+    public Date getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(Date year) {
+        this.publishedDate = year;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String desc) {
+        this.description = desc;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public List<LineItems> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<LineItems> cartItems) {
+        this.cartItems = cartItems;
+    }
+    // </editor-fold>
 }

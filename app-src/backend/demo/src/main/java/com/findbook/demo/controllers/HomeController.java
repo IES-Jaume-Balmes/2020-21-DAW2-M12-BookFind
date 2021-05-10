@@ -1,3 +1,4 @@
+/*
 package com.findbook.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,4 +16,4 @@ public class HomeController {
     public String home(Model model) {
         return "main/home";
     }
-}
+}*/
