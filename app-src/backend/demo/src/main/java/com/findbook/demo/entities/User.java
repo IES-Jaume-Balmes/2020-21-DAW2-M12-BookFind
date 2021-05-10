@@ -1,60 +1,107 @@
 package com.findbook.demo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-    private String name;
-    private String username;
-    private String psw;
+    @Column(name = "first_name")
+    //@NotBlank(message="Please Enter First Name!")
+    private String firstName;
+
+    @Column(name = "last_name")
+    //@NotBlank(message="Please Enter Last Name!")
+    private String lastName;
+
+    @Column(name = "email", unique = true)
+    private String email;
+
+    @Column(name = "contact_number")
+    //@NotBlank(message="Please Enter Contact number!")
+    private String contactNumber;
+
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "password")
+    //@NotBlank(message="Please Enter Password for Login!")
+    private String password;
 
     public User() {
     }
 
-    public User(String name, String username, String psw) {
-        super();
-        this.name = name;
-        this.username = username;
-        this.psw = psw;
+    // GETTERS & SETTERS
+    public int getId() {
+        return id;
     }
 
-    public long getUserId() {
-        return userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getName() {
-        return name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setName(String nom) {
-        this.name = nom;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getUsername() {
-        return username;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getEmail() {
+        return email;
     }
 
-    public String getPsw() {
-        return psw;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setPsw(String psw) {
-        this.psw = psw;
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName +
+                ", lastName='" + lastName +
+                ", email='" + email +
+                ", contactNumber='" + contactNumber +
+                ", role='" + role +
+                ", password='" + password +
+                '}';
     }
 }
