@@ -4,11 +4,11 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'BookFind',
+  title: 'FindBook',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
-  description: description,
+  description: 'Documentacion oficial de FindBook',
 
   /**
    * Extra tags to be injected to the page HTML `<head>`
@@ -34,25 +34,23 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Guide',
-        link: '/guide/',
+        text: 'Documentacion',
+        link: '/documentacion/',
       },
       {
         text: 'Config',
         link: '/config/'
+      },
+      {
+        text: 'VuePress',
+        link: 'https://v1.vuepress.vuejs.org'
       }
     ],
     sidebar: {
-      '/guide/': [
-        {
-          title: 'Guide',
-          collapsable: false,
-          children: [
-            '',
-            'using-vue',
-
-          ]
-        }
+      '/documentacion/': [
+        'entrega0',
+        'entrega1'
+        
       ],
     }
   },
