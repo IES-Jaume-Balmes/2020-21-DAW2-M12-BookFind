@@ -2,6 +2,7 @@ package com.findbook.demo.entities;
 
 import javax.persistence.*;
 
+
 @Entity
 public class User {
     /**
@@ -9,6 +10,7 @@ public class User {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    /*    String token = getJWTToken(username);*/
     private long userId;
     private String name;
     private String username;

@@ -21,5 +21,10 @@ public class UserService {
         return user.getUserId();
     }
 
+    //Login user
 
+
+    //GetCurrent user
+
+    //List of users
 }
