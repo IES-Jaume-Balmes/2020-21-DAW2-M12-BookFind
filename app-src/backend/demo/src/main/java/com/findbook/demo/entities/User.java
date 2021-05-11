@@ -3,6 +3,7 @@ package com.findbook.demo.entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
