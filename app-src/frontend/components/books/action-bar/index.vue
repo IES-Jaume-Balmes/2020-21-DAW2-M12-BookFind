@@ -45,19 +45,21 @@
         </template>
 
         <v-list>
-          <!-- <v-list-item v-for="(item, i) in items" :key="i">
+          <v-list-item v-for="(item, i) in carrito" :key="i">
             <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item> -->
+          </v-list-item>
         </v-list>
       </v-menu>
-      {{ numCarrito }}
+      <v-chip label outlined>
+        {{ carrito.length }}
+      </v-chip>
     </v-col>
   </v-row>
 </template>
 
 <script>
 export default {
-  props: ["collectionParams"],
+  props: ["collectionParams", "carrito"],
   watch: {
     params: {
       handler() {

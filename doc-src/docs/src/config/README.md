@@ -1,4 +1,4 @@
----
+<!-- ---
 sidebar: auto
 ---
 
@@ -12,4 +12,4 @@ sidebar: auto
 ## bar
 
 - Type: `string`
-- Default: `/`
+- Default: `/` -->

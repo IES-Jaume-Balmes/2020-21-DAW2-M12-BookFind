@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'Vuepress Foo Boilerplate',
+  title: 'BookFind',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -33,18 +33,14 @@ module.exports = {
     editLinkText: '',
     lastUpdated: false,
     nav: [
-      {
-        text: 'Guide',
-        link: '/guide/',
-      },
-      {
-        text: 'Config',
-        link: '/config/'
-      },
-      {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
-      }
+      // {
+      //   text: 'Guide',
+      //   link: '/guide/',
+      // },
+      // {
+      //   text: 'Config',
+      //   link: '/config/'
+      // }
     ],
     sidebar: {
       '/guide/': [
@@ -54,6 +50,7 @@ module.exports = {
           children: [
             '',
             'using-vue',
+
           ]
         }
       ],

@@ -16,8 +16,6 @@
             @del-book="deleteBook"
             :carrito="carrito"
           />
-          <!-- @add-book="(val) => carrito.push(val)" -->
-          <!-- @del-book="(val) => carrito.push(val)" -->
           <v-divider></v-divider>
         </v-list>
       </div>
@@ -41,7 +39,7 @@ export default {
       deep: true,
     },
     carrito(val) {
-      // this.carrito.push(val);
+      this.$emit("carrito", val);
       console.info("carrito ", val);
     },
   },
@@ -50,18 +48,17 @@ export default {
       loading: false,
       books: [],
       carrito: [],
+      url: "https://www.etnassoft.com/api/v1/get/",
     };
   },
   methods: {
     pushCarrito(book) {
-      
       this.carrito.push(book);
     },
     deleteBook(book) {
-      console.info("borra este libro ", book);
-      this.carrito.forEach((b) => {
+      this.carrito.forEach((b, i) => {
         if (b === book) {
-          console.log("Existe Borralo");
+          this.carrito.splice(i, 1);
         }
       });
     },
@@ -69,7 +66,7 @@ export default {
       this.loading = true;
       this.$axios
         .get(
-          `https://www.etnassoft.com/api/v1/get/?results_range=${this.collectionParams.page},${this.collectionParams.items}`
+          `${this.url}?results_range=${this.collectionParams.page},${this.collectionParams.items}`
         )
         .then((response) => {
           this.loading = false;
