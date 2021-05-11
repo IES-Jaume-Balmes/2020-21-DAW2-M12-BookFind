@@ -17,7 +17,8 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
@@ -26,14 +27,14 @@ public class User {
     public User() {
     }
 
-    public User(String name, String username, String password, String email, String phone, String role) {
+    public User(String name, String username, String password, String email, String phone, Rol role) {
         super();
         this.name = name;
         this.username = username;
         this.password = password;
         this.email = email;
         this.phone = phone;
-        this.role = role;
+        this.rol = role;
 
 
     }
@@ -104,11 +105,17 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", role='" + role + '\'' +
+                ", role='" + rol + '\'' +
                 ", cart=" + cart +
                 '}';
     }
 
+    public Rol getRol() {
+        return rol;
+    }
 
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
     // </editor-fold>
 }
