@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class AppConfig {
-
+    /*The necessary objects for the dependency injection*/
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
