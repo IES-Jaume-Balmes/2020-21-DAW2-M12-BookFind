@@ -7,9 +7,9 @@ sidebar: auto
 ## foo
 
 - Type: `string`
-- Default: `/`
+- Default: ``
 
 ## bar
 
 - Type: `string`
-- Default: `/`
+- Default: ``

@@ -37,11 +37,11 @@ module.exports = {
     nav: [
       {
         text: 'Documentacion',
-        link: '/documentacion/',
+        link: 'documentacion/',
       },
       {
         text: 'Config',
-        link: '/config/'
+        link: 'config/'
       },
       {
         text: 'VuePress',
@@ -49,7 +49,7 @@ module.exports = {
       }
     ],
     sidebar: {
-      '/documentacion/': [
+      'documentacion/': [
         'entrega0',
         'entrega1'
         
