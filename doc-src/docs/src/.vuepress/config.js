@@ -1,7 +1,7 @@
 const { description } = require('../../package')
 
 module.exports = {
-  base: '/2020-21-DAW2-M12-BookFind/',
+  base: "/2020-21-DAW2-M12-BookFind/",
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
@@ -37,11 +37,11 @@ module.exports = {
     nav: [
       {
         text: 'Documentacion',
-        link: 'documentacion/',
+        link: '/documentacion/',
       },
       {
         text: 'Config',
-        link: 'config/'
+        link: '/config/'
       },
       {
         text: 'VuePress',
@@ -49,7 +49,7 @@ module.exports = {
       }
     ],
     sidebar: {
-      'documentacion/': [
+      '/documentacion/': [
         'entrega0',
         'entrega1'
         
