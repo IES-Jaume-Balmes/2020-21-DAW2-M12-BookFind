@@ -11,7 +11,7 @@ desarrollo de la misma, adaptándose a nuevas necesidades.
 
 Markup :
 
-![UML](/img/uml.jpeg )
+![UML](img/uml.jpeg )
 
 
 
@@ -29,7 +29,7 @@ Así mismo se han creado los controladores más básicos y esenciales, como es e
 Con la finalidad de crear un sitio web dinámico y visualmente agradable se ha desarrollado un Mockup que será utilizado
 como guía a lo largo de progreso.
 
-![wireframe](/img/wireframes.png)
+![wireframe](img/wireframes.png)
 
 
 ### VUE front-end, creación del proyecto inicial
