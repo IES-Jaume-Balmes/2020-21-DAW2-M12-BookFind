@@ -13,7 +13,7 @@ Realizar una tienda de libros con su base de datos, donde el cliente puede compr
 
 ### Arquitectura de la aplicación.
 
-![Arquitectura](/img/bd.png )
+![Arquitectura](img/bd.png )
 
 El usuario accederá a la aplicación a través del frontend web, que estará implementado en Vue. El frontend se comunicará con el backend, que será una aplicación de Spring y que tendrá acceso a una base de datos MySQL para almacenar la información de los libros.
 
