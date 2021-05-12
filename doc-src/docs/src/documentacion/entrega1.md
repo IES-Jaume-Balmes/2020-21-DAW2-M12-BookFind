@@ -11,7 +11,7 @@ desarrollo de la misma, adaptándose a nuevas necesidades.
 
 Markup :
 
-![UML](./img/uml.jpeg )
+![UML](/img/uml.jpeg )
 
 
 
