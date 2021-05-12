@@ -1,9 +1,11 @@
 const { description } = require('../../package')
 
 module.exports = {
+  base: '/2020-21-DAW2-M12-BookFind/',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
+
   title: 'FindBook',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
