@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/inicio.png
+heroImage: /img/inicio.jpg
 tagline: 
 actionText: Documentación →
 actionLink: /documentacion/
