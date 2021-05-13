@@ -1,27 +1,27 @@
-## Entrega 0
+# Entrega 0
 
-### Integrantes:
+## Integrantes:
 
 - Barbara Herrera Flores
 - Christian Miranda Balladares
 - Pol Barcia Torres
 
 
-### Descripción.
+## Descripción.
 
 Realizar una tienda de libros con su base de datos, donde el cliente puede comprar los libros directamente desde la web.Consistirá en una página donde el usuario se puede registrar, buscar libros que quiera mediante filtros, pueda valorarlos e incluso comprarlos (o por lo menos tener un enlace a algún sitio de compra).
 
-### Arquitectura de la aplicación.
+## Arquitectura de la aplicación.
 
 ![Arquitectura](/2020-21-DAW2-M12-BookFind/img/bd.png )
 
 El usuario accederá a la aplicación a través del frontend web, que estará implementado en Vue. El frontend se comunicará con el backend, que será una aplicación de Spring y que tendrá acceso a una base de datos MySQL para almacenar la información de los libros.
 
-### Funcionamiento.
+## Funcionamiento.
 
 Habrá 2 perfiles de usuario, el normal y el administrador.
 
-#### Usuario:
+### Usuario:
 - Registro: el usuario tienen que poder registrarse.
 - Darse de baja: un usuario que se ha registrado tiene que poder darse de baja (borrarse).
 - Login: el usuario registrado tiene que poder iniciar sesión.
@@ -49,7 +49,7 @@ Despliegue: Nada
 
 Mantenimiento: Nada
 
-### Herramientas, lenguajes y frameworks utilizados.
+## Herramientas, lenguajes y frameworks utilizados.
 - Vue: 			Frontend
 - Spring: 		Backend
 - MySQL:		Base de datos

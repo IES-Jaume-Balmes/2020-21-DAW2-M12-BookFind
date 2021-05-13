@@ -51,7 +51,8 @@ module.exports = {
     sidebar: {
       '/documentacion/': [
         'entrega0',
-        'entrega1'
+        'entrega1',
+        'entrega2',
         
       ],
     }
