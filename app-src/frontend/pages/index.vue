@@ -1,16 +1,18 @@
 <template>
   <v-container>
-    <v-btn @click="()=>{$router.push(books)}">Access</v-btn>
+    <Login />
   </v-container>
 </template>
 
 <script>
+import Login from "@/components/login";
+
 export default {
-  data(){
-    return{
-      books:{path:"books"}
-    }
+  components: { Login },
+
+  data() {
+    return {
+    };
   },
- 
 };
 </script>
