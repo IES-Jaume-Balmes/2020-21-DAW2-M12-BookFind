@@ -10,7 +10,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/">
-    <img src="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/docs/img/inicio.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/blob/main/docs/img/inicio.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">BookFind</h3>
@@ -93,7 +93,7 @@ Here you will find a list of some of technologies used in this project.
 
 ## Application architecture
 
-[![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/docs/img/bd.png)
+[![Web architecture][web-architecture]](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind/blob/main/docs/img/bd.png)
 
 ## Roadmap
 
