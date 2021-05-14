@@ -50,6 +50,7 @@ Despliegue: Nada
 Mantenimiento: Nada
 
 ## Herramientas, lenguajes y frameworks utilizados.
+
 - Vue: 			Frontend
 - Spring: 		Backend
 - MySQL:		Base de datos
