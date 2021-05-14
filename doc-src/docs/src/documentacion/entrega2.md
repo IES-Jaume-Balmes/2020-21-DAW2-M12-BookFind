@@ -13,14 +13,18 @@ De momento se sigue trabajando con una api publica, para la tercera semana ya se
 
 ### Galeria
 
+Login:
+
+![Disseño Vue](/2020-21-DAW2-M12-BookFind/img/login.png)
+
 Pagina principal:
 
 ![Disseño Vue](/2020-21-DAW2-M12-BookFind/img/carga.png)
 ![Disseño Vue](/2020-21-DAW2-M12-BookFind/img/paginaPrincipal.png)
 
-Login:
+Carrito:
 
-![Disseño Vue](/2020-21-DAW2-M12-BookFind/img/login.png)
+![Disseño Vue](/2020-21-DAW2-M12-BookFind/img/carrito.png)
 
 Filtros:
 
