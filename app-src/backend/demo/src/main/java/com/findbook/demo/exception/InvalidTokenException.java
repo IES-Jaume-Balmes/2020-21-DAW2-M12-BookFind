@@ -1,25 +1,19 @@
 package com.findbook.demo.exception;
 
-public class InvalidTokenException extends Exception {
+import org.springframework.security.core.AuthenticationException;
 
-    private static final String DEFAULT_MESSAGE = "TOKEN ERROR";
-    /*   private String errorMessage;*/
-    private Exception exception;
+public class InvalidTokenException extends AuthenticationException {
+    private static final String DEFAULT = "ERROR Authentication Exception";
+
+    public InvalidTokenException(String message) {
+        super(message);
+    }
 
     public InvalidTokenException() {
-        super(DEFAULT_MESSAGE);
+        super(DEFAULT);
     }
 
-    public InvalidTokenException(String error) {
-        super(error);
-        /*   this.errorMessage = error;*/
-
-    }
-
-    public InvalidTokenException(String error, Exception exception) {
-        super(error);
-        this.exception = exception;
-
-
+    public InvalidTokenException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

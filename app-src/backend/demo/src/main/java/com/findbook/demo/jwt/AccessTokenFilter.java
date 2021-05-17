@@ -1,4 +1,4 @@
-package com.findbook.demo.filters;
+package com.findbook.demo.jwt;
 
 import com.findbook.demo.exception.InvalidTokenException;
 import com.findbook.demo.jwt.AccessToken;
@@ -66,11 +66,12 @@ public class AccessTokenFilter extends AbstractAuthenticationProcessingFilter {
         chain.doFilter(request, response);
     }
 
-    private String extractAuthorizationHeaderAsString(HttpServletRequest request) throws InvalidTokenException {
+    private String extractAuthorizationHeaderAsString(HttpServletRequest request) {
         try {
             return request.getHeader("Authorization");
         } catch (Exception ex) {
             throw new InvalidTokenException();
         }
     }
+    
 }

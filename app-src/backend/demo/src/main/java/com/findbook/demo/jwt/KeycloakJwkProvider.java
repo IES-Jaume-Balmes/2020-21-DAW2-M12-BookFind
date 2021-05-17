@@ -1,15 +1,16 @@
 package com.findbook.demo.jwt;
 
-import com.auth0.jwk.Jwk;
-import com.auth0.jwk.JwkException;
-import com.auth0.jwk.JwkProvider;
-import com.auth0.jwk.SigningKeyNotFoundException;
+import com.auth0.jwk.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.google.common.collect.Lists;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -75,8 +76,9 @@ public class KeycloakJwkProvider implements JwkProvider {
 
             return reader.readValue(response.body());
 
-        } catch (IOException | InterruptedException e) {
+        } catch (InterruptedException | IOException e) {
             throw new NetworkException("Cannot obtain jwks from url " + uri.toString(), e);
         }
     }
+
 }

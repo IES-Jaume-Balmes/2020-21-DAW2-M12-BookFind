@@ -29,7 +29,7 @@ public class AccessToken {
         return value;
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() throws InvalidTokenException {
         DecodedJWT decodedJWT = decodeToken(value);
         JsonObject payloadAsJson = decodeTokenPayloadToJsonObject(decodedJWT);
 
