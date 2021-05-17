@@ -1,9 +1,16 @@
-package com.findbook.demo.filters;
+package com.findbook.demo.jwt;
 
+import com.auth0.jwk.Jwk;
+import com.auth0.jwk.JwkException;
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.findbook.demo.exception.InvalidTokenException;
+import com.findbook.demo.jwt.AccessToken;
 import com.google.common.base.Preconditions;
+
+import java.security.interfaces.RSAPublicKey;
 
 import static java.util.Objects.isNull;
 
@@ -49,6 +56,17 @@ public class JwtTokenValidator {
             log.debug("Token's header is correct");
         } catch (IllegalArgumentException ex) {
             throw new InvalidTokenException("Token is not JWT type", ex);
+        }
+    }
+
+    private void verifySignature(DecodedJWT decodedJWT) throws InvalidTokenException {
+        try {
+            Jwk jwk = jwkProvider.get(decodedJWT.getKeyId());
+            Algorithm algorithm = Algorithm.RSA256((RSAPublicKey) jwk.getPublicKey(), null);
+            algorithm.verify(decodedJWT);
+            log.debug("Token's signature is correct");
+        } catch (JwkException | SignatureVerificationException ex) {
+            throw new InvalidTokenException("Token has invalid signature", ex);
         }
     }
 }

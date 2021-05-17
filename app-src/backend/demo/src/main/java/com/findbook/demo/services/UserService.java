@@ -1,7 +1,7 @@
 package com.findbook.demo.services;
 
 import com.findbook.demo.dao.UserRepository;
-import com.findbook.demo.entities.Rol;
+import com.findbook.demo.enums.Rol;
 import com.findbook.demo.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

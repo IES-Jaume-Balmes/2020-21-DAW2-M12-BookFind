@@ -1,4 +1,4 @@
-package com.findbook.demo.filters;
+package com.findbook.demo.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;

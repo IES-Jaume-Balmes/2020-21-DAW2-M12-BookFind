@@ -1,11 +1,12 @@
 package com.findbook.demo.filters;
 
 import com.findbook.demo.exception.InvalidTokenException;
+import com.findbook.demo.jwt.AccessToken;
+import com.findbook.demo.jwt.JwtTokenValidator;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AnyRequestMatcher;

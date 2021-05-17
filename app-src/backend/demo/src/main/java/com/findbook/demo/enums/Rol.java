@@ -1,4 +1,4 @@
-package com.findbook.demo.entities;
+package com.findbook.demo.enums;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

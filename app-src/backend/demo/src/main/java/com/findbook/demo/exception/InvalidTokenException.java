@@ -4,7 +4,7 @@ public class InvalidTokenException extends Exception {
 
     private static final String DEFAULT_MESSAGE = "TOKEN ERROR";
     /*   private String errorMessage;*/
-    private RuntimeException exception;
+    private Exception exception;
 
     public InvalidTokenException() {
         super(DEFAULT_MESSAGE);
@@ -16,7 +16,7 @@ public class InvalidTokenException extends Exception {
 
     }
 
-    public InvalidTokenException(String error, RuntimeException exception) {
+    public InvalidTokenException(String error, Exception exception) {
         super(error);
         this.exception = exception;
 

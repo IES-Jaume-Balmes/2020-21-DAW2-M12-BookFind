@@ -1,5 +1,7 @@
 package com.findbook.demo.entities;
 
+import com.findbook.demo.enums.Rol;
+
 import javax.persistence.*;
 
 
