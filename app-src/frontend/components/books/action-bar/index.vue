@@ -1,26 +1,16 @@
 <template>
   <v-row v-if="params">
     <v-col cols="12" sm="6" md="8" style="display: flex">
-      <v-select
-        label="libros"
+      <!-- <v-select
+        label="Ordenar"
         dense
         outlined
         :items="itemsPerPage"
         small-chips
         @change="(val) => (params.items = val)"
         :value="params.items"
-      ></v-select>
-      <!-- <v-combobox
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-        outlined
-        chips
-        deletable-chips
-      ></v-combobox> -->
-      <!-- :value="filtros.tags"
-        @change="(val) => (filtros.tags = val)" -->
+      ></v-select>  -->
+     
     </v-col>
     <v-col cols="6" md="4" class="d-flex flex-row-reverse">
       <v-btn icon v-if="btnFilters" @click="btnFilters = false">
@@ -37,7 +27,7 @@
         <v-icon> mdi-chevron-left</v-icon>
       </v-btn>
 
-      <v-menu offset-y>
+      <!-- <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
             <v-icon> mdi-cart-outline</v-icon>
@@ -52,7 +42,16 @@
       </v-menu>
       <v-chip label outlined>
         {{ carrito.length }}
-      </v-chip>
+      </v-chip> -->
+      <v-select
+        label="libros"
+        dense
+        outlined
+        :items="itemsPerPage"
+        small-chips
+        @change="(val) => (params.items = val)"
+        :value="params.items"
+      ></v-select>
     </v-col>
   </v-row>
 </template>

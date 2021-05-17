@@ -1,12 +1,14 @@
 <template>
   <v-container fluid>
+    <Header />
     <ActionBar
       :collectionParams="collectionParams"
       @change-params="(val) => (collectionParams = val)"
       @change-view="(val) => (vistaFilters = val)"
-      :carrito="carrito"
     />
-    <v-row v-if="vistaFilters">
+      <!-- :carrito="carrito" -->
+    
+     <v-row v-if="vistaFilters">
       <v-col cols="12" sm="6" md="8">
         <ListBooks
           :collectionParams="collectionParams"
@@ -14,7 +16,6 @@
         />
       </v-col>
       <v-col cols="6" md="4">
-        <!-- v-model="filters" -->
         <Filters />
       </v-col>
     </v-row>
@@ -25,7 +26,7 @@
           @carrito="(val) => (carrito = val)"
         />
       </v-col>
-    </v-row>
+    </v-row> 
   </v-container>
 </template>
 
@@ -33,13 +34,14 @@
 import ListBooks from "./list-books";
 import ActionBar from "./action-bar";
 import Filters from "./filters";
+import Header from "./header";
 
 export default {
-  components: { ListBooks, ActionBar, Filters },
+  components: { ListBooks, ActionBar, Filters, Header },
   watch: {
     carrito: {
       handler() {
-       // console.log(this.carrito);
+        // console.log(this.carrito);
       },
       deep: true,
     },
