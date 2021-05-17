@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
-        return new KeycloakAuthenticationProvider();
+        return (AuthenticationProvider) new KeycloakAuthenticationProvider();
     }
 
     @Bean
