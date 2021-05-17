@@ -13,6 +13,7 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public Long registerUser(User user) {
@@ -20,7 +21,7 @@ public class UserService {
 
         /*Encrypt the password*/
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
+        //user.setPassword(user.getPassword());
         userRepository.save(user);
 
         //Set the user role

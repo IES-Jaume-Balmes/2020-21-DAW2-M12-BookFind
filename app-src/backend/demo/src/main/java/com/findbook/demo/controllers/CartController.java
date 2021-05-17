@@ -3,8 +3,8 @@ package com.findbook.demo.controllers;
 import com.findbook.demo.dao.UserRepository;
 import com.findbook.demo.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
-/*import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;*/
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
