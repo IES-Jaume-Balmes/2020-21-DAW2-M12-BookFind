@@ -29,7 +29,7 @@ class ConfirmationToken {
     @JoinColumn(nullable = false, name = "userId")
     private User user;
 
-    ConfirmationToken(User user) {
+    public ConfirmationToken(User user) {
         this.user = user;
         this.createdDate = LocalDate.now();
         //A class that represents an immutable universally unique identifier (UUID)

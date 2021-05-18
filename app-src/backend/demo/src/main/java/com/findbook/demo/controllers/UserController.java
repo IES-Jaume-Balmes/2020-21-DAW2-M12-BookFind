@@ -20,8 +20,7 @@ public class UserController {
 
     // RequestBody transform an Httprequest into java object
     //@ResponseBody --> retunr json automaticamente
-    @PostMapping("/register")
-
+    @PostMapping("/sign-up")
     public ResponseEntity registerUser(@RequestBody User user) {
 
         if (userRepository.findByEmail(user.getEmail()) != null || userRepository.findOneByUsername(user.getUsername()) != null) {
