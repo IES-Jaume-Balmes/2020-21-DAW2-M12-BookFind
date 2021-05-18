@@ -12,16 +12,16 @@ public class User {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    /*    String token = getJWTToken(username);*/
     private long userId;
     private String name;
     private String username;
     private String password;
+    @Column(unique = true)
     private String email;
     private String phone;
+    private boolean active;
     @Enumerated(EnumType.STRING)
     private Rol rol;
-
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
@@ -37,10 +37,17 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.rol = role;
-
-
+        this.active = false;
     }
-// <editor-fold defaultstate="collapsed" desc=" GETTERS & SETTERS ">
+
+    // <editor-fold defaultstate="collapsed" desc=" GETTERS & SETTERS ">
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public Cart getCart() {
         return cart;
