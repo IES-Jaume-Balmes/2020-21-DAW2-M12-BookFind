@@ -8,6 +8,6 @@ import javax.persistence.Id;
 
 //Predefined roles
 public enum Rol {
-    ROLE_USER, ROLE_ADMIN;
+    USER, ADMIN;
 
 }

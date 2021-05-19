@@ -1,12 +1,25 @@
 package com.findbook.demo.entities;
 
 import com.findbook.demo.enums.Rol;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
 
-
+//Lombok
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
 @Entity
-public class User {
+public class User implements UserDetails {
     /**
      * El usuario tiene un carrito, la orden será una instancia
      */
@@ -19,15 +32,16 @@ public class User {
     @Column(unique = true)
     private String email;
     private String phone;
-    private boolean active;
+    private Boolean locked;
+    private Boolean enable;
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
-    public User() {
-    }
+/*    public User() {
+    }*/
 
     public User(String name, String username, String password, String email, String phone, Rol role) {
         super();
@@ -37,16 +51,56 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.rol = role;
-        this.active = false;
+
     }
+
+    // <editor-fold defaultstate="collapsed" desc=" INTERFACE METHODS ">
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return !locked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enable;
+    }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        //Stores a String representation of an authority granted to the Authentication object
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(rol.name());
+        //Return singleton Set
+        return Collections.singleton(authority);
+    }
+    // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS & SETTERS ">
-    public boolean isActive() {
-        return active;
+
+    public Boolean getLocked() {
+        return locked;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
     public Cart getCart() {
