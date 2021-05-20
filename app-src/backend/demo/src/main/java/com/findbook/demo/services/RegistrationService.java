@@ -1,19 +1,22 @@
 package com.findbook.demo.services;
 
-import com.findbook.demo.entities.Cart;
 import com.findbook.demo.entities.User;
-import com.findbook.demo.enums.Rol;
 import com.findbook.demo.exception.EmailNotValid;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class RegistrationService {
+
     private final EmailValidator emailValidator;
+    @Autowired
     private final UserService userService;
 
-    public String register(User user) throws EmailNotValid {
+    @SneakyThrows
+    public String register(User user) {
 
         boolean isValidEmail = emailValidator.test(user.getEmail());
         if (!isValidEmail) {

@@ -7,10 +7,12 @@ import com.findbook.demo.entities.User;
 import com.findbook.demo.exception.EmailExistsException;
 import com.findbook.demo.exception.EmailNotValid;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,6 +23,7 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
 
@@ -36,10 +39,18 @@ public class UserService implements UserDetailsService {
     }
 
     //Send Link to confirm user
+    @SneakyThrows
     public String signUpUser(User user) {
-        boolean userExist = userRepository.findByEmail(user.getEmail()) == null; //Exists
+        boolean userExist = userRepository.findByEmail(user.getEmail()) != null; //Exists
+        if (userExist) {
+            throw new EmailExistsException();
+        }
+        String encodePassword = bCryptPasswordEncoder.encode(user.getPassword());
 
-        return "";
+        user.setPassword(encodePassword);
+        userRepository.save(user);
+        //TODO: Send confirmation token
+        return "it works";
     }
 
     //Login user

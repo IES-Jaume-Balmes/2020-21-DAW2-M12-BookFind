@@ -41,11 +41,9 @@ public class User implements UserDetails {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
-/*    public User() {
-    }*/
 
     public User(String name, String lastName, String username, String password, String email, String phone, Rol role) {
-        super();
+
         this.firstName = name;
         this.lastName = lastName;
         this.username = username;

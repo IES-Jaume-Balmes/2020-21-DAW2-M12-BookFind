@@ -2,6 +2,7 @@ package com.findbook.demo.controllers;
 
 import com.findbook.demo.dao.UserRepository;
 import com.findbook.demo.entities.User;
+import com.findbook.demo.services.RegistrationService;
 import com.findbook.demo.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,14 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
 
+    /*
+        @Autowired
+        UserService userService;
+        @Autowired
+        UserRepository userRepository;
+    */
     @Autowired
-    UserService userService;
-    @Autowired
-    UserRepository userRepository;
+    RegistrationService registrationService;
 
     // RequestBody transform an Httprequest into java object
     //@ResponseBody --> retunr json automaticamente
@@ -31,6 +36,7 @@ public class UserController {
             //userService.register(user);
             return new ResponseEntity(HttpStatus.CREATED);
         }*/
+    registrationService.register(user);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
