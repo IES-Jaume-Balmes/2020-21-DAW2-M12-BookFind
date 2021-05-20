@@ -46,7 +46,11 @@ public class UserService implements UserDetailsService {
             throw new EmailExistsException();
         }
         String encodePassword = bCryptPasswordEncoder.encode(user.getPassword());
-
+        
+        Cart userCart = new Cart();
+        userCart.setUser(user);
+        user.setCart(userCart);
+        user.setRol(Rol.USER);
         user.setPassword(encodePassword);
         userRepository.save(user);
         //TODO: Send confirmation token

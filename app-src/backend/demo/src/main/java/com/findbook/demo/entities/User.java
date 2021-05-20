@@ -33,8 +33,8 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
     private String phone;
-    private Boolean locked;
-    private Boolean enable;
+    private Boolean locked = false;
+    private Boolean enable = false;
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
