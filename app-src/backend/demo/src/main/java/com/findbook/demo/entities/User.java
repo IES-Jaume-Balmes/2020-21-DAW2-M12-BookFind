@@ -26,7 +26,8 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String username;
     private String password;
     @Column(unique = true)
@@ -43,9 +44,10 @@ public class User implements UserDetails {
 /*    public User() {
     }*/
 
-    public User(String name, String username, String password, String email, String phone, Rol role) {
+    public User(String name, String lastName, String username, String password, String email, String phone, Rol role) {
         super();
-        this.name = name;
+        this.firstName = name;
+        this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -119,12 +121,12 @@ public class User implements UserDetails {
         this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String nom) {
-        this.name = nom;
+    public void setFirstName(String nom) {
+        this.firstName = nom;
     }
 
     public String getUsername() {
@@ -159,11 +161,27 @@ public class User implements UserDetails {
         this.phone = phone;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", name='" + name + '\'' +
+                ", name='" + firstName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
@@ -173,12 +191,6 @@ public class User implements UserDetails {
                 '}';
     }
 
-    public Rol getRol() {
-        return rol;
-    }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
     // </editor-fold>
 }
