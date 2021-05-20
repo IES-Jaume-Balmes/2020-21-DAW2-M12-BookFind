@@ -18,15 +18,12 @@ public class Book {
     private String description;
     private float price;
 
-
     /**
      * The relationship between book and items
      */
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<LineItems> cartItems;
-
     //The category
-
     @ManyToMany
     List<Category> categories;
 

@@ -13,12 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
 
-    /*
-        @Autowired
-        UserService userService;
-        @Autowired
-        UserRepository userRepository;
-    */
     @Autowired
     RegistrationService registrationService;
 
@@ -44,6 +38,11 @@ public class UserController {
         return registrationService.register(user);
     }
 
-    //Login
+
+    @GetMapping(path = "confirm")
+    public String confirm(@RequestParam("token") String token) {
+        return registrationService.confirmToken(token);
+    }
+
 
 }

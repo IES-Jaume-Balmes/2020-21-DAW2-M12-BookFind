@@ -42,6 +42,7 @@ public class User implements UserDetails {
     private Cart cart;
 
 
+
     public User(String name, String lastName, String username, String password, String email, String phone, Rol role) {
 
         this.firstName = name;

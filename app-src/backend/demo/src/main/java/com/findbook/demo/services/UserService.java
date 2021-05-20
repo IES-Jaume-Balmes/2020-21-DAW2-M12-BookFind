@@ -5,8 +5,7 @@ import com.findbook.demo.entities.Cart;
 import com.findbook.demo.enums.Rol;
 import com.findbook.demo.entities.User;
 import com.findbook.demo.exception.EmailExistsException;
-import com.findbook.demo.exception.EmailNotValid;
-import com.findbook.demo.token.ConfirmationToken;
+import com.findbook.demo.entities.ConfirmationToken;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -72,6 +70,10 @@ public class UserService implements UserDetailsService {
         //TODO: SEND EMAIL
         return token;
     }
+/*    public int enableUser(String email) {
+        return userRepository.enableUser(email);
+    }*/
+
 
     //Login user
 
