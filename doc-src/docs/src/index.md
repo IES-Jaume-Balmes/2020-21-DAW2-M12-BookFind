@@ -1,15 +1,15 @@
 ---
 home: true
-heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: bookfind is a web application that have its own database, with bookfind a costumer can buy books directly on the website.
+heroImage: /img/inicio.jpg
+tagline: 
 actionText: Documentación →
 actionLink: /documentacion/
-# features:
-# - title: Feature 1 Title
-#   details: Feature 1 Description
-# - title: Feature 2 Title
-#   details: Feature 2 Description
-# - title: Feature 3 Title
-#   details: Feature 3 Description
-footer: Made by cmiranda, pol, barbara with ❤️
+features:
+- title: Christian 
+  details: Desarrollador de frontend
+- title: Barbara 
+  details: Desarrolladora de backend y BD
+- title: Pol
+  details: Desarrollador de backend y BD
+footer: Made with ❤️
 ---
