@@ -70,9 +70,10 @@ public class UserService implements UserDetailsService {
         //TODO: SEND EMAIL
         return token;
     }
-/*    public int enableUser(String email) {
+
+    public int enableUser(String email) {
         return userRepository.enableUser(email);
-    }*/
+    }
 
 
     //Login user

@@ -40,7 +40,7 @@ public class RegistrationService {
                         user.getPhone(),
                         user.getRol())
         );
-        String link = "http://localhost:8080/sign-up/confirm?token=" + token;
+        String link = "http://localhost:8080/user/sign-up/confirm?token=" + token;
         //We can validate the email before
         emailSender.send(user.getEmail(), buildEmail(user.getFirstName(), link));
         return token;
@@ -64,7 +64,7 @@ public class RegistrationService {
         }
 
         confirmationTokenService.setConfirmedAt(token);
-        //userService.enableUser(confirmationToken.getUser().getEmail());
+        userService.enableUser(confirmationToken.getUser().getEmail());
         return "confirmed";
     }
 

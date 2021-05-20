@@ -39,7 +39,7 @@ public class UserController {
     }
 
 
-    @GetMapping(path = "confirm")
+    @GetMapping(path = "/sign-up/confirm")
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);
     }
