@@ -28,11 +28,10 @@ public class ConfirmationToken {
     @JoinColumn(nullable = false, name = "userId")
     private User user;
 
-    public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiredAt, LocalDateTime confirmAt, User user) {
+    public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiredAt,  User user) {
         this.token = token;
         this.createdAt = createdAt;
         this.expiresAt = expiredAt;
-        this.confirmAt = confirmAt;
         this.user = user;
     }
 }

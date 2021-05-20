@@ -6,6 +6,7 @@ import com.findbook.demo.enums.Rol;
 import com.findbook.demo.entities.User;
 import com.findbook.demo.exception.EmailExistsException;
 import com.findbook.demo.exception.EmailNotValid;
+import com.findbook.demo.token.ConfirmationToken;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -24,6 +27,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
 
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
 
@@ -46,15 +50,27 @@ public class UserService implements UserDetailsService {
             throw new EmailExistsException();
         }
         String encodePassword = bCryptPasswordEncoder.encode(user.getPassword());
-        
+
         Cart userCart = new Cart();
         userCart.setUser(user);
         user.setCart(userCart);
         user.setRol(Rol.USER);
         user.setPassword(encodePassword);
         userRepository.save(user);
-        //TODO: Send confirmation token
-        return "it works";
+
+        /*Save token*/
+        String token = UUID.randomUUID().toString();
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15),
+                user
+        );
+
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+        //TODO: SEND EMAIL
+        return token;
     }
 
     //Login user
