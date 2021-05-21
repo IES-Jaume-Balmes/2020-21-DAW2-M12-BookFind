@@ -6,7 +6,7 @@
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
-      <v-list-item-title>{{ book.title }} </v-list-item-title>
+      <v-list-item-title @click="handleClickGoBook">{{ book.title }} </v-list-item-title>
       <v-list-item-subtitle style="display: flex"
         >{{ book.author }}
 
@@ -33,8 +33,7 @@
 export default {
   props: ["book", "carrito"],
 
-  mounted() {
-  },
+  mounted() {},
 
   data() {
     return {
@@ -43,6 +42,9 @@ export default {
   },
 
   methods: {
+    handleClickGoBook() {
+      this.$router.push({ path: "book/" });
+    },
     addBook() {
       this.disabled.add = true;
       this.disabled.del = false;
