@@ -1,27 +1,27 @@
-/*
 package com.findbook.demo.entities;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long authorId;
     private String firstName;
     private String lastName;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookId")
-    private List<Book> books;
+/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookId")
+    private List<Book> books;*/
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Author() {
-
-    }
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
 
@@ -43,4 +43,3 @@ public class Author {
 
     // </editor-fold>
 }
-*/

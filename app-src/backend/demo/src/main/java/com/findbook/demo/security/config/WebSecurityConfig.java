@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {//Acces to http security
         //super.configure(http);
         //csrf Cross-Site Request Forgery CSRF --> Falsificación de solicitud entre sitios
         /*If you are only creating a service that is used by non-browser clients, you will likely want to disable CSRF protection
@@ -36,13 +36,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated().and()
                 .formLogin();
+
         //To see the h2 console
         http.headers().frameOptions().disable();
+
+/*        http.formLogin()
+                .loginProcessingUrl("/h2-console/")
+                .loginPage("/user/sign-in")
+                .permitAll();*/
+/*
+        http
+                .authorizeRequests()
+                .antMatchers("/readingList/**").access("hasRole('READER')")
+                .antMatchers("/**").permitAll()
+                .and()
+                .formLogin().loginProcessingUrl("/userAuth")
+                .loginPage("/myLogin")
+                .failureUrl("/myLogin?error=true");*/
     }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //super.configure(auth);
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 

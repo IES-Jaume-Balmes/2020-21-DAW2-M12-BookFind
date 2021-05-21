@@ -45,4 +45,18 @@ public class UserController {
     }
 
 
+    /*    @GetMapping("/sign-in")
+        public String loginUser(@RequestBody User user) {
+
+            return "";
+        }*/
+/*
+    @RequestMapping(value = "/sign-in", method = RequestMethod.GET)
+    public String login() {
+
+        return "/sign-in";
+    }
+*/
+
+
 }
