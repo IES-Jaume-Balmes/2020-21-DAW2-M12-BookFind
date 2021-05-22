@@ -43,5 +43,22 @@ public class BooksService {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
- 
+    @SneakyThrows
+    public Book updateBook(Book book) {
+        Book existingBook = bookRepository.findById(book.getBookId()).orElse(null);
+        if (existingBook == null) throw new BookExistsException("The book you'ere trying to edit does not exists");
+        existingBook.setIsbn(book.getIsbn());
+        existingBook.setImage(book.getImage());
+        existingBook.setTitle(book.getTitle());
+        existingBook.setPublishedDate(book.getPublishedDate());
+        existingBook.setAuthor(book.getAuthor());
+        existingBook.setDescription(book.getDescription());
+        existingBook.setPrice(book.getPrice());
+        return bookRepository.save(existingBook);
+    }
+
+    public ResponseEntity deleteBook(Long id) {
+        bookRepository.deleteById(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
