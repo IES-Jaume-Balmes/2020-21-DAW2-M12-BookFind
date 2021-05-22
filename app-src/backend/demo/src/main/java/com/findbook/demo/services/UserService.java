@@ -45,7 +45,7 @@ public class UserService implements UserDetailsService {
     public String signUpUser(User user) {
         boolean userExist = userRepository.findByEmail(user.getEmail()) != null; //Exists
         if (userExist) {
-            //TODO: if email not confirmed send confirmation email
+            //TODO: if email not confirmed send confirmation email again, delate token if is expire an that kind of things
             throw new EmailExistsException();
         }
 

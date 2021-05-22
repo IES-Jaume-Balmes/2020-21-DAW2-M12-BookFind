@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/admin/books")
-public class BookControllerAdmin {
+public class AdminBookController {
     @Autowired
     private BooksService booksService;
 
