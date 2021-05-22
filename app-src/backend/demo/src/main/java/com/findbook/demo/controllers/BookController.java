@@ -10,9 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -64,7 +66,8 @@ public class BookController {
         return booksService.createBook(product);
     }
 
-    //TODO: Modificar libro
+    //TODO: Modificar libro UPDATE
 
+    //TODO: DELATE BOOK
 
 }

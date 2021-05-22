@@ -1,10 +1,13 @@
 package com.findbook.demo.entities;
 
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+@EqualsAndHashCode
 @Entity
 public class Book {
 

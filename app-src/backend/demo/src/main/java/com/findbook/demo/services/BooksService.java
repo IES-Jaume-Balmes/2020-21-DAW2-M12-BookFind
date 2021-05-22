@@ -18,6 +18,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class BooksService {
+    //TODO: Validation --> github proyect example (ALL CRUD CONTROLLERS/METHODS)
     @Autowired
     BookRepository bookRepository;
 
@@ -30,7 +31,7 @@ public class BooksService {
         return bookRepository.findAll(page);
     }
 
-    //TODO: Validation
+
     @SneakyThrows
     public ResponseEntity createBook(Book book) {
         //TODO: Find by isbn
@@ -41,19 +42,6 @@ public class BooksService {
         bookRepository.save(book);
         return new ResponseEntity(HttpStatus.CREATED);
     }
-    /*    @PostMapping("/new")
-    public ResponseEntity create(@RequestBody Book product, BindingResult bindingResult) {
-        Optional<Book> bookExist = booksService.findOne(product.getBookId());
-        if (bookExist != null) {
-            bindingResult
-                    .rejectValue("bookId", "error.product",
-                            "There is already a product with the code provided");
-        }
-        if (bindingResult.hasErrors()) {
-            return ResponseEntity.badRequest().body(bindingResult);
-        }
-        booksService.save(product);
-        return ResponseEntity.ok(HttpStatus.CREATED);
-    }*/
 
+ 
 }
