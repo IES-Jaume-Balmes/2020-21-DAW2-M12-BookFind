@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 
 //Predefined roles
-public enum Rol {
+public enum Role {
     USER, ADMIN;
 
 }

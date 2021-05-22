@@ -6,7 +6,6 @@ import com.findbook.demo.exception.EmailNotValid;
 import com.findbook.demo.entities.ConfirmationToken;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +36,7 @@ public class RegistrationService {
                         user.getPassword(),
                         user.getEmail(),
                         user.getPhone(),
-                        user.getRol())
+                        user.getRole())
         );
         String link = "http://localhost:8080/user/sign-up/confirm?token=" + token;
         //We can validate the email before

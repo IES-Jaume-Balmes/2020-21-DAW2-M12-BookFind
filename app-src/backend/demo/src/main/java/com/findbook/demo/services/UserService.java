@@ -2,7 +2,7 @@ package com.findbook.demo.services;
 
 import com.findbook.demo.dao.UserRepository;
 import com.findbook.demo.entities.Cart;
-import com.findbook.demo.enums.Rol;
+import com.findbook.demo.enums.Role;
 import com.findbook.demo.entities.User;
 import com.findbook.demo.exception.EmailExistsException;
 import com.findbook.demo.entities.ConfirmationToken;
@@ -54,7 +54,7 @@ public class UserService implements UserDetailsService {
         Cart userCart = new Cart();
         userCart.setUser(user);
         user.setCart(userCart);
-        user.setRol(Rol.USER);
+        user.setRole(Role.USER);
         user.setPassword(encodePassword);
         userRepository.save(user);
 
