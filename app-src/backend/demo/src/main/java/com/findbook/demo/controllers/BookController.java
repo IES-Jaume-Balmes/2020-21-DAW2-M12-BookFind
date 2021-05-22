@@ -57,10 +57,14 @@ public class BookController {
 
 
     //TODO: Crear libro
+    //TODO: Añadir seguridad, solo admin puede crear libros
     @PostMapping("/new")
     public ResponseEntity create(@RequestBody Book product) {
 
         return booksService.createBook(product);
     }
+
+    //TODO: Modificar libro
+
 
 }
