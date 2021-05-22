@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-public class Book implements Serializable {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -113,6 +113,22 @@ public class Book implements Serializable {
 
     public void setCartItems(List<LineItems> cartItems) {
         this.cartItems = cartItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", isbn='" + isbn + '\'' +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", publishedDate=" + publishedDate +
+                ", author='" + author + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", cartItems=" + cartItems +
+                ", categories=" + categories +
+                '}';
     }
     // </editor-fold>
 }

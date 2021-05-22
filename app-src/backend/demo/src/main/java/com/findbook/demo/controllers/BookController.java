@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -20,7 +21,7 @@ public class BookController {
     @Autowired
     private BooksService booksService;
 
-    @GetMapping("/book/{bookId}")
+    @GetMapping("/{bookId}")
     public Optional<Book> showOne(@PathVariable("bookId") Long bookId) {
 
         Optional<Book> bookInfo = booksService.findOne(bookId);
@@ -33,24 +34,33 @@ public class BookController {
         return bookInfo;
     }
 
-    //Paginacion
+    //Paginacion, Spring hace la validacion de los datos, no negativos o numeros muy grandes
     @GetMapping("/page")
-    public Page<Book> findABookByPage(Pageable page) {//Spring hace la validacion de los datos, no negativos o numeros muy grandes
+    public Page<Book> findABookByPage(Pageable page) {
         return booksService.getBooks(page);
     }
     //TODO: controlador libros precio ascendente y descendente
 
     @GetMapping("/price-desc")
-    public Page<Book> getBookByPriceDesc(@PageableDefault(sort = "price", direction = Sort.Direction.DESC, size = 10) Pageable page) {
+    public Page<Book> getBookByPriceDesc(@PageableDefault(sort = "price", direction = Sort.Direction.DESC) Pageable page) {
         return booksService.getBooks(page);
     }
 
     @GetMapping("/price-asc")
-    public Page<Book> getBookByPriceAsc(@PageableDefault(sort = "price", direction = Sort.Direction.ASC, size = 10) Pageable page) {
+    public Page<Book> getBookByPriceAsc(@PageableDefault(sort = "price", direction = Sort.Direction.ASC) Pageable page) {
         return booksService.getBooks(page);
     }
-    //TODO: controlador categoria
+    //TODO: controlador filtrar por categoria (género del libro)
 
-    //TODO: por autor
+
+    //TODO: Filtrar por autor
+
+
+    //TODO: Crear libro
+    @PostMapping("/new")
+    public ResponseEntity create(@RequestBody Book product) {
+
+        return booksService.createBook(product);
+    }
 
 }
