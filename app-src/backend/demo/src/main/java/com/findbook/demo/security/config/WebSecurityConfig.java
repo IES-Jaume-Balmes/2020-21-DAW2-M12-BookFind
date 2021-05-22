@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/sign-up/**", "/h2-console/**") //Permit any conection in this endpoint
+                .antMatchers("/**", "/h2-console/**") //Permit any conection in this endpoint
                 .permitAll()
                 .anyRequest()
                 .authenticated().and()
@@ -69,3 +69,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return provider;
     }
 }
+/*       http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/user/sign-up/**", "/h2-console/**") //Permit any conection in this endpoint
+                .permitAll()
+                .anyRequest()
+                .authenticated().and()
+                .formLogin();*/

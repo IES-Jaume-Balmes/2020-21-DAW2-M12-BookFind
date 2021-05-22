@@ -25,7 +25,6 @@ public class Cart {
     private User user;
 
     public Cart(Date created, float ivaAmount, float totalMoney) {
-       /* this.created = created;*/
         this.ivaAmount = ivaAmount;
         this.totalMoney = totalMoney;
     }

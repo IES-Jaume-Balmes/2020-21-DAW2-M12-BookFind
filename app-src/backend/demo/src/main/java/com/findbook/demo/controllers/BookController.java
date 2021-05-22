@@ -1,63 +1,56 @@
 package com.findbook.demo.controllers;
 
-import com.findbook.demo.dao.BookRepository;
 import com.findbook.demo.entities.Book;
+
+import com.findbook.demo.services.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import java.util.Optional;
 
 @RestController
-@RequestMapping("bookfind")
+@RequestMapping("/books")
 public class BookController {
-    /**
-     * Dependency injection
-     */
     @Autowired
-    BookRepository bookCrud;
+    private BooksService booksService;
 
-/*
-//This is mvc, in rest api do not work
-    @GetMapping("/new")
-    public String displayBookForm(Model model) {
-        Book nouBook = new Book();
-        model.addAttribute("book", nouBook);
-        return " ";
+    @GetMapping("/book/{bookId}")
+    public Optional<Book> showOne(@PathVariable("bookId") Long bookId) {
 
+        Optional<Book> bookInfo = booksService.findOne(bookId);
+        //TODO:
+        //        // Product is not available
+        //        if (productInfo.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
+        //            productInfo = null;
+        //        }
 
-    }*/
-
-    @PostMapping("/save")
-    public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        if (book != null) {
-            bookCrud.save(book);
-            return ResponseEntity.status(HttpStatus.CREATED).body(book);
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        return bookInfo;
     }
 
-    //mostrar todos los libros añadidos
-    @GetMapping("/show")
-    public Iterable<Book> displayBooks() {
-        try {
-            return bookCrud.findAll();
-        } catch (DataIntegrityViolationException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+    //Paginacion
+    @GetMapping("/page")
+    public Page<Book> findABookByPage(Pageable page) {//Spring hace la validacion de los datos, no negativos o numeros muy grandes
+        return booksService.getBooks(page);
+    }
+    //TODO: controlador libros precio ascendente y descendente
+
+    @GetMapping("/price-desc")
+    public Page<Book> getBookByPriceDesc(@PageableDefault(sort = "price", direction = Sort.Direction.DESC, size = 10) Pageable page) {
+        return booksService.getBooks(page);
     }
 
-    @GetMapping("show/{id}")
-    public Optional<Book> displayBooksById(@PathVariable("id") Long id) {
-        try {
-            return bookCrud.findById(id);
-        } catch (DataIntegrityViolationException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/price-asc")
+    public Page<Book> getBookByPriceAsc(@PageableDefault(sort = "price", direction = Sort.Direction.ASC, size = 10) Pageable page) {
+        return booksService.getBooks(page);
     }
+    //TODO: controlador categoria
+
+    //TODO: por autor
 
 }

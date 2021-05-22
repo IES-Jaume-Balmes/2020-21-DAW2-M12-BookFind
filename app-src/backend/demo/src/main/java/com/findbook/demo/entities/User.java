@@ -19,6 +19,7 @@ import java.util.Collections;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
     /**
      * El usuario tiene un carrito, la orden será una instancia
@@ -40,7 +41,6 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
-
 
 
     public User(String name, String lastName, String username, String password, String email, String phone, Rol role) {

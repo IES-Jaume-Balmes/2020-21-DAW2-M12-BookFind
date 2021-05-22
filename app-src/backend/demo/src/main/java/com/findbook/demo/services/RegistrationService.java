@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 public class RegistrationService {
 
     private final EmailValidator emailValidator;
-    @Autowired
     private final UserService userService;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
@@ -62,7 +61,7 @@ public class RegistrationService {
         if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
         }
-
+        //Todos o ninguno
         confirmationTokenService.setConfirmedAt(token);
         userService.enableUser(confirmationToken.getUser().getEmail());
         return "confirmed";
