@@ -1,6 +1,6 @@
 package com.findbook.demo.entities;
 
-import com.findbook.demo.enums.Rol;
+import com.findbook.demo.enums.Role;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +19,7 @@ import java.util.Collections;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
     /**
      * El usuario tiene un carrito, la orden será una instancia
@@ -36,14 +37,13 @@ public class User implements UserDetails {
     private Boolean locked = false;
     private Boolean enable = false;
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private Role role;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
 
-
-    public User(String name, String lastName, String username, String password, String email, String phone, Rol role) {
+    public User(String name, String lastName, String username, String password, String email, String phone, Role role) {
 
         this.firstName = name;
         this.lastName = lastName;
@@ -51,7 +51,7 @@ public class User implements UserDetails {
         this.password = password;
         this.email = email;
         this.phone = phone;
-        this.rol = role;
+        this.role = role;
 
     }
 
@@ -80,7 +80,7 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //Stores a String representation of an authority granted to the Authentication object
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(rol.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         //Return singleton Set
         return Collections.singleton(authority);
     }
@@ -160,12 +160,12 @@ public class User implements UserDetails {
         this.phone = phone;
     }
 
-    public Rol getRol() {
-        return rol;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRole(Role rol) {
+        this.role = rol;
     }
 
     public String getLastName() {
@@ -185,7 +185,7 @@ public class User implements UserDetails {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", role='" + rol + '\'' +
+                ", role='" + role + '\'' +
                 ", cart=" + cart +
                 '}';
     }

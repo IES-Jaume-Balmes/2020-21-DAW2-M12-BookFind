@@ -16,20 +16,8 @@ public class UserController {
     @Autowired
     RegistrationService registrationService;
 
-    // RequestBody transform an Httprequest into java object
-    //@ResponseBody --> retunr json automaticamente
-/*
-    @PostMapping("/sign-up")
-    public ResponseEntity registerUser(@RequestBody User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null || userRepository.findOneByUsername(user.getUsername()) != null) {
-            return new ResponseEntity(HttpStatus.CONFLICT);//The user exists 409
-        } else {
-            //userService.register(user);
-            return new ResponseEntity(HttpStatus.CREATED);
-        }
-            registrationService.register(user);
-        return new ResponseEntity(HttpStatus.CREATED);
-    }*/
+ /*  return new ResponseEntity(HttpStatus.CONFLICT);//The user exists 409
+                 return new ResponseEntity(HttpStatus.CREATED);*/
 
 
     @PostMapping("/sign-up")
@@ -43,20 +31,6 @@ public class UserController {
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);
     }
-
-
-    /*    @GetMapping("/sign-in")
-        public String loginUser(@RequestBody User user) {
-
-            return "";
-        }*/
-/*
-    @RequestMapping(value = "/sign-in", method = RequestMethod.GET)
-    public String login() {
-
-        return "/sign-in";
-    }
-*/
 
 
 }

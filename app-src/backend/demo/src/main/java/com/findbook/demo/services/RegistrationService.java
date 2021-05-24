@@ -6,7 +6,6 @@ import com.findbook.demo.exception.EmailNotValid;
 import com.findbook.demo.entities.ConfirmationToken;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +16,6 @@ import java.time.LocalDateTime;
 public class RegistrationService {
 
     private final EmailValidator emailValidator;
-    @Autowired
     private final UserService userService;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
@@ -38,7 +36,7 @@ public class RegistrationService {
                         user.getPassword(),
                         user.getEmail(),
                         user.getPhone(),
-                        user.getRol())
+                        user.getRole())
         );
         String link = "http://localhost:8080/user/sign-up/confirm?token=" + token;
         //We can validate the email before
@@ -62,7 +60,7 @@ public class RegistrationService {
         if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
         }
-
+        //Todos o ninguno
         confirmationTokenService.setConfirmedAt(token);
         userService.enableUser(confirmationToken.getUser().getEmail());
         return "confirmed";

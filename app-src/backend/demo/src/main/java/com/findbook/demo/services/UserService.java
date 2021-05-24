@@ -2,7 +2,7 @@ package com.findbook.demo.services;
 
 import com.findbook.demo.dao.UserRepository;
 import com.findbook.demo.entities.Cart;
-import com.findbook.demo.enums.Rol;
+import com.findbook.demo.enums.Role;
 import com.findbook.demo.entities.User;
 import com.findbook.demo.exception.EmailExistsException;
 import com.findbook.demo.entities.ConfirmationToken;
@@ -45,7 +45,7 @@ public class UserService implements UserDetailsService {
     public String signUpUser(User user) {
         boolean userExist = userRepository.findByEmail(user.getEmail()) != null; //Exists
         if (userExist) {
-            //TODO: if email not confirmed send confirmation email
+            //TODO: if email not confirmed send confirmation email again, delate token if is expire an that kind of things
             throw new EmailExistsException();
         }
 
@@ -54,7 +54,7 @@ public class UserService implements UserDetailsService {
         Cart userCart = new Cart();
         userCart.setUser(user);
         user.setCart(userCart);
-        user.setRol(Rol.USER);
+        user.setRole(Role.USER);
         user.setPassword(encodePassword);
         userRepository.save(user);
 

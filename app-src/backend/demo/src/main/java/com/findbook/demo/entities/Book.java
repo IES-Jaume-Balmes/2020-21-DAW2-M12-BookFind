@@ -1,9 +1,13 @@
 package com.findbook.demo.entities;
 
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+@EqualsAndHashCode
 @Entity
 public class Book {
 
@@ -112,6 +116,22 @@ public class Book {
 
     public void setCartItems(List<LineItems> cartItems) {
         this.cartItems = cartItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", isbn='" + isbn + '\'' +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", publishedDate=" + publishedDate +
+                ", author='" + author + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", cartItems=" + cartItems +
+                ", categories=" + categories +
+                '}';
     }
     // </editor-fold>
 }

@@ -1,6 +1,8 @@
+/*
 package com.findbook.demo.entities;
 
-import lombok.AllArgsConstructor;
+
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -8,14 +10,16 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long authorId;
     private String firstName;
     private String lastName;
-/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookId")
-    private List<Book> books;*/
+
+    @OneToMany(mappedBy = "bookId", fetch = FetchType.LAZY)
+    private List<Book> books;
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
@@ -41,5 +45,25 @@ public class Author {
         this.firstName = firstName;
     }
 
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
     // </editor-fold>
 }
+*/
