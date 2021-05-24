@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card elevation="0" class="mx-auto my-12">
     <v-card-title>Filters</v-card-title>
     <v-card-text>
       <v-select
@@ -20,6 +20,7 @@
           }
         "
       ></v-select>
+      
     </v-card-text>
   </v-card>
 </template>
@@ -48,7 +49,6 @@ export default {
       this.$axios(
         `https://www.etnassoft.com/api/v1/get/?get_categories=all`
       ).then((response) => {
-        // console.info("cat", response);
         this.categoria = response.data;
       });
     },

@@ -79,10 +79,16 @@ export default {
           icon: "mdi-chart-bubble",
           title: "Libro",
           to: "/Book",
-        },{
+        },
+        {
           icon: "mdi-chart-bubble",
           title: "Add",
           to: "/add-stock",
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Register",
+          to: "/register",
         },
       ],
       miniVariant: false,
