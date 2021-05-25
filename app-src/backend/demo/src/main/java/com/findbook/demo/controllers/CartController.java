@@ -17,7 +17,7 @@ import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/cart")
 public class CartController {
