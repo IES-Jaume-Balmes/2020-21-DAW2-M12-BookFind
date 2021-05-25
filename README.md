@@ -49,6 +49,10 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
+ <li><a href="#api">How to use</a> <ul>
+        <li><a href="#built-with">Api endpoints</a></li>
+      </ul>
+</li>
   </ol>
 </details>
 
@@ -58,11 +62,13 @@
 
 # About The Project
 
-
 bookfind is a web application that have its own database, with bookfind a costumer can buy books directly on the
 website.
+
 ### Documentation:
+
 https://ies-jaume-balmes.github.io/2020-21-DAW2-M12-BookFind/
+
 ### The main functionalities consist on:
 
 * the user can sign up, search for books using filters and even put a rating to the bought books  :smile:
@@ -122,10 +128,41 @@ Distributed under the MIT License. See `LICENSE` for more information.
 * Barbara Herrera - [@barbarahf](https://github.com/barbarahf) - bherrera19@jaumebalmes.net
 
 ## Mentor
+
 * Pere Guitart Colom
 
+<!-- api -->
 
-Project Link: [https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind)
+## ENDPOINTS
+
+### 1) Book controller
+
+Spring automatically handles the numbers, that is, negative or very large numbers will not give an error. The variables
+pageSize and pageNumber are set in spring properties.
+
+a) Returns by pagination
+
+    books/page?pageSize=0&pageNumber=12
+
+b) Returns the pages with "sort", in this case by id (choose the parameter) and in form (desc)
+
+    books/page?pageSize=0&pageNumber=12&sort=id,desc
+
+c) Books ascending price
+
+    /books/price-asc
+
+d) Books desc price
+    
+    /books/price-desc
+
+e) Returns 1 book by id
+    
+     books/{id num}
+    
+
+Project
+Link: [https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind)
 
 
 <!-- ACKNOWLEDGEMENTS -->

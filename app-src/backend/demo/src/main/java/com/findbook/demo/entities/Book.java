@@ -11,6 +11,7 @@ import java.util.List;
 public class Book {
 
     @Id
+    @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookId;
     @Column(unique = true)

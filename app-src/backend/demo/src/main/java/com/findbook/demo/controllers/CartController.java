@@ -1,14 +1,22 @@
 package com.findbook.demo.controllers;
 
 import com.findbook.demo.dao.UserRepository;
+import com.findbook.demo.entities.Book;
+import com.findbook.demo.entities.Cart;
 import com.findbook.demo.entities.LineItems;
 import com.findbook.demo.entities.User;
+import com.findbook.demo.form.ItemForm;
+import com.findbook.demo.services.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
-/*import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;*/
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cart")
@@ -16,18 +24,45 @@ public class CartController {
 
     @Autowired
     private UserRepository userService;
+    @Autowired
+    private BooksService booksService; //Get info about the product
 
     @GetMapping("/")
     public boolean getCartItems() {
         return true;
     }
 
+    @PostMapping("")
+    public ResponseEntity<Cart> mergeCart(@RequestBody Collection<LineItems> lineItems, Principal principal) {
+        User user = userService.findOne(principal.getName());
+        /*
+        try {
+            cartService.mergeLocalCart(lineItems, user);
+        } catch (Exception e) {
+            ResponseEntity.badRequest().body("Merge Cart Failed");
+        }*/
+        return ResponseEntity.ok(cartService.getCart(user));
+    }
+
+
+    /**
+     * @param itemIdAndQuantity cantidad de producto y productId
+     * @param principal         Spring Security Actual logued user
+     * @return http
+     */
     @PostMapping("/add")
-    public boolean addToCart(@RequestBody LineItems lineItem, Principal principal) {
+    public boolean addToCart(@RequestBody ItemForm itemIdAndQuantity, Principal principal) {
+        Book bookInfo = booksService.findOneById(itemIdAndQuantity.getProductId());
+        try {
+            //NO podemos modificar el collections singleltone, immutable
+            mergeCart(Collections.singleton(new LineItems(bookInfo, itemIdAndQuantity.getQuantity())), principal);
+        } catch (Exception e) {
+            return false;
+        }
         return true;
     }
 
-    @DeleteMapping("/delete/{cartItemId}")
+/*    @DeleteMapping("/delete/{cartItemId}")
     public boolean delateCartItems() {
         return true;
     }
@@ -35,7 +70,7 @@ public class CartController {
     @PostMapping("/update/{cartItemId}")
     public boolean updateCartItem() {
         return true;
-    }
+    }*/
 
 
 

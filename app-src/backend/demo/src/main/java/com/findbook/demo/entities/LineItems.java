@@ -1,16 +1,16 @@
 package com.findbook.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @EqualsAndHashCode
 @Entity
 public class LineItems {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long lineItemsId;
+    private Long lineItemsId;
 
     //TODO: Puede tener muchos libros, pero Stock (un libro ID, muchas cantidades)
     @ManyToOne
@@ -23,17 +23,25 @@ public class LineItems {
     private Cart cart;
 
     /*    @JsonIgnore*/
-
-    private int quantity;
+    //Un lineitem no puede ser empty
+    @Min(1)
+    private Integer quantity;
     private double totalPrice;
 
+    public LineItems(Book book, @Min(1) Integer quantity) {
+        this.book = book;
+        this.quantity = quantity;
+        this.totalPrice = book.getPrice() * quantity;
+    }
 
-    //TODO: ADD More info about the product, like productStock, categoryType, description etc
+    public LineItems() {
+    }
+//TODO: ADD More info about the product, like productStock, categoryType, description etc
     //  @Min(0)
     // private Integer productStock;
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
-    public long getLineItemsId() {
+    public Long getLineItemsId() {
         return lineItemsId;
     }
 
@@ -54,11 +62,11 @@ public class LineItems {
         this.cart = cart;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

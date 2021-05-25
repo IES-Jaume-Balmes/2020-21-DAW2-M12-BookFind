@@ -17,13 +17,13 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Optional<Book> findByIsbn(String isnb);
 
+    Book findOne(Long bookId);
     //findBooksByBookPublishersPublisherId(Long publisherId)
 
     /*    Optional<Book> findBooksByCategories(Long categories);*/
     //Optional<Book> findAllByCategories();
 
     List<Book> findByCategories(Category category);
-
 
 
 }

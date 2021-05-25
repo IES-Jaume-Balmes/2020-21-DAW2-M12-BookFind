@@ -12,7 +12,7 @@ public class Cart {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cartId;
-/*    private Date created;*/
+    /*    private Date created;*/
     private float ivaAmount;
     private float totalMoney;
 
@@ -21,7 +21,7 @@ public class Cart {
     private List<LineItems> lineItems;
 
     @OneToOne
-    @JoinColumn(name="userId")
+    @JoinColumn(name = "userId")
     private User user;
 
     public Cart(Date created, float ivaAmount, float totalMoney) {

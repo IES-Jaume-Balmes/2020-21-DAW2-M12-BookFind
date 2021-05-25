@@ -30,6 +30,11 @@ public class BooksService {
         return bookInfo;
     }
 
+    public Book findOneById(Long productId) {
+        Book bookInfo = bookRepository.findOne(productId);
+        return bookInfo;
+    }
+
     public Page<Book> getBooksPage(Pageable page) {
         return bookRepository.findAll(page);
     }
