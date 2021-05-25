@@ -1,6 +1,6 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
-    <pre>{{ valid }}</pre>
+    <!-- <pre>{{ valid }}</pre> -->
     <v-card elevation="0" class="mx-auto my-12" max-width="50%" v-if="authors">
       <v-card-title>Stock</v-card-title>
       <v-card-text>
@@ -110,16 +110,16 @@ export default {
   },
   mounted() {
     this.getAuthors();
-    this.$refs.form.validate();
+    // this.$refs.form.validate();
   },
   watch: {
     valid(val) {
-      console.log("form", val);
+      // console.log("form", val);
     },
   },
   data: () => ({
     valid: true,
-    btnValid:true,
+    // btnValid:true,
     img: [],
     isbn: "",
     title: "",
