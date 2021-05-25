@@ -53,6 +53,7 @@ module.exports = {
         'entrega0',
         'entrega1',
         'entrega2',
+        'entrega3',
         
       ],
     }
