@@ -32,17 +32,17 @@ public class CartController {
         return true;
     }
 
-    @PostMapping("")
+/*    @PostMapping("")
     public ResponseEntity<Cart> mergeCart(@RequestBody Collection<LineItems> lineItems, Principal principal) {
         User user = userService.findOne(principal.getName());
-        /*
+        *//*
         try {
             cartService.mergeLocalCart(lineItems, user);
         } catch (Exception e) {
             ResponseEntity.badRequest().body("Merge Cart Failed");
-        }*/
+        }*//*
         return ResponseEntity.ok(cartService.getCart(user));
-    }
+    }*/
 
 
     /**
@@ -55,7 +55,7 @@ public class CartController {
         Book bookInfo = booksService.findOneById(itemIdAndQuantity.getProductId());
         try {
             //NO podemos modificar el collections singleltone, immutable
-            mergeCart(Collections.singleton(new LineItems(bookInfo, itemIdAndQuantity.getQuantity())), principal);
+            //mergeCart(Collections.singleton(new LineItems(bookInfo, itemIdAndQuantity.getQuantity())), principal);
         } catch (Exception e) {
             return false;
         }
