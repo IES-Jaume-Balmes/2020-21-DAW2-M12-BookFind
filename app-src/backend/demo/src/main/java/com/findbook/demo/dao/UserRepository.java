@@ -18,9 +18,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public List<User> findAll();
 
 
-    User findOneByUsername(String username);
+    /*    User findOneByUsername(String username);*/
 
     User findByEmail(String email);
+
+    User findByUsername(String user);
 
     //Enable user
     @Transactional

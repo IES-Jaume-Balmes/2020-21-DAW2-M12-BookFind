@@ -4,6 +4,7 @@ import com.findbook.demo.entities.Book;
 
 import com.findbook.demo.entities.Category;
 import com.findbook.demo.entities.ConfirmationToken;
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,7 +18,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Optional<Book> findByIsbn(String isnb);
 
-    Book findOne(Long bookId);
+/*    @Override
+    <S extends Book> Optional<S> findOne(Example<S> example);*/
+    /*   Book findOne(Long bookId);*/
     //findBooksByBookPublishersPublisherId(Long publisherId)
 
     /*    Optional<Book> findBooksByCategories(Long categories);*/
@@ -25,5 +28,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findByCategories(Category category);
 
+ /*   Book findById(Long id);*/
 
 }

@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -42,6 +43,7 @@ public class UserService implements UserDetailsService {
 
 
     //Send Link to confirm user
+    @Transactional
     @SneakyThrows
     public String signUpUser(User user) {
         boolean userExist = userRepository.findByEmail(user.getEmail()) != null; //Exists
@@ -67,6 +69,7 @@ public class UserService implements UserDetailsService {
         return saveToken(user);
     }
 
+    /*    @Transactional*/
     public String saveToken(User user) {
 
         String token = UUID.randomUUID().toString();
@@ -86,7 +89,9 @@ public class UserService implements UserDetailsService {
         return userRepository.enableUser(email);
     }
 
-
+    public User findOne(String email) {
+        return userRepository.findByUsername(email);
+    }
     //Login user
 
 

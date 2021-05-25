@@ -25,15 +25,18 @@ public class BooksService {
     @Autowired
     BookRepository bookRepository;
 
-    public Optional<Book> findOne(Long productId) {
-        Optional<Book> bookInfo = bookRepository.findById(productId);
-        return bookInfo;
+    @SneakyThrows
+    public Book findOne(Long productId) {
+        // .orElseThrow(() -> new EntityNotFoundException(id)
+        // Optional<Book> bookInfo = bookRepository.findById(productId);
+
+        return bookRepository.findById(productId).orElseThrow(() -> new BookExistsException("The book does not exists"));
     }
 
-    public Book findOneById(Long productId) {
-        Book bookInfo = bookRepository.findOne(productId);
-        return bookInfo;
-    }
+
+ /*   public Optional<Book> findOneById(Long productId) {
+        return bookRepository.findById(productId);
+    }*/
 
     public Page<Book> getBooksPage(Pageable page) {
         return bookRepository.findAll(page);

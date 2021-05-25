@@ -1,11 +1,17 @@
 package com.findbook.demo.entities;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Getter
+@Setter
 @EqualsAndHashCode
+@NoArgsConstructor
 @Entity
 public class Category {
     @Id
@@ -22,9 +28,7 @@ public class Category {
         this.category = category;
     }
 
-    public Category() {
 
-    }
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
     public Long getCategoryId() {

@@ -12,8 +12,6 @@ import org.springframework.data.web.PageableDefault;
 
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/books")
@@ -22,9 +20,9 @@ public class BookController {
     private BooksService booksService;
 
     @GetMapping("/{bookId}")
-    public Optional<Book> showOne(@PathVariable("bookId") Long bookId) {
+    public Book showOne(@PathVariable("bookId") Long bookId) {
 
-        Optional<Book> bookInfo = booksService.findOne(bookId);
+        Book bookInfo = booksService.findOne(bookId);
         //TODO:
         //        // Product is not available
         //        if (productInfo.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {

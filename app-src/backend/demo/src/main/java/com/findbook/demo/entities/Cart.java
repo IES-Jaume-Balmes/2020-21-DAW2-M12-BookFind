@@ -1,11 +1,18 @@
 package com.findbook.demo.entities;
 
 import com.sun.istack.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
+import java.util.Set;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 public class Cart {
     @Id
@@ -18,7 +25,7 @@ public class Cart {
 
     /*The items inside the cart, lineItems*/
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<LineItems> lineItems;
+    private Set<LineItems> lineItems;
 
     @OneToOne
     @JoinColumn(name = "userId")
@@ -74,12 +81,24 @@ public class Cart {
         this.cartId = cartId;
     }
 
-    public List<LineItems> getLineItems() {
+    public Set<LineItems> getLineItems() {
         return lineItems;
     }
 
-    public void setLineItems(List<LineItems> lineItems) {
+    public void setLineItems(Set<LineItems> lineItems) {
         this.lineItems = lineItems;
     }
-// </editor-fold>
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "cartId=" + cartId +
+                ", ivaAmount=" + ivaAmount +
+                ", totalMoney=" + totalMoney +
+                ", lineItems=" + lineItems +
+                ", user=" + user +
+                '}';
+    }
+
+    // </editor-fold>
 }

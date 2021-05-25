@@ -1,11 +1,15 @@
 package com.findbook.demo.entities;
 
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 
+@Getter
+@Setter
 @EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 @Entity
 public class LineItems {
     @Id
@@ -34,8 +38,7 @@ public class LineItems {
         this.totalPrice = book.getPrice() * quantity;
     }
 
-    public LineItems() {
-    }
+
 //TODO: ADD More info about the product, like productStock, categoryType, description etc
     //  @Min(0)
     // private Integer productStock;

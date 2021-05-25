@@ -1,18 +1,24 @@
 package com.findbook.demo.entities;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
+@Getter
+@Setter
 @EqualsAndHashCode
+@NoArgsConstructor
 @Entity
 public class Book {
 
     @Id
-    @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true)
     private Long bookId;
     @Column(unique = true)
     private String isbn;
@@ -30,8 +36,7 @@ public class Book {
     @ManyToMany
     List<Category> categories;
 
-    public Book() {
-    }
+
 
     public Book(String isbn, String image, String name, Date year, String author, String desc, float price) {
         super();
