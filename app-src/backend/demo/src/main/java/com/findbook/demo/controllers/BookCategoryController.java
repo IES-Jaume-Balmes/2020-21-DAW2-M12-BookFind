@@ -37,8 +37,8 @@ public class BookCategoryController {
      */
     //TODO: ADD PAGINATION BY CATEGORY
     @GetMapping("/category/{type}")
-    public String showOne(@PathVariable("type") String categoryType) {
-
+    public String showOne(@PathVariable("type") String categoryType, Pageable pageable) {
+        
         Category category = categoryService.findByCategory(categoryType);
         List<Book> booksByCategory = booksService.findByCategories(category);
 

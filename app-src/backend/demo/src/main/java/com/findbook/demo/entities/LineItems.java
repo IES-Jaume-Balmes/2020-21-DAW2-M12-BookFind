@@ -1,16 +1,18 @@
 package com.findbook.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
+@EqualsAndHashCode
 @Entity
 public class LineItems {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long lineItemsId;
 
-
+    //TODO: Puede tener muchos libros, pero Stock (un libro ID, muchas cantidades)
     @ManyToOne
     @JoinColumn(name = "bookId")
     private Book book;
@@ -25,10 +27,10 @@ public class LineItems {
     private int quantity;
     private double totalPrice;
 
-    public LineItems() {
 
-
-    }
+    //TODO: ADD More info about the product, like productStock, categoryType, description etc
+    //  @Min(0)
+    // private Integer productStock;
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
     public long getLineItemsId() {
