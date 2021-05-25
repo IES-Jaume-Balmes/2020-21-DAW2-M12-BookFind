@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -37,43 +37,18 @@ public class BookController {
     //Paginacion, Spring hace la validacion de los datos, no negativos o numeros muy grandes
     @GetMapping("/page")
     public Page<Book> findABookByPage(Pageable page) {
-        return booksService.getBooks(page);
+        return booksService.getBooksPage(page);
     }
-    //TODO: controlador libros precio ascendente y descendente
 
     @GetMapping("/price-desc")
     public Page<Book> getBookByPriceDesc(@PageableDefault(sort = "price", direction = Sort.Direction.DESC) Pageable page) {
-        return booksService.getBooks(page);
+        return booksService.getBooksPage(page);
     }
 
     @GetMapping("/price-asc")
     public Page<Book> getBookByPriceAsc(@PageableDefault(sort = "price", direction = Sort.Direction.ASC) Pageable page) {
-        return booksService.getBooks(page);
+        return booksService.getBooksPage(page);
     }
 
-    //TODO: Crear libro
-    //TODO: Añadir seguridad, solo admin puede crear libros
-    @PostMapping("/books/new")
-    public ResponseEntity create(@RequestBody Book product) {
-
-        return booksService.createBook(product);
-    }
-
-    //TODO: Modificar libro UPDATE
-    @PutMapping("/book/update")
-    public Book updateProduct(@RequestBody Book product) {
-        return booksService.updateBook(product);
-    }
-
-    //TODO: DELATE BOOK
-    @DeleteMapping("/admin/delete/{id}")
-    public ResponseEntity deleteProduct(@PathVariable Long id) {
-        return booksService.deleteBook(id);
-    }
-
-    //TODO: controlador filtrar por categoria (género del libro)
-
-
-    //TODO: Filtrar por autor
 
 }

@@ -40,12 +40,18 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email));
     }
 
+
     //Send Link to confirm user
     @SneakyThrows
     public String signUpUser(User user) {
         boolean userExist = userRepository.findByEmail(user.getEmail()) != null; //Exists
+
         if (userExist) {
-            //TODO: if email not confirmed send confirmation email again, delate token if is expire an that kind of things
+            User checkIsEnable = userRepository.findByEmail(user.getEmail());
+            if (!checkIsEnable.isEnabled()) {
+                saveToken(user);
+            }
+            //TODO: USER EXIST AND IS ACTIVE EXCEPTION
             throw new EmailExistsException();
         }
 
@@ -58,18 +64,21 @@ public class UserService implements UserDetailsService {
         user.setPassword(encodePassword);
         userRepository.save(user);
 
-        /*Save token*/
+        return saveToken(user);
+    }
+
+    public String saveToken(User user) {
+
         String token = UUID.randomUUID().toString();
         ConfirmationToken confirmationToken = new ConfirmationToken(
                 token,
                 LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(15),
+                LocalDateTime.now().plusMinutes(1),
                 user
         );
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
-        //TODO: SEND EMAIL
         return token;
     }
 

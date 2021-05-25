@@ -2,6 +2,7 @@ package com.findbook.demo.services;
 
 import com.findbook.demo.dao.BookRepository;
 import com.findbook.demo.entities.Book;
+import com.findbook.demo.entities.Category;
 import com.findbook.demo.exception.BookExistsException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -12,7 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,15 +30,14 @@ public class BooksService {
         return bookInfo;
     }
 
-    public Page<Book> getBooks(Pageable page) {
+    public Page<Book> getBooksPage(Pageable page) {
         return bookRepository.findAll(page);
     }
 
 
     @SneakyThrows
     public ResponseEntity createBook(Book book) {
-        //TODO: Find by isbn
-        boolean bookExists = bookRepository.findById(book.getBookId()).isPresent();
+        boolean bookExists = bookRepository.findByIsbn(book.getIsbn()).isPresent();
         if (bookExists) {
             throw new BookExistsException();
         }
@@ -44,6 +46,7 @@ public class BooksService {
     }
 
     @SneakyThrows
+    @Transactional
     public Book updateBook(Book book) {
         Book existingBook = bookRepository.findById(book.getBookId()).orElse(null);
         if (existingBook == null) throw new BookExistsException("The book you'ere trying to edit does not exists");
@@ -60,5 +63,9 @@ public class BooksService {
     public ResponseEntity deleteBook(Long id) {
         bookRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    public List<Book> findByCategories(Category category) {
+        return bookRepository.findByCategories(category);
     }
 }

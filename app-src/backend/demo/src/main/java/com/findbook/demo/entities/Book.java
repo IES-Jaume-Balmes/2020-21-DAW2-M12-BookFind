@@ -3,7 +3,6 @@ package com.findbook.demo.entities;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -13,7 +12,8 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long bookId;
+    private Long bookId;
+    @Column(unique = true)
     private String isbn;
     private String image;
     private String title;
@@ -22,12 +22,10 @@ public class Book {
     private String description;
     private float price;
 
-    /**
-     * The relationship between book and items
-     */
+
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<LineItems> cartItems;
-    //The category
+
     @ManyToMany
     List<Category> categories;
 
@@ -46,11 +44,11 @@ public class Book {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
-    public long getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(long bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 

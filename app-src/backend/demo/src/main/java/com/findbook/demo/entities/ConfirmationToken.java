@@ -35,6 +35,11 @@ public class ConfirmationToken {
         this.user = user;
     }
 
+    private Boolean checkIfIsExpired() {
+        LocalDateTime now = LocalDateTime.now();
+        return now.isBefore(this.expiresAt);
+    }
+
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
 
     public Long getId() {

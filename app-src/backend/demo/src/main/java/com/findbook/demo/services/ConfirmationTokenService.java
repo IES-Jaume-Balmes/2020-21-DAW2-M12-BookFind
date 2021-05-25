@@ -28,4 +28,10 @@ public class ConfirmationTokenService {
                 token, LocalDateTime.now());
     }
 
+/*    public Boolean isTokenExpired(Long id) {
+        if (confirmationTokenRepository.isTokenExpired(id) > 0)
+            return true;
+        return false;
+    }*/
+
 }

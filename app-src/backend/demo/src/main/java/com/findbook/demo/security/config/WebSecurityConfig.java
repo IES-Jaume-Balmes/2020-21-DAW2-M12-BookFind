@@ -29,14 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {//Acces to http security
-        //super.configure(http);
-        //csrf Cross-Site Request Forgery CSRF --> Falsificación de solicitud entre sitios
-        /*If you are only creating a service that is used by non-browser clients, you will likely want to disable CSRF protection
-        What is the reason to disable csrf in a Spring Boot application?
-        1- You are using another token mechanism.
-        2- You want to simplify interactions between a client and the server */
+
 //        TODO: CSRF AUTH, MUST BE ENABLE
-        http
+/*        http
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .and()
@@ -46,26 +41,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated().and()
                 .formLogin();
-        ;
+        ;*/
 
-/*        http
+        http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/books/**", "/h2-console/**", "/login/**", "/user/**") //Permit any conection in this endpoint
+                .antMatchers("/**", "/h2-console/**") //Permit any conection in this endpoint
                 .permitAll()
                 .anyRequest()
                 .authenticated().and()
-                .formLogin();*/
-
-        /*        http
-                .authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
                 .formLogin();
-        */
 
-        //To see the h2 console
         http.headers().frameOptions().disable();
 
 
