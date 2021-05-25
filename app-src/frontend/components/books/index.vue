@@ -4,29 +4,19 @@
     <ActionBar
       :collectionParams="collectionParams"
       @change-params="(val) => (collectionParams = val)"
-      @change-view="(val) => (vistaFilters = val)"
+      @change-view="(val) => (showFilters = val)"
     />
-      <!-- :carrito="carrito" -->
-    
-     <v-row v-if="vistaFilters">
-      <v-col cols="12" sm="6" md="8">
+    <v-row>
+      <v-col cols="12" :md="md">
         <ListBooks
           :collectionParams="collectionParams"
           @carrito="(val) => (carrito = val)"
         />
       </v-col>
-      <v-col cols="6" md="4">
+      <v-col v-if="showFilters" cols="6" md="4">
         <Filters />
       </v-col>
     </v-row>
-    <v-row v-else>
-      <v-col>
-        <ListBooks
-          :collectionParams="collectionParams"
-          @carrito="(val) => (carrito = val)"
-        />
-      </v-col>
-    </v-row> 
   </v-container>
 </template>
 
@@ -38,17 +28,24 @@ import Header from "./header";
 
 export default {
   components: { ListBooks, ActionBar, Filters, Header },
+  // watch: {
+  //   carrito: {
+  //     handler() {
+  //       // console.log(this.carrito);
+  //     },
+  //     deep: true,
+  //   },
+  // },
+
   watch: {
-    carrito: {
-      handler() {
-        // console.log(this.carrito);
-      },
-      deep: true,
+    showFilters(val) {
+      this.md = val ? 8 : 12;
     },
   },
   data() {
     return {
-      vistaFilters: false,
+      md:12,
+      showFilters: false,
       collectionParams: {
         page: 1,
         items: 40,

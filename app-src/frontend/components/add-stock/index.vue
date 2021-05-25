@@ -1,141 +1,152 @@
 <template>
-  <form>
-    <v-card elevation="0" class="mx-auto my-12" max-width="50%">
+  <v-form ref="form" v-model="valid" lazy-validation>
+    <pre>{{ valid }}</pre>
+    <v-card elevation="0" class="mx-auto my-12" max-width="50%" v-if="authors">
       <v-card-title>Stock</v-card-title>
       <v-card-text>
-        <!-- :counter="10" -->
         <v-text-field
-          v-model="name"
+          v-model="isbn"
           outlined
-          :error-messages="nameErrors"
-          :counter="13"
+          :rules="[
+            (v) => !!v || 'ISBN is required',
+            (v) => v.length <= 10 || 'ISBN must be less than 10 characters',
+            (v) => v.length >= 10 || 'ISBN menos than 10 characters',
+          ]"
+          :counter="10"
           label="ISBN"
           required
-          @input="$v.name.$touch()"
-          @blur="$v.name.$touch()"
-        ></v-text-field>
-        <!-- <v-text-field
-          v-model="name"
+          dense
+        />
+        <v-text-field
+          v-model="title"
           outlined
-          :error-messages="nameErrors"
+          :rules="[(v) => !!v || 'Title name is required']"
           label="Title"
           required
-          @input="$v.name.$touch()"
-          @blur="$v.name.$touch()"
-        ></v-text-field
-        ><v-text-field
-          v-model="name"
+          dense
+        />
+        <date-picker
+          v-model="mdate"
+          label="Publication Date"
+          @change="(val) => (mdate = val)"
+        />
+
+        <v-autocomplete
+          v-model="author"
+          :rules="[(v) => !!v || 'Author is required']"
+          item-text="name"
+          item-value="id"
+          :items="authors"
           outlined
-          :error-messages="nameErrors"
+          dense
+          deletable-chips
+          chips
+          small-chips
           label="Author"
           required
-          @input="$v.name.$touch()"
-          @blur="$v.name.$touch()"
-        ></v-text-field> -->
-        <!-- <v-text-field
-          v-model="email"
-          :error-messages="emailErrors"
-          label="E-mail"
-          required
-          @input="$v.email.$touch()"
-          @blur="$v.email.$touch()"
-        ></v-text-field>
-        <v-select
-          v-model="select"
-          :items="items"
-          :error-messages="selectErrors"
-          label="Item"
-          required
-          @change="$v.select.$touch()"
-          @blur="$v.select.$touch()"
-        ></v-select>
-        <v-checkbox
-          v-model="checkbox"
-          :error-messages="checkboxErrors"
-          label="Do you agree?"
-          required
-          @change="$v.checkbox.$touch()"
-          @blur="$v.checkbox.$touch()"
-        ></v-checkbox> -->
+        />
 
-        <v-btn class="mr-4" @click="submit"> submit </v-btn>
-        <v-btn @click="clear"> clear </v-btn>
+        <v-textarea
+          v-model="description"
+          dense
+          fill
+          outlined
+          label="Description"
+          :rules="[
+            (v) => !!v || 'Description is required',
+            (v) => v.trim().split(' ').length >= 10 || 'Min 10 words',
+          ]"
+          :counter="10"
+          :counter-value="(v) => v.trim().split(' ').length"
+        />
+
+        <v-text-field
+          v-model="price"
+          :rules="[
+            (v) => !!v || 'Price is required',
+            (v) => v > 0 || 'Is not number',
+          ]"
+          outlined
+          dense
+          deletable-chips
+          chips
+          small-chips
+          label="P.V.P"
+          required
+        />
+        <v-file-input
+          v-model="img"
+          label="Img"
+          :rules="[(v) => !!v || 'Image is required']"
+          outlined
+          dense
+          chips
+          small-chips
+          deletable-chips
+        />
+
+        <div class="d-flex flex-row-reverse">
+          <v-btn
+            :disabled="!valid"
+            color="primary"
+            class="mr-4"
+            @click="addStock"
+          >
+            Add
+          </v-btn>
+          <v-btn class="mr-4" @click="resetValidation">Clear</v-btn>
+        </div>
       </v-card-text>
     </v-card>
-  </form>
+  </v-form>
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
-import {
-  required,
-  minLength,
-  maxLength,
-  email,
-} from "vuelidate/lib/validators";
+import DatePicker from "@/components/universal/date-picker";
 
 export default {
-  mixins: [validationMixin],
-
-  validations: {
-    name: { required, minLength: minLength(13), maxLength: maxLength(13) },
-    email: { required, email },
-    select: { required },
-    checkbox: {
-      checked(val) {
-        return val;
-      },
+  components: {
+    DatePicker,
+  },
+  mounted() {
+    this.getAuthors();
+    this.$refs.form.validate();
+  },
+  watch: {
+    valid(val) {
+      console.log("form", val);
     },
   },
-
   data: () => ({
-    name: "",
-    email: "",
-    select: null,
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    checkbox: false,
+    valid: true,
+    btnValid:true,
+    img: [],
+    isbn: "",
+    title: "",
+    mdate: "",
+    author: "",
+    description: "",
+    price: "",
+
+    authors: null,
   }),
 
-  computed: {
-    // checkboxErrors() {
-    //   const errors = [];
-    //   if (!this.$v.checkbox.$dirty) return errors;
-    //   !this.$v.checkbox.checked && errors.push("You must agree to continue!");
-    //   return errors;
-    // },
-    // selectErrors() {
-    //   const errors = [];
-    //   if (!this.$v.select.$dirty) return errors;
-    //   !this.$v.select.required && errors.push("Item is required");
-    //   return errors;
-    // },
-    nameErrors() {
-      const errors = [];
-      if (!this.$v.name.$dirty) return errors;
-      !this.$v.name.minLength && errors.push("Menos de 13");
-      !this.$v.name.maxLength && errors.push("Mas de 13");
-      !this.$v.name.required && errors.push("Name is required.");
-      return errors;
-    },
-    // emailErrors() {
-    //   const errors = [];
-    //   if (!this.$v.email.$dirty) return errors;
-    //   !this.$v.email.email && errors.push("Must be valid e-mail");
-    //   !this.$v.email.required && errors.push("E-mail is required");
-    //   return errors;
-    // },
-  },
-
   methods: {
-    submit() {
-      this.$v.$touch();
+    getAuthors() {
+      //Aquí va la llamada a la api donde recuperamos los autores para montar el combox
+      this.authors = [
+        { id: 1, name: "Carlos Ruiz " },
+        { id: 2, name: "JK Rowling" },
+        { id: 3, name: "Lorca" },
+        { id: 4, name: "Pio Baroja" },
+      ];
     },
-    clear() {
-      this.$v.$reset();
-      this.name = "";
-      this.email = "";
-      this.select = null;
-      this.checkbox = false;
+    addStock() {
+      // Aquí hay que hacer el push a la API y en el then volver al inicio YA ESTA TODO OK
+      console.log("OK");
+    },
+    resetValidation() {
+      this.$refs.form.resetValidation();
     },
   },
 };
