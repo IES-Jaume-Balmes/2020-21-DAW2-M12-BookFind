@@ -9,10 +9,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@NoArgsConstructor
+
 @Entity
 public class Book {
 
@@ -36,7 +33,9 @@ public class Book {
     @ManyToMany
     List<Category> categories;
 
+    public Book() {
 
+    }
 
     public Book(String isbn, String image, String name, Date year, String author, String desc, float price) {
         super();

@@ -9,6 +9,7 @@ import com.findbook.demo.form.ItemForm;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.CartService;
 import com.findbook.demo.services.UserService;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,7 @@ public class CartController {
      * @param principal         Spring Security Actual logued user
      * @return
      */
+    @SneakyThrows
     @PostMapping("/add")
     public String addToCart(@RequestBody ItemForm itemIdAndQuantity, Principal principal) {
 

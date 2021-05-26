@@ -5,11 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
+
 @Entity
 public class LineItems {
     @Id
@@ -36,6 +32,9 @@ public class LineItems {
         this.book = book;
         this.quantity = quantity;
         this.totalPrice = book.getPrice() * quantity;
+    }
+
+    public LineItems() {
     }
 
 

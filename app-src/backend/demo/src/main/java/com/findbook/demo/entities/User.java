@@ -14,10 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 //Lombok
-@Getter
-@Setter
-@EqualsAndHashCode
-@NoArgsConstructor
+
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -42,6 +39,8 @@ public class User implements UserDetails {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
+    public User() {
+    }
 
     public User(String name, String lastName, String username, String password, String email, String phone, Role role) {
 
