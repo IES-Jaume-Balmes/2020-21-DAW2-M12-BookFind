@@ -42,6 +42,8 @@ public class CartService {
             if (old.isPresent()) {
                 prod = old.get();
                 prod.setQuantity(lineItems1.getQuantity() + prod.getQuantity());
+                //Set price
+                prod.setTotalPrice(prod.getBook().getPrice() * prod.getQuantity());
             } else {
                 prod = lineItems1;
                 prod.setCart(finalCart);

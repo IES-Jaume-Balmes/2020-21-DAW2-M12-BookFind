@@ -31,7 +31,8 @@ public class LineItems {
     public LineItems(Book book, @Min(1) Integer quantity) {
         this.book = book;
         this.quantity = quantity;
-        this.totalPrice = book.getPrice() * quantity;
+        //Initial state
+        this.totalPrice = book.getPrice() * this.getQuantity();
     }
 
     public LineItems() {
