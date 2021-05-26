@@ -6,12 +6,15 @@
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
-      <v-list-item-title @click="()=>$router.push({ path: 'book/'  })">{{ book.title }} </v-list-item-title>
+      <v-list-item-title
+        @click="() => $router.push({ path: 'book/' + book.ID })"
+        >{{ book.title }}
+      </v-list-item-title>
       <v-list-item-subtitle style="display: flex"
         >{{ book.author }}
 
         <div v-for="categoria in book.categories" :key="categoria.category_id">
-          <v-chip x-small outlined >{{ categoria.name }}</v-chip>
+          <v-chip x-small outlined>{{ categoria.name }}</v-chip>
         </div>
       </v-list-item-subtitle>
     </v-list-item-content>
@@ -42,9 +45,9 @@ export default {
   },
 
   methods: {
-    handleClickGoBook() {
-      this.$router.push({ path: "book/" });
-    },
+    // handleClickGoBook() {
+    //   this.$router.push({ path: "book/" });
+    // },
     addBook() {
       this.disabled.add = true;
       this.disabled.del = false;
