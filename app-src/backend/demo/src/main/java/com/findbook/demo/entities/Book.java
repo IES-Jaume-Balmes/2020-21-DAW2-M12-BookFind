@@ -28,7 +28,8 @@ public class Book {
     private BigDecimal price;
 
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    /*  @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
+    @OneToMany(mappedBy = "book", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<LineItems> cartItems;
 
     @ManyToMany

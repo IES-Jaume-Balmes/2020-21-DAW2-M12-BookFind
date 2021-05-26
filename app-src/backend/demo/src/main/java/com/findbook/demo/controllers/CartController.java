@@ -92,4 +92,17 @@ public class CartController {
         return lineItemService.findOne(itemId, user);
     }
 
+    @DeleteMapping("/{itemId}")
+    public void deleteItem(@PathVariable("itemId") Long itemId, Principal principal) {
+        User user = userService.findOne(principal.getName());
+        cartService.delete(itemId, user);
+        // flush memory into DB
+    }
+
+/*    @PostMapping("/checkout")
+    public ResponseEntity checkout(Principal principal) {
+        User user = userService.findOne(principal.getName());// Email as username
+        cartService.checkout(user);
+        return ResponseEntity.ok(null);
+    }*/
 }

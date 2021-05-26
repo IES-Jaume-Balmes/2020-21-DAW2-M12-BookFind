@@ -22,7 +22,8 @@ public class Cart {
     private float totalMoney;
 
     /*The items inside the cart, lineItems*/
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    /*  @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
+    @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<LineItems> lineItems;
 
     @OneToOne

@@ -21,8 +21,8 @@ import java.util.Set;
 public class CartService {
     @Autowired
     private final ShoppingCartRepository shoppingCartRepository;
-    @Autowired
-    private BooksService booksService;
+    /*    @Autowired
+        private BooksService booksService;*/
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -56,4 +56,14 @@ public class CartService {
         shoppingCartRepository.save(finalCart);
 
     }
+
+    @Transactional
+    public void delete(Long itemId, User user) {
+        var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId())).findFirst();
+        op.ifPresent(lineItemInOrder -> {
+            lineItemInOrder.setCart(null);
+            lineItemsRepository.deleteById(itemId);
+        });
+    }
+
 }
