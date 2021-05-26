@@ -1,12 +1,10 @@
 package com.findbook.demo.services;
 
-import com.findbook.demo.dao.LineItemsRepository;
-import com.findbook.demo.dao.OrderRepository;
-import com.findbook.demo.dao.ShoppingCartRepository;
-import com.findbook.demo.dao.UserRepository;
+import com.findbook.demo.dao.*;
 import com.findbook.demo.entities.Cart;
 import com.findbook.demo.entities.LineItems;
 
+import com.findbook.demo.entities.OrderProducts;
 import com.findbook.demo.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +21,14 @@ import java.util.Set;
 public class CartService {
     @Autowired
     private final ShoppingCartRepository shoppingCartRepository;
-    /*    @Autowired
-        private BooksService booksService;*/
     @Autowired
     UserRepository userRepository;
     @Autowired
     LineItemsRepository lineItemsRepository;
     @Autowired
     OrderRepository orderRepository;
+    @Autowired
+    BooksService booksService;
 
     public Cart getCart(User user) {
         return user.getCart();
@@ -80,25 +78,31 @@ public class CartService {
 
     ///Checkout
 
-/*    @Transactional
+    @Transactional
     public void checkout(User user) {
-        Order order = new Order(user);
+        OrderProducts order = new OrderProducts(user);
+        //TODO: BORRAR
+        order.setTotal(user.getCart().getTotalMoney());
         orderRepository.save(order);
-        *//**
-     * Delate the reference of the cart into the product, reduce the stock
-     * Loop throw all the available products in the cart and delete them
-     *//*
-
+        // Delate the reference of the cart into the product, reduce the stock
+        // Loop throw all the available products in the cart and delete them
+        //TODO: the problem is probably here
         user.getCart().getLineItems().forEach(lineItems -> {
             lineItems.setCart(null);
+            //Flush the cart money
+            user.getCart().setTotalMoney(new BigDecimal(0));
+            //user.getCart().setTotalMoney(new BigDecimal(0)); //Vaciar el carrito
             //Each item is related to an order, they will no longer be in a cart
             lineItems.setOrder(order);
-          *//*    productService.decreaseStock(lineItems.getProductId(), lineItems.getCount());
-            productInOrderRepository.save(lineItems);*//*
+            booksService.delateFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
+            booksService.delateFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
+            //Update each line-item y save it into the databases
+            lineItemsRepository.save(lineItems); //???
+
         });
 
 
-    }*/
+    }
 
 
 }

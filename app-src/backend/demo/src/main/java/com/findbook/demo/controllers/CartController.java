@@ -99,10 +99,14 @@ public class CartController {
         // flush memory into DB
     }
 
-/*    @PostMapping("/checkout")
-    public ResponseEntity checkout(Principal principal) {
+    //TODO: Al hacer checkout no puede esatar EMPTY el carrito
+    //We need more info like direction or somethin
+    @PostMapping("/checkout")
+    public String checkout(Principal principal) {
+        //Instance of Principal object use "the string of the username
         User user = userService.findOne(principal.getName());// Email as username
+        System.out.println(user.getFirstName());
         cartService.checkout(user);
-        return ResponseEntity.ok(null);
-    }*/
+        return "ok";
+    }
 }

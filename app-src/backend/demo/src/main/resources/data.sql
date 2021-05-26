@@ -12,32 +12,15 @@ VALUES (4, 'Romance');
 
 -----------Books
 
-INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE)
+INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK)
 VALUES (1, 'ddsfa', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
-        '9783161444484100', 'Enders Game ', 10, '1985-10-12');
+        '9783161444484100', 'Enders Game ', 10, '1985-10-12', 100);
 
-INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE)
+INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK)
 VALUES (2, 'ssdsd',
         'La historia es narrada por Jane Eyre quien a los diez años de edad es custodiada por su tía política, la señora Reed. El señor Reed, hermano de la madre de Jane, la toma a su cargo cuando queda huérfana, pero muriendo él mismo poco después',
         'Jane_Eyre.jpg',
-        '9783491484444100', 'Jane Eyre', 15.99, '1847-01-01');
-
-
-INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE)
-VALUES (3, 'mdsnbshajbhj', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
-        '9783161644484100', 'Enders Game ', 8.99, '1985-10-12');
-
-INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE)
-VALUES (4, 'dkfjhdbssss', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
-        '978316148414700', 'Enders Game ', 12.99, '1985-10-12');
-
-INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE)
-VALUES (5, 'jkfdbn', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
-        '9783161484867100', 'Enders Game ', 15.99, '1985-10-12');
-
-INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE)
-VALUES (6, 'ieuri', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
-        '9783161476884100', 'Enders Game ', 99.99, '1985-10-12');
+        '9783491484444100', 'Jane Eyre', 15.99, '1847-01-01', 100);
 
 
 --------------Category

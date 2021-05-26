@@ -120,6 +120,20 @@ public class OrderProducts {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "OrderProducts{" +
+                "oderId=" + oderId +
+                ", ordered=" + ordered +
+                ", shipped=" + shipped +
+                ", shipTo='" + shipTo + '\'' +
+                ", total=" + total +
+                ", status='" + status + '\'' +
+                ", booksLineItems=" + booksLineItems +
+                ", cart=" + cart +
+                ", user=" + user +
+                '}';
+    }
 
     // </editor-fold>
 }

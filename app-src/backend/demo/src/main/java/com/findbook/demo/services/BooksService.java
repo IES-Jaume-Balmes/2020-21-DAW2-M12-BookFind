@@ -4,6 +4,7 @@ import com.findbook.demo.dao.BookRepository;
 import com.findbook.demo.entities.Book;
 import com.findbook.demo.entities.Category;
 import com.findbook.demo.exception.BookExistsException;
+import com.findbook.demo.exception.NotEnoughProductsInStockException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +74,21 @@ public class BooksService {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @SneakyThrows
+    @Transactional //All or any
+    public void delateFromStock(Long bookId, Integer quantityOfBooks) {
+        Book bookToUpdate = findOne(bookId);
+        int updateStock = bookToUpdate.getProductStock() - quantityOfBooks;
+        //TODO: Error, not enoug products in stock
+        if (updateStock <= 0) throw new NotEnoughProductsInStockException();
+        bookToUpdate.setProductStock(updateStock);
+        bookRepository.save(bookToUpdate);
+
+    }
+
     public List<Book> findByCategories(Category category) {
         return bookRepository.findByCategories(category);
     }
+
+
 }

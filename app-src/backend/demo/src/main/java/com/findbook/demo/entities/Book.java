@@ -134,6 +134,30 @@ public class Book {
         this.cartItems = cartItems;
     }
 
+    public Integer getProductStock() {
+        return productStock;
+    }
+
+    public void setProductStock(Integer productStock) {
+        this.productStock = productStock;
+    }
+
+    public Integer getProductStatus() {
+        return productStatus;
+    }
+
+    public void setProductStatus(Integer productStatus) {
+        this.productStatus = productStatus;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
