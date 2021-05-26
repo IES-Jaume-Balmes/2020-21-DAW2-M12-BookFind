@@ -1,10 +1,12 @@
 package com.findbook.demo.services;
 
 import com.findbook.demo.dao.LineItemsRepository;
+import com.findbook.demo.dao.OrderRepository;
 import com.findbook.demo.dao.ShoppingCartRepository;
 import com.findbook.demo.dao.UserRepository;
 import com.findbook.demo.entities.Cart;
 import com.findbook.demo.entities.LineItems;
+
 import com.findbook.demo.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class CartService {
     UserRepository userRepository;
     @Autowired
     LineItemsRepository lineItemsRepository;
+    @Autowired
+    OrderRepository orderRepository;
 
     public Cart getCart(User user) {
         return user.getCart();
@@ -47,7 +51,7 @@ public class CartService {
                 BigDecimal restar = prod.getTotalPrice();
 
                 prod.setTotalPrice(prod.getBook().getPrice().multiply(new BigDecimal(prod.getQuantity())));
-                
+
                 BigDecimal total = new BigDecimal(String.valueOf(prod.getTotalPrice())).subtract(restar);
                 finalCart.addNewProductMoney(total);
             } else {
@@ -73,5 +77,28 @@ public class CartService {
             lineItemsRepository.deleteById(itemId);
         });
     }
+
+    ///Checkout
+
+/*    @Transactional
+    public void checkout(User user) {
+        Order order = new Order(user);
+        orderRepository.save(order);
+        *//**
+     * Delate the reference of the cart into the product, reduce the stock
+     * Loop throw all the available products in the cart and delete them
+     *//*
+
+        user.getCart().getLineItems().forEach(lineItems -> {
+            lineItems.setCart(null);
+            //Each item is related to an order, they will no longer be in a cart
+            lineItems.setOrder(order);
+          *//*    productService.decreaseStock(lineItems.getProductId(), lineItems.getCount());
+            productInOrderRepository.save(lineItems);*//*
+        });
+
+
+    }*/
+
 
 }

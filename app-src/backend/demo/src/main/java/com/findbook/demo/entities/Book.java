@@ -1,11 +1,14 @@
 package com.findbook.demo.entities;
 
+import com.sun.istack.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
@@ -26,8 +29,16 @@ public class Book {
     private String author;
     private String description;
     private BigDecimal price;
+    //New features
+    @NotNull
+    @Min(0)
+    private Integer productStock;
 
-
+    /**
+     * 0: on-sale 1: off-sale
+     */
+    @ColumnDefault("0")
+    private Integer productStatus;
     /*  @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
     @OneToMany(mappedBy = "book", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<LineItems> cartItems;

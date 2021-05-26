@@ -1,5 +1,7 @@
 package com.findbook.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.math.BigDecimal;
@@ -21,11 +23,17 @@ public class LineItems {
     @JoinColumn(name = "cartId")
     private Cart cart;
 
-    /*@JsonIgnore*/
+
     //Un lineitem no puede ser empty
     @Min(1)
     private Integer quantity;
     private BigDecimal totalPrice;
+
+    //TODO: ADD THE REFERENCE TO THE ORDER, ONE OR 0
+    @JsonIgnore //This can not be serializate/unserialize
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "oderId")
+    private OrderProducts order;
 
     public LineItems(Book book, @Min(1) Integer quantity) {
         this.book = book;
@@ -78,5 +86,17 @@ public class LineItems {
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
-    // </editor-fold>
+
+    public void setLineItemsId(Long lineItemsId) {
+        this.lineItemsId = lineItemsId;
+    }
+
+    public OrderProducts getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderProducts order) {
+        this.order = order;
+    }
+// </editor-fold>
 }
