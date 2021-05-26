@@ -21,7 +21,7 @@ public class LineItems {
     @JoinColumn(name = "cartId")
     private Cart cart;
 
-    /*    @JsonIgnore*/
+    /*@JsonIgnore*/
     //Un lineitem no puede ser empty
     @Min(1)
     private Integer quantity;
@@ -31,7 +31,6 @@ public class LineItems {
         this.book = book;
         this.quantity = quantity;
         this.totalPrice = book.getPrice().multiply(new BigDecimal(this.getQuantity()));
-        //this.totalPrice = book.getPrice();
     }
 
     public LineItems() {

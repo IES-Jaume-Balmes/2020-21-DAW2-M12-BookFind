@@ -40,16 +40,24 @@ public class CartService {
             Set<LineItems> set = finalCart.getLineItems();
             Optional<LineItems> old = set.stream().filter(e -> e.getBook().getBookId().equals(lineItems1.getBook().getBookId())).findFirst();
             LineItems prod;
-            if (old.isPresent()) {
+            if (old.isPresent()) {//If exists, add more elements
                 prod = old.get();
                 prod.setQuantity(lineItems1.getQuantity() + prod.getQuantity());
-                //Set price
-                //prod.setTotalPrice(prod.getBook().getPrice() * (float) prod.getQuantity());
+                //TODO:TEST THIS
+                BigDecimal restar = prod.getTotalPrice();
+
                 prod.setTotalPrice(prod.getBook().getPrice().multiply(new BigDecimal(prod.getQuantity())));
+                
+                BigDecimal total = new BigDecimal(String.valueOf(prod.getTotalPrice())).subtract(restar);
+                finalCart.addNewProductMoney(total);
             } else {
                 prod = lineItems1;
                 prod.setCart(finalCart);
+
                 finalCart.getLineItems().add(prod);
+
+                BigDecimal total = new BigDecimal(String.valueOf(prod.getTotalPrice()));
+                finalCart.addNewProductMoney(total);
             }
             lineItemsRepository.save(prod);
         });

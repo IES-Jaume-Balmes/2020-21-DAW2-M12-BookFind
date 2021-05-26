@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Set;
 
@@ -17,12 +18,9 @@ public class Cart {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cartId;
-    /*    private Date created;*/
-    private float ivaAmount;
-    private float totalMoney;
+    /*   private float ivaAmount;*/
+    private BigDecimal totalMoney;
 
-    /*The items inside the cart, lineItems*/
-    /*  @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
     @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<LineItems> lineItems;
 
@@ -30,14 +28,15 @@ public class Cart {
     @JoinColumn(name = "userId")
     private User user;
 
-    public Cart(Date created, float ivaAmount, float totalMoney) {
-        this.ivaAmount = ivaAmount;
+    public Cart(Date created, BigDecimal totalMoney) {
+        /*        this.ivaAmount = ivaAmount;*/
         this.totalMoney = totalMoney;
     }
 
     public Cart() {
-
+        this.totalMoney = new BigDecimal(0);
     }
+
 // <editor-fold defaultstate="collapsed" desc=" GETTERS & SETTERS ">
 
 /*    public Date getCreated() {
@@ -47,21 +46,25 @@ public class Cart {
     public void setCreated(Date created) {
         this.created = created;
     }*/
-
+/*
     public float getIvaAmount() {
         return ivaAmount;
     }
 
     public void setIvaAmount(float ivaAmount) {
         this.ivaAmount = ivaAmount;
-    }
+    }*/
 
-    public float getTotalMoney() {
+    public BigDecimal getTotalMoney() {
         return totalMoney;
     }
 
-    public void setTotalMoney(float totalMoney) {
+    public void setTotalMoney(BigDecimal totalMoney) {
         this.totalMoney = totalMoney;
+    }
+
+    public void addNewProductMoney(BigDecimal prodcutMoney) {
+        this.totalMoney = this.totalMoney.add(prodcutMoney);
     }
 
     public User getUser() {
@@ -92,7 +95,6 @@ public class Cart {
     public String toString() {
         return "Cart{" +
                 "cartId=" + cartId +
-                ", ivaAmount=" + ivaAmount +
                 ", totalMoney=" + totalMoney +
                 ", lineItems=" + lineItems +
                 ", user=" + user +
