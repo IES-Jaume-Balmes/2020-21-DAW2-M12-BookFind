@@ -23,7 +23,7 @@ public class LineItemService {
 
     @Transactional
     public void update(String itemId, Integer quantity, User user) {
-        var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getBook().getBookId())).findFirst();
+        var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId().toString())).findFirst();
         op.ifPresent(productInOrder -> { //Si el libro existe
             productInOrder.setQuantity(quantity);
             lineItemsRepository.save(productInOrder);
@@ -31,7 +31,7 @@ public class LineItemService {
     }
 
     public LineItems findOne(String itemId, User user) {
-        var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getBook().getBookId())).findFirst();
+        var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId().toString())).findFirst();
         AtomicReference<LineItems> res = new AtomicReference<>();
         op.ifPresent(res::set);
         return res.get();

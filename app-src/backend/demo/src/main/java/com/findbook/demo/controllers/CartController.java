@@ -67,7 +67,7 @@ public class CartController {
      */
 
     //TODO: returns http
-    @SneakyThrows
+    // @SneakyThrows
     @PostMapping("/add")
     public String addToCart(@RequestBody ItemForm itemIdAndQuantity, Principal principal) {
 
@@ -81,8 +81,12 @@ public class CartController {
         return principal.getName();
     }
 
-    @PutMapping("/{itemId}")
-    public LineItems modifyItem(@PathVariable("itemId") String itemId, @RequestBody int quantity, Principal principal) {
+    //Modificar lineitem (add más cantidad o menos ) //cart/3?quantity=1
+    //TODO: Añadir más seguridad, @Request param
+    @PutMapping(path = "/{itemId}")
+    public LineItems modifyItem(@PathVariable("itemId") String itemId, @RequestParam int quantity, Principal principal) {
+        System.out.println(quantity);
+        System.out.println(principal.getName());
         User user = userService.findOne(principal.getName());
         lineItemService.update(itemId, quantity, user);
         return lineItemService.findOne(itemId, user);
