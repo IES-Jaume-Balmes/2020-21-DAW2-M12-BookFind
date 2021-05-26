@@ -1,9 +1,8 @@
 package com.findbook.demo.entities;
 
-import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.math.BigDecimal;
 
 
 @Entity
@@ -26,13 +25,13 @@ public class LineItems {
     //Un lineitem no puede ser empty
     @Min(1)
     private Integer quantity;
-    private double totalPrice;
+    private BigDecimal totalPrice;
 
     public LineItems(Book book, @Min(1) Integer quantity) {
         this.book = book;
         this.quantity = quantity;
-        //Initial state
-        this.totalPrice = book.getPrice() * this.getQuantity();
+        this.totalPrice = book.getPrice().multiply(new BigDecimal(this.getQuantity()));
+        //this.totalPrice = book.getPrice();
     }
 
     public LineItems() {
@@ -40,8 +39,8 @@ public class LineItems {
 
 
 //TODO: ADD More info about the product, like productStock, categoryType, description etc
-    //  @Min(0)
-    // private Integer productStock;
+    /*  @Min(0)
+    // private Integer productStock;*/
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
     public Long getLineItemsId() {
@@ -73,11 +72,11 @@ public class LineItems {
         this.quantity = quantity;
     }
 
-    public double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
     // </editor-fold>

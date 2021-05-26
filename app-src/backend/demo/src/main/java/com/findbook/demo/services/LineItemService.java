@@ -1,17 +1,17 @@
 package com.findbook.demo.services;
 
-import com.findbook.demo.dao.CategoryRepository;
+
 import com.findbook.demo.dao.LineItemsRepository;
-import com.findbook.demo.entities.Category;
+
 import com.findbook.demo.entities.LineItems;
 import com.findbook.demo.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Service
@@ -26,6 +26,8 @@ public class LineItemService {
         var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId().toString())).findFirst();
         op.ifPresent(productInOrder -> { //Si el libro existe
             productInOrder.setQuantity(quantity);
+            //TODO: REVISAR
+            productInOrder.setTotalPrice(productInOrder.getBook().getPrice().multiply(new BigDecimal(productInOrder.getQuantity())));
             lineItemsRepository.save(productInOrder);
         });
     }

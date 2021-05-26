@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
@@ -43,7 +44,8 @@ public class CartService {
                 prod = old.get();
                 prod.setQuantity(lineItems1.getQuantity() + prod.getQuantity());
                 //Set price
-                prod.setTotalPrice(prod.getBook().getPrice() * prod.getQuantity());
+                //prod.setTotalPrice(prod.getBook().getPrice() * (float) prod.getQuantity());
+                prod.setTotalPrice(prod.getBook().getPrice().multiply(new BigDecimal(prod.getQuantity())));
             } else {
                 prod = lineItems1;
                 prod.setCart(finalCart);

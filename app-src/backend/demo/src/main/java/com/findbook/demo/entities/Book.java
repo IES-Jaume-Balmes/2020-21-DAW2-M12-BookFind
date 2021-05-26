@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Book {
     private Date publishedDate;
     private String author;
     private String description;
-    private float price;
+    private BigDecimal price;
 
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -37,7 +38,7 @@ public class Book {
 
     }
 
-    public Book(String isbn, String image, String name, Date year, String author, String desc, float price) {
+    public Book(String isbn, String image, String name, Date year, String author, String desc, BigDecimal price) {
         super();
         this.isbn = isbn;
         this.image = image;
@@ -105,11 +106,11 @@ public class Book {
         this.description = desc;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
