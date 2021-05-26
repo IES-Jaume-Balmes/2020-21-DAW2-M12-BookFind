@@ -6,8 +6,9 @@
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
+        <!-- @click="() => $router.push({ path: 'book/' + book.ID })" -->
       <v-list-item-title
-        @click="() => $router.push({ path: 'book/' + book.ID })"
+        @click="() => $router.push({ path: 'book/' + book.bookId })"
         >{{ book.title }}
       </v-list-item-title>
       <v-list-item-subtitle style="display: flex"

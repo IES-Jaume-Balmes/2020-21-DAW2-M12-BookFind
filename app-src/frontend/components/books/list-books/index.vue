@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <pre v-for="book in books" :key="book.bookId">{{book}}</pre> -->
     <v-progress-circular
       v-if="loading"
       :size="100"
@@ -9,7 +10,7 @@
     <div v-else>
       <div v-if="books.length == 0">no hay resultados</div>
       <div v-else>
-        <v-list v-for="book in books" :key="book.id">
+        <v-list v-for="book in books" :key="book.bookId">
           <Book
             :book="book"
             @add-book="pushCarrito"
@@ -48,7 +49,8 @@ export default {
       loading: false,
       books: [],
       carrito: [],
-      url: "https://www.etnassoft.com/api/v1/get/",
+      url:"http://localhost:8080/books/page"
+      // url: "https://www.etnassoft.com/api/v1/get/",
     };
   },
   methods: {
@@ -66,11 +68,13 @@ export default {
       this.loading = true;
       this.$axios
         .get(
-          `${this.url}?results_range=${this.collectionParams.page},${this.collectionParams.items}`
+          // `${this.url}?results_range=${this.collectionParams.page},${this.collectionParams.items}`
+          `${this.url}?pageSize=${this.collectionParams.items}&pageNumber=${this.collectionParams.page}`
         )
         .then((response) => {
           this.loading = false;
-          this.books = response.data;
+          // console.log(response.data.content);
+          this.books = response.data.content;
         });
     },
   },

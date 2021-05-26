@@ -23,7 +23,7 @@
         <v-icon> mdi-chevron-right</v-icon>
       </v-btn>
       <v-chip label>{{ params.page }}</v-chip>
-      <v-btn icon @click="params.page--" :disabled="params.page === 1">
+      <v-btn icon @click="params.page--" :disabled="params.page === 0">
         <v-icon> mdi-chevron-left</v-icon>
       </v-btn>
 
@@ -79,7 +79,7 @@ export default {
       numCarrito: 0,
       params: null,
       btnStatus: null,
-      itemsPerPage: [10, 20, 30, 40],
+      itemsPerPage: [2,4,6],
       btnFilters: null,
     };
   },

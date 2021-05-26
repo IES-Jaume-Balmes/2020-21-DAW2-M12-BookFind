@@ -23,7 +23,7 @@
       </v-btn>
     </v-card-actions>
     <v-card-text> 
-      {{book.content}}
+      {{book.description}}
     </v-card-text>
   </v-card>
 </template>

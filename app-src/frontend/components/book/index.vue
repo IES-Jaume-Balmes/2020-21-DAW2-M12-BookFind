@@ -4,7 +4,7 @@
       <Detalle :book="book" />
     </v-col>
     <v-col md="4"> {{ book_id }}</v-col>
-    <v-col md="12" v-for="categoria in books_categoria" :key="categoria.id">
+    <!-- <v-col md="12" v-for="categoria in books_categoria" :key="categoria.id">
       <v-card>
         <v-card-title
           >Recomendaciones por Categorias #{{ categoria.name }}</v-card-title
@@ -22,7 +22,6 @@
                   @click="() => $router.push({ path: '' + book.ID })"
                   class="ma-4"
                 >
-                  <!-- @click="() => $router.push({ path:book.ID })" -->
                   <v-img
                     src="https://picsum.photos/282/450"
                     class="white--text align-end"
@@ -37,7 +36,8 @@
           </v-sheet>
         </v-card-text>
       </v-card>
-    </v-col>
+    </v-col> -->
+    
   </v-row>
 </template>
 
@@ -74,10 +74,11 @@ export default {
     },
     getBook() {
       this.$axios
-        .get(`https://www.etnassoft.com/api/v1/get/?id=${this.book_id}`)
+        .get(`http://localhost:8080/books/${this.book_id}`)
         .then((response) => {
-          this.book = response.data[0];
-          this.getBooksByCategoria();
+          console.log(response.data);
+           this.book = response.data;
+          // this.getBooksByCategoria();
         });
     },
   },
