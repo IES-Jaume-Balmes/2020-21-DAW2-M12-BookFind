@@ -8,6 +8,7 @@ import com.findbook.demo.entities.User;
 import com.findbook.demo.form.ItemForm;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.CartService;
+import com.findbook.demo.services.LineItemService;
 import com.findbook.demo.services.UserService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,17 +36,21 @@ public class CartController {
     private BooksService booksService; //Get info about the product
     @Autowired
     private CartService cartService;
+    @Autowired
+    private LineItemService lineItemService;
 
-    @GetMapping("/")
-    public boolean getCartItems() {
-        return true;
+    @GetMapping("")
+    public Cart getCart(Principal principal) {
+        User user = userService.findOne(principal.getName());
+        return cartService.getCart(user);
     }
 
+
+    // TODO: REFACTOR, MABY THIS METHOD IS NOT NECESARY
 
     @PostMapping("")
     public ResponseEntity<Cart> mergeCart(@RequestBody Collection<LineItems> lineItems, Principal principal) {
         User user = userService.findOne(principal.getName()); //Find user by email
-
         try {
             cartService.mergeLocalCart(lineItems, user);
         } catch (Exception e) {
@@ -58,8 +63,10 @@ public class CartController {
     /**
      * @param itemIdAndQuantity cantidad de producto y productId
      * @param principal         Spring Security Actual logued user
-     * @return
+     * @return HTTP
      */
+
+    //TODO: returns http
     @SneakyThrows
     @PostMapping("/add")
     public String addToCart(@RequestBody ItemForm itemIdAndQuantity, Principal principal) {
@@ -74,34 +81,11 @@ public class CartController {
         return principal.getName();
     }
 
-/*
-    @DeleteMapping("/delete/{cartItemId}")
-    public boolean delateCartItems() {
-        return true;
+    @PutMapping("/{itemId}")
+    public LineItems modifyItem(@PathVariable("itemId") String itemId, @RequestBody Integer quantity, Principal principal) {
+        User user = userService.findOne(principal.getName());
+        lineItemService.update(itemId, quantity, user);
+        return lineItemService.findOne(itemId, user);
     }
-
-    @PostMapping("/update/{cartItemId}")
-    public boolean updateCartItem() {
-        return true;
-    }
-
-
-    @PreAuthorize("hasAnyAuthority('ROLE_KAMINOAIN', 'ROLE_EMPEROR')")
-
-    @RequestMapping
-    public String getCart(User activeUser) {
-        User customer = userService.findOneByUsername(activeUser.getUsername());
-        long cartId = customer.getCart().getCartId();
-
-        return "redirect:/customer/cart/" + cartId;
-    }
-
-    @RequestMapping("/{cartId}")
-    public String getCartRedirect(@PathVariable String cartId) {
-
-        model.addAttribute("cartId", cartId);
-        return cartId;
-    }
-*/
 
 }
