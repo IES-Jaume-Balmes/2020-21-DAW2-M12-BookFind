@@ -6,7 +6,7 @@
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
-      <v-list-item-title @click="handleClickGoBook">{{ book.title }} </v-list-item-title>
+      <v-list-item-title @click="()=>$router.push({ path: 'book/'  })">{{ book.title }} </v-list-item-title>
       <v-list-item-subtitle style="display: flex"
         >{{ book.author }}
 

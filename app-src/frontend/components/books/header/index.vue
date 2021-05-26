@@ -26,16 +26,22 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      
-      <!-- <v-menu offset-y>
+      <v-menu offset-y :close-on-content-click="false">
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on" x-large>
             <v-icon> mdi-cart-outline</v-icon>
           </v-btn>
         </template>
 
-        
-      </v-menu> -->
+        <v-list>
+          <!-- <v-list-item v-for="(item, i) in carrito" :key="i">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item> -->
+        </v-list>
+      </v-menu>
+      <v-btn icon x-large>
+        <v-icon @click="()=>$router.push({ path: 'add-stock/'  })"> mdi-plus-circle-outline</v-icon>
+      </v-btn>
     </v-col>
   </v-row>
 </template>
@@ -47,6 +53,12 @@ export default {
   data: () => ({
     menu: false,
   }),
+  methods:{
+    // foo(){
+    //         this.$router.push({ path: "add-stock/"  });
+
+    // }
+  }
 };
 </script>
 
