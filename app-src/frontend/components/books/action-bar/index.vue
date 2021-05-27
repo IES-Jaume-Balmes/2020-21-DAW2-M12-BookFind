@@ -13,7 +13,7 @@
       <v-btn icon @click="collectionParams.pageNumber++">
         <v-icon> mdi-chevron-right</v-icon>
       </v-btn>
-      <v-chip disabled label outlined>{{ collectionParams.pageNumber }}</v-chip>
+      <v-chip disabled label outlined>{{ numPag }}</v-chip>
       <v-btn
         icon
         @click="collectionParams.pageNumber--"
@@ -59,19 +59,21 @@ export default {
     btnFilters(val) {
       this.$emit("change-view", val);
     },
+    collectionParams: {
+      handler() {
+        this.numPag = this.collectionParams.pageNumber + 1;
+      },
+      deep: true,
+    },
   },
   mounted() {
+    this.numPag = this.collectionParams.pageNumber + 1;
   },
   data() {
     return {
+      numPag: 0,
       pageSizes: [2, 4, 6],
-      sortBy: [
-        "title",
-        "publishedDate",
-        "description",
-        "price",
-        "categories",
-      ],
+      sortBy: ["title", "publishedDate", "description", "price", "categories"],
       sort: ["asc", "desc"],
       btnFilters: null,
     };

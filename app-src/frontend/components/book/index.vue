@@ -69,14 +69,9 @@ export default {
 
     getBooks() {
       this.$axios
-        .get(`https://www.etnassoft.com/api/v1/get/?category_id=212`)
+        .get(`http://localhost:8080/books/category/Classics?pageSize=50&pageNumber=0&sort=id,desc`)
         .then((response) => {
           console.log(response);
-           this.books_categoria.push({
-            id: '15',
-            name: 'foo',
-            books: response.data,
-          }); 
         });
     },
     getBook() {
