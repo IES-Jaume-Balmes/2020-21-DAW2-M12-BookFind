@@ -56,7 +56,7 @@ public class BooksService {
     @SneakyThrows
     @Transactional
     public Book updateBook(Book book) {
-        Book existingBook = bookRepository.findById(book.getId()).orElse(null);
+        Book existingBook = bookRepository.findById(book.getBookid()).orElse(null);
         if (existingBook == null) throw new BookExistsException("The book you'ere trying to edit does not exists");
         existingBook.setIsbn(book.getIsbn());
         existingBook.setImage(book.getImage());

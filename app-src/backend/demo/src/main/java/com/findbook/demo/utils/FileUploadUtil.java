@@ -1,5 +1,6 @@
 package com.findbook.demo.utils;
 
+import lombok.SneakyThrows;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -27,8 +28,16 @@ public class FileUploadUtil {
         }
     }
 
-    public static void saveImage(MultipartFile image) throws IOException {
-        String folderMain = "/home/barbara/Documentos/spring/";
+    @SneakyThrows
+    public static void saveImage(MultipartFile image) {
+        /*      try {
+            FileUploadUtil.saveImage(multipartFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }*/
+        String folderMain = "/media/images/books/";
+
         byte[] bytes = image.getBytes();
         Path path = Paths.get(folderMain + image.getOriginalFilename());
         Files.write(path, bytes);

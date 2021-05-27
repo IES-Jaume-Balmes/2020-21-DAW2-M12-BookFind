@@ -15,8 +15,8 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true)
-    private Long id;
+    @Column(unique = true, name = "id")
+    private Long Bookid;
     @Column(unique = true)
     private String isbn;
     private String image;
@@ -70,12 +70,12 @@ VALUES (1, 'Novela romantica', 'orgulloyprejuicio.jpg', '9783161444484100', 'Org
         this.autor = autor;
     }
 
-    public Long getId() {
-        return id;
+    public Long getBookid() {
+        return Bookid;
     }
 
-    public void setId(Long bookId) {
-        this.id = bookId;
+    public void setBookid(Long bookId) {
+        this.Bookid = bookId;
     }
 
     public String getIsbn() {
@@ -162,7 +162,7 @@ VALUES (1, 'Novela romantica', 'orgulloyprejuicio.jpg', '9783161444484100', 'Org
     @Override
     public String toString() {
         return "Book{" +
-                "bookId=" + id +
+                "bookId=" + Bookid +
                 ", isbn='" + isbn + '\'' +
                 ", image='" + image + '\'' +
                 ", title='" + title + '\'' +
