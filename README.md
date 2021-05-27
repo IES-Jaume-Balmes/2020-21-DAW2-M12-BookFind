@@ -186,9 +186,9 @@ c) delate a book by its id --> METHOD:DELETE
 
     books/delate/{id}
 
-### 2) Cart controller (MUST BE LOGED, USER)-->METHOD:GET
+### 2) Cart controller  
 
-a) Get the actual user cart
+a) Get the actual user cart (MUST BE LOGEDIN, USER)-->METHOD:GET
 
     /cart
 
@@ -227,10 +227,40 @@ e) Check out and create a new order (buy) -->METHOD:POST
     /cart/checkout
 
 ### 3) CATEGORY CONTROLLER (CLASSIC BOOK, ROMANTIC NOVEL, ETC)
+a)  Get all books category -->METHOD:GET
 
+        books/category?pageSize=0&pageNumber=12&sort=id,desc
+        sort is optional
+b) Return pagination by category -->METHOD:GET
+    
+    books/category/{type}
+    example: books/category/classic?pageSize=0&pageNumber=12&sort=id,desc
+                
 ### 4) User controller
+a) Create a new user METHOD:POST
+    
+    /user/sign-up
+    IMPORTANT: THIS WILL SEND AN EMAIL WITH TOKEN AUTH, IF YOU DONT ACEP IT, THE USER CAN NOT LOGIN
+    POSTMAN EXAMPLE:
+    
+    {
+    "firstName":"TOM",
+    "lastName":"CAT",
+    "username":"tomcat",
+    "password":"123456",
+    "email":"tomcat@gmail.com",
+    "phone":"888999977"
+    }
 
-### 5) User controller
+b) login
+    
+    /login
+c) logout
+
+    /logout
+
+d)
+
 
 Project
 Link: [https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind)
