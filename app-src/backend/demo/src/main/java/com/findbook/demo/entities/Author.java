@@ -1,16 +1,9 @@
-/*
 package com.findbook.demo.entities;
-
-
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
-@EqualsAndHashCode
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,17 +11,22 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "bookId", fetch = FetchType.LAZY)
+
+    @OneToMany
+    @JoinColumn(name = "authorId")
     private List<Book> books;
+
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    public Author() {
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
-
     public long getAuthorId() {
         return authorId;
     }
@@ -56,14 +54,11 @@ public class Author {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public List<Book> getBooks() {
+/*    public List<Book> getBooks() {
         return books;
     }
-
     public void setBooks(List<Book> books) {
         this.books = books;
-    }
+    }*/
     // </editor-fold>
 }
-*/

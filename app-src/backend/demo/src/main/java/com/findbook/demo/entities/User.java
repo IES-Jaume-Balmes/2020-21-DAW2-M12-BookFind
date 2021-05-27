@@ -1,5 +1,6 @@
 package com.findbook.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.findbook.demo.enums.Role;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,6 +38,7 @@ public class User implements UserDetails {
     private Role role;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Cart cart;
 
     public User() {

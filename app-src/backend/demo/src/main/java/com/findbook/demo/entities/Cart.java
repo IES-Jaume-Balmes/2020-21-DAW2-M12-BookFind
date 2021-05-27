@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -26,6 +27,7 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "userId")
+    @JsonIgnore
     private User user;
 
     public Cart(Date created, BigDecimal totalMoney) {

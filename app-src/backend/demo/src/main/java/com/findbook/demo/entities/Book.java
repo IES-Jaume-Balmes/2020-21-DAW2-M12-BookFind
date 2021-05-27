@@ -26,7 +26,6 @@ public class Book {
     private String image;
     private String title;
     private Date publishedDate;
-    private String author;
     private String description;
     private BigDecimal price;
     //New features
@@ -46,17 +45,19 @@ public class Book {
     @ManyToMany
     List<Category> categories;
 
+/*    @ManyToOne
+    Author autor;*/
+
     public Book() {
 
     }
 
-    public Book(String isbn, String image, String name, Date year, String author, String desc, BigDecimal price) {
+    public Book(String isbn, String image, String name, Date year, String desc, BigDecimal price) {
         super();
         this.isbn = isbn;
         this.image = image;
         this.title = name;
         this.publishedDate = year;
-        this.author = author;
         this.description = desc;
         this.price = price;
     }
@@ -102,13 +103,6 @@ public class Book {
         this.publishedDate = year;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 
     public String getDescription() {
         return description;
@@ -166,7 +160,6 @@ public class Book {
                 ", image='" + image + '\'' +
                 ", title='" + title + '\'' +
                 ", publishedDate=" + publishedDate +
-                ", author='" + author + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", cartItems=" + cartItems +
