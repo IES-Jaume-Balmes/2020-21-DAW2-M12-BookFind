@@ -140,26 +140,97 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Spring automatically handles the numbers, that is, negative or very large numbers will not give an error. The variables
 pageSize and pageNumber are set in spring properties.
 
-a) Returns by pagination
+a) Returns by pagination --> METHOD:GET
 
     books/page?pageSize=0&pageNumber=12
 
-b) Returns the pages with "sort", in this case by id (choose the parameter) and in form (desc)
+b) Returns the pages with "sort", in this case by id (choose the parameter) and in form (desc) --> METHOD:GET
 
     books/page?pageSize=0&pageNumber=12&sort=id,desc
 
-c) Books ascending price
+c) Books ascending price --> METHOD:GET
 
     /books/price-asc
 
-d) Books desc price
-    
+d) Books desc price --> METHOD:GET
+
     /books/price-desc
 
-e) Returns 1 book by id
-    
+e) Returns 1 book by id --> METHOD:GET
+
      books/{id num}
+
+### Admin BOOK endpoints
+
+a) Crear a book books/new --> METHOD:POST
+
+    books/new
+
+    Postman example:
+    {   
+    "bookId":555,
+    "isbn":"123",
+    "image":"cccc",
+    "title":"titulo",
+    "publishedDate":"1847-01-01",
+        "author":--> Object author 
+    "description":"description",
+    "price":15
+    }
+
+b)Upate book (pass book object as parameter) --> METHOD:PUT
+
+    books/update
+
+c) delate a book by its id --> METHOD:DELETE
+
+    books/delate/{id}
+
+### 2) Cart controller (MUST BE LOGED, USER)-->METHOD:GET
+
+a) Get the actual user cart
+
+    /cart
+
+b) Add new lineItems (books, products) to the actual logedin user -->METHOD:POST
+
+    /cart/add
+
+    Postman example:
+    {
+    "quantity":5,
+    "productId":1
+    }
+
+c)Change the quantity of lineItems (book) you will buy -->METHOD:PUT
+
+      cart/{itemId}
+
+        PUT BODY NEEDS A NUMBER (IS THE NUMBER OF THE NEW QUANTITY OF "LINE ITEMS"
+
+        FOREXAMPLE, LINEITEM IS 5 OF PRIDE AND PREJUDICE (5 BOOKS OF PRIDE AND PREJUDICE) AND NOW I JUST WANT 1, THE PUT BODY IS A 1
+        
+        PUT BODY:
+
+        1
+
+        The id is the id of the lineItem object
+
+
+        this method returns the new lineitem (modified) in json
+
+d) Delete an LineItem from the cart -->METHOD:DELETE
+
+    /cart/{itemId}
+e) Check out and create a new order (buy) -->METHOD:POST
     
+    /cart/checkout
+
+### 3) CATEGORY CONTROLLER (CLASSIC BOOK, ROMANTIC NOVEL, ETC)
+
+### 4) User controller
+
+### 5) User controller
 
 Project
 Link: [https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind)
