@@ -4,7 +4,7 @@
       <Detalle :book="book" />
     </v-col>
     <v-col md="4"> {{ book_id }}</v-col>
-    <!-- <v-col md="12" v-for="categoria in books_categoria" :key="categoria.id">
+    <v-col md="12" v-for="categoria in books_categoria" :key="categoria.id">
       <v-card>
         <v-card-title
           >Recomendaciones por Categorias #{{ categoria.name }}</v-card-title
@@ -36,7 +36,7 @@
           </v-sheet>
         </v-card-text>
       </v-card>
-    </v-col> -->
+    </v-col>
     
   </v-row>
 </template>
@@ -48,7 +48,9 @@ export default {
   components: { Detalle },
   mounted() {
     this.getBook();
+    this.getBooks();
   },
+
   data: () => ({
     book: null,
     books_categoria: [],
@@ -61,15 +63,16 @@ export default {
       });
     },
 
-    getBooks(id, name) {
+    getBooks() {
       this.$axios
-        .get(`https://www.etnassoft.com/api/v1/get/?category_id=${id}`)
+        .get(`https://www.etnassoft.com/api/v1/get/?category_id=212`)
         .then((response) => {
-          this.books_categoria.push({
-            id: id,
-            name: name,
+          console.log(response);
+           this.books_categoria.push({
+            id: '15',
+            name: 'foo',
             books: response.data,
-          });
+          }); 
         });
     },
     getBook() {
