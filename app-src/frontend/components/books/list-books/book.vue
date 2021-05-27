@@ -1,5 +1,6 @@
 <template>
   <v-list-item>
+    {{book.categories}}
     <v-list-item-avatar>
       <v-avatar rounded size="56">
         <img src="https://picsum.photos/295/295" />
