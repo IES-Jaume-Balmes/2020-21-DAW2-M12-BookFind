@@ -18,16 +18,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Optional<Book> findByIsbn(String isnb);
 
-/*    @Override
-    <S extends Book> Optional<S> findOne(Example<S> example);*/
-    /*   Book findOne(Long bookId);*/
-    //findBooksByBookPublishersPublisherId(Long publisherId)
-
-    /*    Optional<Book> findBooksByCategories(Long categories);*/
-    //Optional<Book> findAllByCategories();
-
     List<Book> findByCategories(Category category);
 
- /*   Book findById(Long id);*/
-
+    //Like
+    List<Book> findByTitleContainingIgnoreCase(String title);
 }

@@ -89,11 +89,7 @@ public class BooksService {
         return bookRepository.findByCategories(category);
     }
 
-    public Book save(Book book) {
-        return bookRepository.save(book);
-    }
-
-    public Book getOne(Long bookId) {
-        return bookRepository.getOne(bookId);
+    public List<Book> findByTitle(String bookId) {
+        return bookRepository.findByTitleContainingIgnoreCase(bookId);
     }
 }
