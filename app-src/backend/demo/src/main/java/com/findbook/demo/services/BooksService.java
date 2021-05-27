@@ -56,7 +56,7 @@ public class BooksService {
     @SneakyThrows
     @Transactional
     public Book updateBook(Book book) {
-        Book existingBook = bookRepository.findById(book.getBookId()).orElse(null);
+        Book existingBook = bookRepository.findById(book.getId()).orElse(null);
         if (existingBook == null) throw new BookExistsException("The book you'ere trying to edit does not exists");
         existingBook.setIsbn(book.getIsbn());
         existingBook.setImage(book.getImage());
@@ -89,5 +89,11 @@ public class BooksService {
         return bookRepository.findByCategories(category);
     }
 
+    public Book save(Book book) {
+        return bookRepository.save(book);
+    }
 
+    public Book getOne(Long bookId) {
+        return bookRepository.getOne(bookId);
+    }
 }

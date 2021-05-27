@@ -40,7 +40,7 @@ public class CartService {
         Cart finalCart = user.getCart();
         lineItems.forEach(lineItems1 -> {
             Set<LineItems> set = finalCart.getLineItems();
-            Optional<LineItems> old = set.stream().filter(e -> e.getBook().getBookId().equals(lineItems1.getBook().getBookId())).findFirst();
+            Optional<LineItems> old = set.stream().filter(e -> e.getBook().getId().equals(lineItems1.getBook().getId())).findFirst();
             LineItems prod;
             if (old.isPresent()) {//If exists, add more elements
                 prod = old.get();
@@ -94,8 +94,8 @@ public class CartService {
             //user.getCart().setTotalMoney(new BigDecimal(0)); //Vaciar el carrito
             //Each item is related to an order, they will no longer be in a cart
             lineItems.setOrder(order);
-            booksService.delateFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
-            booksService.delateFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
+            booksService.delateFromStock(lineItems.getBook().getId(), lineItems.getQuantity());
+            booksService.delateFromStock(lineItems.getBook().getId(), lineItems.getQuantity());
             //Update each line-item y save it into the databases
             lineItemsRepository.save(lineItems); //???
 
