@@ -55,6 +55,50 @@ VALUES (
                 103,
                 1
         );
+INSERT INTO BOOK (
+                BOOK_ID,
+                DESCRIPTION,
+                IMAGE,
+                ISBN,
+                TITLE,
+                PRICE,
+                PUBLISHED_DATE,
+                PRODUCT_STOCK,
+                AUTOR_AUTHOR_ID
+        )
+VALUES (
+                3,
+                'Descripcion 26',
+                '',
+                '9783161444484102',
+                'libro 28',
+                1.99,
+                '1875-10-11',
+                103,
+                1
+        );
+INSERT INTO BOOK (
+                BOOK_ID,
+                DESCRIPTION,
+                IMAGE,
+                ISBN,
+                TITLE,
+                PRICE,
+                PUBLISHED_DATE,
+                PRODUCT_STOCK,
+                AUTOR_AUTHOR_ID
+        )
+VALUES (
+                4,
+                'Descripcion 256',
+                '',
+                '9783161444484152',
+                'libro 25',
+                18.99,
+                '1875-10-12',
+                103,
+                1
+        );
 /*INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK)
  VALUES (1, 'ddsfa', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
  '9783161444484100', 'Enders Game ', 10, '1985-10-12', 100);
