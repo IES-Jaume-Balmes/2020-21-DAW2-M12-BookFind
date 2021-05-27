@@ -7,9 +7,10 @@ import java.util.List;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long authorId;
-    private String firstName;
-    private String lastName;
+    @Column(name = "name")
+    private String fullName;
 
 
     @OneToMany
@@ -17,8 +18,8 @@ public class Author {
 
 
     public Author(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.fullName = firstName;
+
     }
 
     public Author() {
@@ -34,31 +35,25 @@ public class Author {
         this.authorId = userId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFullName(String firstName) {
+        this.fullName = firstName;
     }
 
     public void setAuthorId(Long authorId) {
         this.authorId = authorId;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-/*    public List<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
+
     public void setBooks(List<Book> books) {
         this.books = books;
-    }*/
-    // </editor-fold>
+    }
+
 
 }

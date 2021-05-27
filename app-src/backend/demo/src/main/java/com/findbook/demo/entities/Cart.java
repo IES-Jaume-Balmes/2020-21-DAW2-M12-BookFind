@@ -18,6 +18,7 @@ public class Cart {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private long cartId;
     /*   private float ivaAmount;*/
     private BigDecimal totalMoney;

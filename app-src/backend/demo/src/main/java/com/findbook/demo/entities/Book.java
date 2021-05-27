@@ -1,10 +1,6 @@
 package com.findbook.demo.entities;
 
 import com.sun.istack.NotNull;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -19,8 +15,8 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true)
-    private Long bookId;
+    @Column(unique = true, name = "id")
+    private Long Bookid;
     @Column(unique = true)
     private String isbn;
     private String image;
@@ -74,12 +70,12 @@ VALUES (1, 'Novela romantica', 'orgulloyprejuicio.jpg', '9783161444484100', 'Org
         this.autor = autor;
     }
 
-    public Long getBookId() {
-        return bookId;
+    public Long getBookid() {
+        return Bookid;
     }
 
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
+    public void setBookid(Long bookId) {
+        this.Bookid = bookId;
     }
 
     public String getIsbn() {
@@ -166,7 +162,7 @@ VALUES (1, 'Novela romantica', 'orgulloyprejuicio.jpg', '9783161444484100', 'Org
     @Override
     public String toString() {
         return "Book{" +
-                "bookId=" + bookId +
+                "bookId=" + Bookid +
                 ", isbn='" + isbn + '\'' +
                 ", image='" + image + '\'' +
                 ", title='" + title + '\'' +

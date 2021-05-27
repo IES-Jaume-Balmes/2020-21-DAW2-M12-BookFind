@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 public class LineItems {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private Long lineItemsId;
 
     //TODO: Puede tener muchos libros, pero Stock (un libro ID, muchas cantidades)

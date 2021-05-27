@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/books")
@@ -34,12 +35,12 @@ public class BookCategoryController {
      */
     //TODO: ADD PAGINATION BY CATEGORY
     @GetMapping("/category/{type}")
-    public String showOne(@PathVariable("type") String categoryType, Pageable pageable) {
-        
+    public List<Book> showOne(@PathVariable("type") String categoryType, Pageable pageable) {
+
         Category category = categoryService.findByCategory(categoryType);
         List<Book> booksByCategory = booksService.findByCategories(category);
 
-        return booksByCategory.toString();
+        return booksByCategory;
     }
 
 }

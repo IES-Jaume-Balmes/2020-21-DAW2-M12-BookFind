@@ -10,8 +10,8 @@ import java.util.Set;
 public class OrderProducts {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private long oderId;
-
     private Date ordered;
     private Date shipped;
     private String shipTo;

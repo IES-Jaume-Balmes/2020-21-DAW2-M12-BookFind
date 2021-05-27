@@ -16,6 +16,7 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private Long categoryId;
     @Column(unique = true)
     private String category;
