@@ -6,13 +6,13 @@
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
-        <!-- @click="() => $router.push({ path: 'book/' + book.ID })" -->
       <v-list-item-title
         @click="() => $router.push({ path: 'book/' + book.bookId })"
         >{{ book.title }}
       </v-list-item-title>
-      <v-list-item-subtitle style="display: flex"
-        >{{ book.author }}
+      <v-list-item-subtitle style="display: flex">
+        {{ book.autor.firstName }}
+        {{ book.autor.lastName }}
 
         <div v-for="categoria in book.categories" :key="categoria.category_id">
           <v-chip x-small outlined>{{ categoria.name }}</v-chip>
@@ -20,14 +20,14 @@
       </v-list-item-subtitle>
     </v-list-item-content>
     <v-list-item-action>
-      <v-list-item-action-text> 15 eur </v-list-item-action-text>
+      <v-list-item-action-text> {{ book.price }} eur </v-list-item-action-text>
       <v-list-item-action-text>
-        <v-btn icon x-small @click="delBook" :disabled="disabled.del"
+        <!-- <v-btn icon x-small @click="delBook" :disabled="disabled.del"
           ><v-icon>mdi-minus</v-icon></v-btn
         >
         <v-btn icon x-small @click="addBook" :disabled="disabled.add"
           ><v-icon>mdi-plus</v-icon></v-btn
-        >
+        > -->
       </v-list-item-action-text>
     </v-list-item-action>
   </v-list-item>
@@ -46,9 +46,7 @@ export default {
   },
 
   methods: {
-    // handleClickGoBook() {
-    //   this.$router.push({ path: "book/" });
-    // },
+   
     addBook() {
       this.disabled.add = true;
       this.disabled.del = false;

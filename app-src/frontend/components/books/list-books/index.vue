@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <pre v-for="book in books" :key="book.bookId">{{book}}</pre> -->
     <v-progress-circular
       v-if="loading"
       :size="100"
@@ -49,8 +48,7 @@ export default {
       loading: false,
       books: [],
       carrito: [],
-      url:"http://localhost:8080/books/page"
-      // url: "https://www.etnassoft.com/api/v1/get/",
+      url: "http://localhost:8080/books/page",
     };
   },
   methods: {
@@ -68,12 +66,10 @@ export default {
       this.loading = true;
       this.$axios
         .get(
-          // `${this.url}?results_range=${this.collectionParams.page},${this.collectionParams.items}`
-          `${this.url}?pageSize=${this.collectionParams.items}&pageNumber=${this.collectionParams.page}`
+          `${this.url}?pageSize=${this.collectionParams.pageSize}&pageNumber=${this.collectionParams.pageNumber}&sort=${this.collectionParams.sortBy},${this.collectionParams.sort}`
         )
         .then((response) => {
           this.loading = false;
-          // console.log(response.data.content);
           this.books = response.data.content;
         });
     },

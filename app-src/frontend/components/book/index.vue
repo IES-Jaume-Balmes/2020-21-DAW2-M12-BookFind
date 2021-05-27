@@ -4,7 +4,10 @@
       <Detalle :book="book" />
     </v-col>
     <v-col md="4"> {{ book_id }}</v-col>
-    <v-col md="12" v-for="categoria in books_categoria" :key="categoria.id">
+    <v-col md="12">
+
+    </v-col>
+    <!-- <v-col md="12" v-for="categoria in books_categoria" :key="categoria.id">
       <v-card>
         <v-card-title
           >Recomendaciones por Categorias #{{ categoria.name }}</v-card-title
@@ -36,7 +39,7 @@
           </v-sheet>
         </v-card-text>
       </v-card>
-    </v-col>
+    </v-col> -->
     
   </v-row>
 </template>
@@ -52,6 +55,7 @@ export default {
   },
 
   data: () => ({
+    url:"http://localhost:8080/",
     book: null,
     books_categoria: [],
     model: null,
@@ -77,7 +81,7 @@ export default {
     },
     getBook() {
       this.$axios
-        .get(`http://localhost:8080/books/${this.book_id}`)
+        .get(`${this.url}books/${this.book_id}`)
         .then((response) => {
           console.log(response.data);
            this.book = response.data;

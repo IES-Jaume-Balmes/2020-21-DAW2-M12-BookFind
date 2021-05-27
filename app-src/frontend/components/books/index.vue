@@ -1,9 +1,8 @@
 <template>
   <v-container fluid>
     <Header />
-    <ActionBar
+     <ActionBar
       :collectionParams="collectionParams"
-      @change-params="(val) => (collectionParams = val)"
       @change-view="(val) => (showFilters = val)"
     />
     <v-row>
@@ -16,7 +15,7 @@
       <v-col v-if="showFilters" cols="6" md="4">
         <Filters />
       </v-col>
-    </v-row>
+    </v-row> 
   </v-container>
 </template>
 
@@ -44,11 +43,14 @@ export default {
   },
   data() {
     return {
-      md:12,
+      md: 12,
       showFilters: false,
       collectionParams: {
-        page: 0,
-        items: 2,
+        pageSize: 2,
+        pageNumber: 0,
+        sortBy:'price',
+        sort: 'asc',
+        // sort: ['price', 'asc'],
       },
       carrito: [],
     };
