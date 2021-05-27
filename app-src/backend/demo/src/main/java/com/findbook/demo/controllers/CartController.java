@@ -81,12 +81,10 @@ public class CartController {
         return principal.getName();
     }
 
-    //Modificar lineitem (add más cantidad o menos ) //cart/3?quantity=1
+    //Modificar lineitem (add más cantidad o menos ) //cart/3?quantity=1 cart/id json 1
     //TODO: Añadir más seguridad, @Request param
     @PutMapping(path = "/{itemId}")
-    public LineItems modifyItem(@PathVariable("itemId") String itemId, @RequestParam int quantity, Principal principal) {
-        System.out.println(quantity);
-        System.out.println(principal.getName());
+    public LineItems modifyItem(@PathVariable("itemId") String itemId, @RequestBody int quantity, Principal principal) {
         User user = userService.findOne(principal.getName());
         lineItemService.update(itemId, quantity, user);
         return lineItemService.findOne(itemId, user);

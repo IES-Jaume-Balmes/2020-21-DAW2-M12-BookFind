@@ -1,16 +1,21 @@
 --------------Category
 INSERT INTO CATEGORY
 VALUES (1, 'Classics');
-INSERT INTO CATEGORY
-VALUES (2, 'Horror');
-INSERT INTO CATEGORY
-VALUES (3, 'Science Fiction');
-INSERT INTO CATEGORY
-VALUES (4, 'Romance');
+/*INSERT INTO CATEGORY(CATEGORY)
+VALUES ('Horror');
+INSERT INTO CATEGORY(CATEGORY)
+VALUES ('Science Fiction');
+INSERT INTO CATEGORY(CATEGORY)
+VALUES ('Romance');*/
 -----------Author
-
+INSERT INTO AUTHOR
+VALUES (1, 'Jane', 'Austen');
 
 -----------Books
+    INSERT
+INTO BOOK (BOOK_ID, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK,AUTOR_AUTHOR_ID)
+VALUES (1, 'Novela romantica', 'orgulloyprejuicio.jpg', '9783161444484100', 'Orgullo y prejuicio ', 10.99, '1885-10-12', 100,1);
+
 
 /*INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK)
 VALUES (1, 'ddsfa', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
@@ -24,6 +29,8 @@ VALUES (2, 'ssdsd',
 
 
 --------------Category
+INSERT INTO BOOK_CATEGORIES
+VALUES (1, 1);
 /*INSERT INTO BOOK_CATEGORIES
 VALUES (2, 1);----jane eyre have two categories, romance and classic
 INSERT INTO BOOK_CATEGORIES

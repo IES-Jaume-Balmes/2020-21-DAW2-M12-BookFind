@@ -27,7 +27,13 @@ public class LineItemService {
         op.ifPresent(productInOrder -> { //Si el libro existe
             productInOrder.setQuantity(quantity);
             //TODO: REVISAR
+            ///NO FUNCIONA, TEST
+            BigDecimal actualPrice = new BigDecimal(productInOrder.getTotalPrice().toString());
+            BigDecimal cartPrice = new BigDecimal(user.getCart().getTotalMoney().toString());
+            BigDecimal price = new BigDecimal(String.valueOf(actualPrice.subtract(cartPrice)));
+
             productInOrder.setTotalPrice(productInOrder.getBook().getPrice().multiply(new BigDecimal(productInOrder.getQuantity())));
+            user.getCart().setTotalMoney(new BigDecimal(productInOrder.getTotalPrice().add(price).toString()));
             lineItemsRepository.save(productInOrder);
         });
     }
