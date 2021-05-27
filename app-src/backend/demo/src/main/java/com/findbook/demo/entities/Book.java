@@ -45,8 +45,8 @@ public class Book {
     @ManyToMany
     List<Category> categories;
 
-/*    @ManyToOne
-    Author autor;*/
+    @ManyToOne
+    private Author autor;
 
     public Book() {
 
@@ -63,6 +63,15 @@ public class Book {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
+
+    public Author getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Author autor) {
+        this.autor = autor;
+    }
+
     public Long getBookId() {
         return bookId;
     }

@@ -12,7 +12,7 @@ VALUES (4, 'Romance');
 
 -----------Books
 
-INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK)
+/*INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK)
 VALUES (1, 'ddsfa', 'science fiction novel by American author Orson Scott Card', 'ender_games.jpg',
         '9783161444484100', 'Enders Game ', 10, '1985-10-12', 100);
 
@@ -20,11 +20,11 @@ INSERT INTO BOOK (BOOK_ID, AUTHOR, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLI
 VALUES (2, 'ssdsd',
         'La historia es narrada por Jane Eyre quien a los diez años de edad es custodiada por su tía política, la señora Reed. El señor Reed, hermano de la madre de Jane, la toma a su cargo cuando queda huérfana, pero muriendo él mismo poco después',
         'Jane_Eyre.jpg',
-        '9783491484444100', 'Jane Eyre', 15.99, '1847-01-01', 100);
+        '9783491484444100', 'Jane Eyre', 15.99, '1847-01-01', 100);*/
 
 
 --------------Category
-INSERT INTO BOOK_CATEGORIES
+/*INSERT INTO BOOK_CATEGORIES
 VALUES (2, 1);----jane eyre have two categories, romance and classic
 INSERT INTO BOOK_CATEGORIES
 VALUES (2, 2);----jane eyre have two categories, romance and classic
@@ -33,7 +33,7 @@ VALUES (1, 2);----jane eyre have two categories, romance and classic
 INSERT INTO BOOK_CATEGORIES
 VALUES (2, 4);
 INSERT INTO BOOK_CATEGORIES
-VALUES (1, 3);
+VALUES (1, 3);*/
 
 /*select * from BOOK_CATEGORIES JOIN BOOK ON BOOK_ID = BOOK_BOOK_ID JOIN CATEGORY ON CATEGORY_ID = CATEGORIES_CATEGORY_ID*/
 

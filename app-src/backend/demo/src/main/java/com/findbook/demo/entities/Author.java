@@ -13,7 +13,6 @@ public class Author {
 
 
     @OneToMany
-    @JoinColumn(name = "authorId")
     private List<Book> books;
 
 
@@ -61,4 +60,5 @@ public class Author {
         this.books = books;
     }*/
     // </editor-fold>
+
 }
