@@ -35,7 +35,7 @@ export default {
   //     },
   //     deep: true,
   //   },
-  // },
+  // }
 
   watch: {
     showFilters(val) {
@@ -47,8 +47,8 @@ export default {
       md:12,
       showFilters: false,
       collectionParams: {
-        page: 1,
-        items: 40,
+        page: 0,
+        items: 2,
       },
       carrito: [],
     };

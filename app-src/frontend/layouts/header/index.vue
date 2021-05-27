@@ -4,6 +4,8 @@
       <v-avatar color="grey" rounded>
         <span class="white--text headline">BF</span>
       </v-avatar>
+
+      
     </v-col>
     <v-col :cols="6">
       <v-text-field
@@ -40,7 +42,9 @@
         </v-list>
       </v-menu>
       <v-btn icon x-large>
-        <v-icon @click="()=>$router.push({ path: 'add-stock/'  })"> mdi-plus-circle-outline</v-icon>
+        <v-icon @click="() => $router.push({ path: 'add-stock/' })">
+          mdi-plus-circle-outline</v-icon
+        >
       </v-btn>
     </v-col>
   </v-row>
@@ -53,12 +57,11 @@ export default {
   data: () => ({
     menu: false,
   }),
-  methods:{
+  methods: {
     // foo(){
     //         this.$router.push({ path: "add-stock/"  });
-
     // }
-  }
+  },
 };
 </script>
 

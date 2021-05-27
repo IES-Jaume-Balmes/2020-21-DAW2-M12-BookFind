@@ -10,7 +10,6 @@
         @change="(val) => (params.items = val)"
         :value="params.items"
       ></v-select>  -->
-     
     </v-col>
     <v-col cols="6" md="4" class="d-flex flex-row-reverse">
       <v-btn icon v-if="btnFilters" @click="btnFilters = false">
@@ -23,7 +22,8 @@
       <v-btn icon @click="params.page++" :disabled="btnStatus">
         <v-icon> mdi-chevron-right</v-icon>
       </v-btn>
-      <v-btn icon @click="params.page--" :disabled="params.page === 1">
+      <v-chip label>{{ params.page }}</v-chip>
+      <v-btn icon @click="params.page--" :disabled="params.page === 0">
         <v-icon> mdi-chevron-left</v-icon>
       </v-btn>
 
@@ -79,7 +79,7 @@ export default {
       numCarrito: 0,
       params: null,
       btnStatus: null,
-      itemsPerPage: [10, 20, 30, 40],
+      itemsPerPage: [2,4,6],
       btnFilters: null,
     };
   },
