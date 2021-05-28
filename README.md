@@ -160,6 +160,10 @@ e) Returns 1 book by id --> METHOD:GET
 
      books/{id num}
 
+f) Get books by name (TITLE) or similar names --> METHOD:GET
+
+      books/title/{bookName}
+
 ### Admin BOOK endpoints
 
 a) Crear a book books/new --> METHOD:POST
@@ -186,7 +190,7 @@ c) delate a book by its id --> METHOD:DELETE
 
     books/delate/{id}
 
-### 2) Cart controller  
+### 2) Cart controller
 
 a) Get the actual user cart (MUST BE LOGEDIN, USER)-->METHOD:GET
 
@@ -222,23 +226,27 @@ c)Change the quantity of lineItems (book) you will buy -->METHOD:PUT
 d) Delete an LineItem from the cart -->METHOD:DELETE
 
     /cart/{itemId}
+
 e) Check out and create a new order (buy) -->METHOD:POST
-    
+
     /cart/checkout
 
 ### 3) CATEGORY CONTROLLER (CLASSIC BOOK, ROMANTIC NOVEL, ETC)
+
 a)  Get all books category -->METHOD:GET
 
         books/category?pageSize=0&pageNumber=12&sort=id,desc
         sort is optional
+
 b) Return pagination by category -->METHOD:GET
-    
+
     books/category/{type}
     example: books/category/classic?pageSize=0&pageNumber=12&sort=id,desc
-                
+
 ### 4) User controller
+
 a) Create a new user METHOD:POST
-    
+
     /user/sign-up
     IMPORTANT: THIS WILL SEND AN EMAIL WITH TOKEN AUTH, IF YOU DONT ACEP IT, THE USER CAN NOT LOGIN
     POSTMAN EXAMPLE:
@@ -253,14 +261,14 @@ a) Create a new user METHOD:POST
     }
 
 b) login
-    
+
     /login
+
 c) logout
 
     /logout
 
 d)
-
 
 Project
 Link: [https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind](https://github.com/IES-Jaume-Balmes/2020-21-DAW2-M12-BookFind)

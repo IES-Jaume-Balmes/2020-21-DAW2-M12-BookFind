@@ -38,6 +38,7 @@ public class RegistrationService {
                         user.getPhone(),
                         user.getRole())
         );
+        //TODO: MODIFICAR POR URL DEL SERVER
         String link = "http://localhost:8080/user/sign-up/confirm?token=" + token;
         //We can validate the email before
         emailSender.send(user.getEmail(), buildEmail(user.getFirstName(), link));

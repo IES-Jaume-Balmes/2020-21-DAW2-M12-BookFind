@@ -16,10 +16,7 @@ public class UserController {
     @Autowired
     RegistrationService registrationService;
 
- /*  return new ResponseEntity(HttpStatus.CONFLICT);//The user exists 409
-                 return new ResponseEntity(HttpStatus.CREATED);*/
-
-
+    //TODO: GENERATE CFR TOKEN AUTHENTICATION
     @PostMapping("/sign-up")
     public String registerUser(@RequestBody User user) {
 
@@ -32,5 +29,15 @@ public class UserController {
         return registrationService.confirmToken(token);
     }
 
+    //TODO: Modificar un usuario
+/*    @PutMapping("/profile")
+    public ResponseEntity<User> update(@RequestBody User user, Principal principal) {
 
+        try {
+            if (!principal.getName().equals(user.getEmail())) throw new IllegalArgumentException();
+            return ResponseEntity.ok(userService.update(user));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }*/
 }

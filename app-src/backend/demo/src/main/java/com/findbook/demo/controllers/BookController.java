@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,7 +46,7 @@ public class BookController {
     }
 
     @GetMapping("/title/{bookName}")
-    public List<Book> showOne(@PathVariable("bookName") String bookName) {
+    public List<Book> showByBookName(@PathVariable("bookName") String bookName) {
         return booksService.findByTitle(bookName);
     }
 
@@ -64,26 +66,4 @@ public class BookController {
     }
 
 
-    @PostMapping("/books-image/save")
-    public String saveUser(@RequestParam("image") MultipartFile multipartFile) {
-
-/*        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        Book book = booksService.getOne((long) 1);
-        book.setImage(fileName);
-        Book savedBook = booksService.save(book);
-
-        String uploadDir = "book-images/" + book.getId();
-
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);*/
-/*
-        //return new RedirectView("/users", true);*/
-
-        try {
-            FileUploadUtil.saveImage(multipartFile);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
-        }
-        return "";
-    }
 }
