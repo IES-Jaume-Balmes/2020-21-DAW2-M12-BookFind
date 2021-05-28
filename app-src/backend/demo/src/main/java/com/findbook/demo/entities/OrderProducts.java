@@ -10,7 +10,7 @@ import java.util.Set;
 public class OrderProducts {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name = "id")
     private long oderId;
     private Date ordered;
     private Date shipped;
@@ -82,6 +82,10 @@ public class OrderProducts {
 
     public BigDecimal getTotal() {
         return total;
+    }
+
+    public Long getTotalLong() {
+        return total.longValue();
     }
 
     public void setTotal(BigDecimal total) {
