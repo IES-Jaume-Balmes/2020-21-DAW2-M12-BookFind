@@ -18,9 +18,8 @@ public class Cart {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private long cartId;
-    /*   private float ivaAmount;*/
     private BigDecimal totalMoney;
 
     @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER, orphanRemoval = true)
@@ -31,8 +30,7 @@ public class Cart {
     @JsonIgnore
     private User user;
 
-    public Cart(Date created, BigDecimal totalMoney) {
-        /*        this.ivaAmount = ivaAmount;*/
+    public Cart(BigDecimal totalMoney) {
         this.totalMoney = totalMoney;
     }
 

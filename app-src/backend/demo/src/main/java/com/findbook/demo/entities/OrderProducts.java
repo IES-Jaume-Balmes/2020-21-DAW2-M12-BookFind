@@ -23,13 +23,6 @@ public class OrderProducts {
     private String status;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
     private Set<LineItems> booksLineItems = new HashSet<>();
-
-    //TODO: ORDER TIENE USUARIO PERO NO CARRITO, QUITAR
-    @OneToOne
-    @JoinColumn(name = "cartId")
-    private Cart cart;
-
-
     @OneToOne
     @JoinColumn(name = "userId")
     @JsonIgnore
@@ -113,13 +106,6 @@ public class OrderProducts {
         this.booksLineItems = booksLineItems;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 
     public User getUser() {
         return user;
@@ -139,7 +125,6 @@ public class OrderProducts {
                 ", total=" + total +
                 ", status='" + status + '\'' +
                 ", booksLineItems=" + booksLineItems +
-                ", cart=" + cart +
                 ", user=" + user +
                 '}';
     }
