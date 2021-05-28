@@ -1,5 +1,6 @@
 package com.findbook.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -34,7 +35,7 @@ public class Book {
      */
     @ColumnDefault("0")
     private Integer productStatus;
-    /*  @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)*/
+    @JsonIgnore
     @OneToMany(mappedBy = "book", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<LineItems> cartItems;
 
@@ -47,9 +48,7 @@ public class Book {
     public Book() {
 
     }
-    /*INTO BOOK (BOOK_ID, DESCRIPTION, IMAGE, ISBN, TITLE, PRICE, PUBLISHED_DATE, PRODUCT_STOCK,AUTOR_AUTHOR_ID)
-VALUES (1, 'Novela romantica', 'orgulloyprejuicio.jpg', '9783161444484100', 'Orgullo y prejuicio ', 10.99, '1885-10-12', 100,1);*/
-
+    
     public Book(String isbn, String image, String name, Date year, String desc, BigDecimal price) {
         super();
         this.isbn = isbn;

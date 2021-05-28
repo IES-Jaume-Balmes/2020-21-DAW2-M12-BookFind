@@ -19,7 +19,7 @@ public class OrderProducts {
     private Date shipped;
     private String shipTo;
     private BigDecimal total;
-    //TODO: Enum for the status
+    //TODO: Enum for the status (OPTIONAL)
     private String status;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
     private Set<LineItems> booksLineItems = new HashSet<>();

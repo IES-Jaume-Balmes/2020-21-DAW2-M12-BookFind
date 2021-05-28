@@ -11,30 +11,23 @@ import java.math.BigDecimal;
 public class LineItems {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name = "id")
     private Long lineItemsId;
-
-    //TODO: Puede tener muchos libros, pero Stock (un libro ID, muchas cantidades)
     @ManyToOne
     @JoinColumn(name = "bookId")
     private Book book;
-
-
     @ManyToOne
     @JoinColumn(name = "cartId")
     @JsonIgnore
     private Cart cart;
-
-
-    //Un lineitem no puede ser empty
     @Min(1)
     private Integer quantity;
     private BigDecimal totalPrice;
 
     //TODO: ADD THE REFERENCE TO THE ORDER, ONE OR 0
-    @JsonIgnore //This can not be serializate/unserialize
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oderId")
+    @JsonIgnore
     private OrderProducts order;
 
     public LineItems(Book book, @Min(1) Integer quantity) {
@@ -45,11 +38,6 @@ public class LineItems {
 
     public LineItems() {
     }
-
-
-//TODO: ADD More info about the product, like productStock, categoryType, description etc
-    /*  @Min(0)
-    // private Integer productStock;*/
 
     // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
     public Long getLineItemsId() {

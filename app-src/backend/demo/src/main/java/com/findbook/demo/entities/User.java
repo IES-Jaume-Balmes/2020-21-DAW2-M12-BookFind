@@ -19,9 +19,7 @@ import java.util.Collections;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
-    /**
-     * El usuario tiene un carrito, la orden será una instancia
-     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
