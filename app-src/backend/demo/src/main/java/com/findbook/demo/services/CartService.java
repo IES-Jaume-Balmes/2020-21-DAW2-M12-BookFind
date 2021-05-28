@@ -8,6 +8,8 @@ import com.findbook.demo.entities.OrderProducts;
 import com.findbook.demo.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,28 +81,21 @@ public class CartService {
     ///Checkout
     //TODO: SI LA ORDEN NO EXISTE, ELIMINAR EN CASCADA LOS LINE ITEMS
     @Transactional
-    public void checkout(User user) {
+    public OrderProducts checkout(User user) {
         OrderProducts order = new OrderProducts(user);
-        //TODO: BORRAR
+
         order.setTotal(user.getCart().getTotalMoney());
         orderRepository.save(order);
-        // Delate the reference of the cart into the product, reduce the stock
-        // Loop throw all the available products in the cart and delete them
-        //TODO: the problem is probably here
+
         user.getCart().getLineItems().forEach(lineItems -> {
             lineItems.setCart(null);
-            //Flush the cart money
             user.getCart().setTotalMoney(new BigDecimal(0));
-            //user.getCart().setTotalMoney(new BigDecimal(0)); //Vaciar el carrito
-            //Each item is related to an order, they will no longer be in a cart
             lineItems.setOrder(order);
             booksService.delateFromStock(lineItems.getBook().getBookid(), lineItems.getQuantity());
-            booksService.delateFromStock(lineItems.getBook().getBookid(), lineItems.getQuantity());
             //Update each line-item y save it into the databases
-            lineItemsRepository.save(lineItems); //???
-
+            lineItemsRepository.save(lineItems);
         });
-
+        return order;
     }
 
 

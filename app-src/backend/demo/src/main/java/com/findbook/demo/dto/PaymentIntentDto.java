@@ -7,6 +7,7 @@ public class PaymentIntentDto {
     public enum Currency {USD, EUR}
 
     private String description;
+    
     private BigDecimal amount;
     //Tipo de moneda
     private Currency currency;

@@ -1,5 +1,8 @@
 package com.findbook.demo.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -19,15 +22,17 @@ public class OrderProducts {
     //TODO: Enum for the status
     private String status;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
-    private Set<LineItems> booksLineItems = new HashSet<>(); //Keyvalue
+    private Set<LineItems> booksLineItems = new HashSet<>();
 
-
+    //TODO: ORDER TIENE USUARIO PERO NO CARRITO, QUITAR
     @OneToOne
     @JoinColumn(name = "cartId")
     private Cart cart;
 
+
     @OneToOne
     @JoinColumn(name = "userId")
+    @JsonIgnore
     private User user;
 
     public OrderProducts(Date ordered, Date shipped, String shipTo, BigDecimal total) {
