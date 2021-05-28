@@ -1,29 +1,23 @@
 package com.findbook.demo.controllers;
 
-import com.findbook.demo.dao.UserRepository;
 import com.findbook.demo.entities.Book;
 import com.findbook.demo.entities.Cart;
 import com.findbook.demo.entities.LineItems;
 import com.findbook.demo.entities.User;
-import com.findbook.demo.form.ItemForm;
+import com.findbook.demo.dto.ItemForm;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.CartService;
 import com.findbook.demo.services.LineItemService;
 import com.findbook.demo.services.UserService;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -100,11 +94,10 @@ public class CartController {
     //TODO: Al hacer checkout no puede esatar EMPTY el carrito
     //We need more info like direction or somethin
     @PostMapping("/checkout")
-    public String checkout(Principal principal) {
+    public HttpStatus checkout(Principal principal) {
         //Instance of Principal object use "the string of the username
         User user = userService.findOne(principal.getName());// Email as username
-        System.out.println(user.getFirstName());
         cartService.checkout(user);
-        return "ok";
+        return HttpStatus.CREATED;
     }
 }

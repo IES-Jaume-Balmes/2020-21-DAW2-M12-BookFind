@@ -77,7 +77,7 @@ public class CartService {
     }
 
     ///Checkout
-
+    //TODO: SI LA ORDEN NO EXISTE, ELIMINAR EN CASCADA LOS LINE ITEMS
     @Transactional
     public void checkout(User user) {
         OrderProducts order = new OrderProducts(user);
@@ -100,7 +100,6 @@ public class CartService {
             lineItemsRepository.save(lineItems); //???
 
         });
-
 
     }
 

@@ -1,4 +1,4 @@
-package com.findbook.demo.form;
+package com.findbook.demo.dto;
 
 import lombok.Data;
 
