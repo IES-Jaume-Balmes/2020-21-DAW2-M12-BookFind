@@ -46,7 +46,7 @@ INSERT INTO category
 VALUES (16, 'Biography');
 -----------BOOK
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -74,7 +74,7 @@ VALUES (1, 15);
 --Add categories
 --book_categories book_categories  categories_id
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -99,7 +99,7 @@ INSERT INTO book_categories
 VALUES (1, 15);
 
 ----3
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -122,7 +122,7 @@ INSERT INTO book_categories
 VALUES (3, 5);
 
 ---4 Art
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -147,7 +147,7 @@ INSERT INTO book_categories
 VALUES (4, 11);
 --5
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -174,7 +174,7 @@ VALUES (5, 11);
 
 --6
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -199,8 +199,7 @@ INSERT INTO book_categories
 VALUES (6, 11);
 
 --7
-
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -229,7 +228,7 @@ VALUES (7, 16);
 --8
 
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -256,7 +255,7 @@ VALUES (8, 11);
 
 --9
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -282,8 +281,7 @@ INSERT INTO book_categories
 VALUES (9, 11);
 
 --10
-
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -310,7 +308,7 @@ VALUES (10, 11);
 
 --11
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -341,7 +339,7 @@ VALUES (11, 15);
 
 ---12
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -370,8 +368,7 @@ INSERT INTO book_categories
 VALUES (12, 15);
 
 ---13
-
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -402,7 +399,7 @@ VALUES (13, 15);
 
 ---14
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -433,7 +430,7 @@ VALUES (14, 15);
 
 ---15
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,
@@ -463,7 +460,7 @@ VALUES (15, 15);
 
 ---16
 
-INSERT INTO book (id,
+INSERT INTO book (book_id,
                   author,
                   description,
                   image,

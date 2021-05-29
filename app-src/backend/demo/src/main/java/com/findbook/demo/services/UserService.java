@@ -92,11 +92,18 @@ public class UserService implements UserDetailsService {
     public User findOne(String email) {
         return userRepository.findByUsername(email);
     }
-    //Login user
 
 
-    //GetCurrent user
+    @Transactional
+    public User update(User user) {
+        User oldUser = userRepository.findByEmail(user.getEmail());
+        String encodePassword = bCryptPasswordEncoder.encode(user.getPassword());
+        oldUser.setPassword(encodePassword);
+        oldUser.setFirstName(user.getFirstName());
+        oldUser.setLastName(user.getFirstName());
+        oldUser.setPhone(user.getPhone());
+        oldUser.setUsername(user.getUsername());
+        return userRepository.save(oldUser);
+    }
 
-
-    //List of users
 }

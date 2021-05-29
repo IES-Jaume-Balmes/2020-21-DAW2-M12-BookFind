@@ -2,6 +2,7 @@ package com.findbook.demo.controllers;
 
 import com.findbook.demo.entities.Book;
 
+import com.findbook.demo.entities.Category;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.utils.FileUploadUtil;
 import lombok.SneakyThrows;
@@ -65,5 +66,8 @@ public class BookController {
         return booksService.getBooksPage(page);
     }
 
-
+    @GetMapping("/author/{author}")
+    public List<Book> showByBookAuthor(@PathVariable("author") String bookName, Pageable pageable) {
+        return booksService.findByTitle(bookName);
+    }
 }

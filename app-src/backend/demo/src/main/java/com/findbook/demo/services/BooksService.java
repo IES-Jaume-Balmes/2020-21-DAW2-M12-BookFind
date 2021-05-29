@@ -27,16 +27,9 @@ public class BooksService {
 
     @SneakyThrows
     public Book findOne(Long productId) {
-        // .orElseThrow(() -> new EntityNotFoundException(id)
-        // Optional<Book> bookInfo = bookRepository.findById(productId);
-
         return bookRepository.findById(productId).orElseThrow(() -> new BookExistsException("The book does not exists"));
     }
 
-
- /*   public Optional<Book> findOneById(Long productId) {
-        return bookRepository.findById(productId);
-    }*/
 
     public Page<Book> getBooksPage(Pageable page) {
         return bookRepository.findAll(page);
@@ -44,20 +37,20 @@ public class BooksService {
 
 
     @SneakyThrows
-    public ResponseEntity createBook(Book book) {
+    public ResponseEntity<Book> createBook(Book book) {
         boolean bookExists = bookRepository.findByIsbn(book.getIsbn()).isPresent();
         if (bookExists) {
             throw new BookExistsException();
         }
         bookRepository.save(book);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<Book>(book, HttpStatus.CREATED);
     }
 
     @SneakyThrows
     @Transactional
     public Book updateBook(Book book) {
-        Book existingBook = bookRepository.findById(book.getBookid()).orElse(null);
-        if (existingBook == null) throw new BookExistsException("The book you'ere trying to edit does not exists");
+        Book existingBook = bookRepository.findById(book.getBook_id()).orElse(null);
+        if (existingBook == null) throw new BookExistsException("The book you're trying to edit does not exists");
         existingBook.setIsbn(book.getIsbn());
         existingBook.setImage(book.getImage());
         existingBook.setTitle(book.getTitle());
@@ -68,9 +61,9 @@ public class BooksService {
         return bookRepository.save(existingBook);
     }
 
-    public ResponseEntity deleteBook(Long id) {
+    public ResponseEntity<String> deleteBook(Long id) {
         bookRepository.deleteById(id);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(String.format("User with id:%d was deleted", id), HttpStatus.OK);
     }
 
     @SneakyThrows
@@ -78,7 +71,6 @@ public class BooksService {
     public void delateFromStock(Long bookId, Integer quantityOfBooks) {
         Book bookToUpdate = findOne(bookId);
         int updateStock = bookToUpdate.getProductStock() - quantityOfBooks;
-        //TODO: Error, not enoug products in stock
         if (updateStock <= 0) throw new NotEnoughProductsInStockException();
         bookToUpdate.setProductStock(updateStock);
         bookRepository.save(bookToUpdate);
@@ -89,7 +81,10 @@ public class BooksService {
         return bookRepository.findByCategories(category);
     }
 
-    public List<Book> findByTitle(String bookId) {
-        return bookRepository.findByTitleContainingIgnoreCase(bookId);
+
+    public List<Book> findByTitle(String title) {
+        return bookRepository.findByTitleContainingIgnoreCase(title);
     }
+
+
 }

@@ -1,6 +1,5 @@
 package com.findbook.demo.controllers;
 
-import com.findbook.demo.entities.Book;
 import com.findbook.demo.entities.Category;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.CategoryService;
@@ -8,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -34,14 +30,11 @@ public class BookCategoryController {
      * @return list of objects
      */
 
+    //TODO:TESTEAR,DUPLICAR EN AUTHOR
     @GetMapping("/category/{type}")
-    public List<Book> showOne(@PathVariable("type") String categoryType, Pageable pageable) {
+    public Page<Category> showOne(@PathVariable("type") String categoryType, Pageable pageable) {
 
-        Category category = categoryService.findByCategory(categoryType);
-        List<Book> booksByCategory = booksService.findByCategories(category);
-
-        return booksByCategory;
+        return categoryService.findAllByCategory(categoryType, pageable);
     }
-    //TODO: Get by one, none pagination
 
 }

@@ -16,8 +16,8 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, name = "id")
-    private Long Bookid;
+    @Column(unique = true)
+    private Long Book_id;
     @Column(unique = true)
     private String isbn;
     private String image;
@@ -41,6 +41,7 @@ public class Book {
     @OneToMany(mappedBy = "book", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<LineItems> cartItems;
 
+    /*  @JsonIgnore*/
     @ManyToMany
     List<Category> categories;
 
@@ -75,12 +76,12 @@ public class Book {
         this.author = autor;
     }
 
-    public Long getBookid() {
-        return Bookid;
+    public Long getBook_id() {
+        return Book_id;
     }
 
-    public void setBookid(Long bookId) {
-        this.Bookid = bookId;
+    public void setBook_id(Long bookId) {
+        this.Book_id = bookId;
     }
 
     public String getIsbn() {
@@ -175,7 +176,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "bookId=" + Bookid +
+                "bookId=" + Book_id +
                 ", isbn='" + isbn + '\'' +
                 ", image='" + image + '\'' +
                 ", title='" + title + '\'' +

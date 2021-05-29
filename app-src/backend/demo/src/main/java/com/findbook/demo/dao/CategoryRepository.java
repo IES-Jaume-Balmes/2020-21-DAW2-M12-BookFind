@@ -2,6 +2,9 @@ package com.findbook.demo.dao;
 
 import com.findbook.demo.entities.Category;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
@@ -15,5 +18,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     Category findOneByCategory(String name);
 
-  //  List<Category> findByListBooksAndCategory(String category);
+
+    Page<Category> findAllByCategory(String category, Pageable pageable);
+
 }
