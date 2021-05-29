@@ -23,13 +23,15 @@ public class Book {
     private String image;
     private String title;
     private Date publishedDate;
+    @Lob
+    @Column(length = 100000)
     private String description;
     private BigDecimal price;
     //New features
     @NotNull
     @Min(0)
     private Integer productStock;
-
+    private Integer numOfPages;
     /**
      * 0: on-sale 1: off-sale
      */
@@ -42,31 +44,35 @@ public class Book {
     @ManyToMany
     List<Category> categories;
 
-    @ManyToOne
-    private Author autor;
+    /*    @ManyToOne
+        private Author autor;*/
+    private String author;
 
     public Book() {
 
     }
-    
-    public Book(String isbn, String image, String name, Date year, String desc, BigDecimal price) {
+
+    public Book(String isbn, String author, String image, String name, Date year, String desc, BigDecimal price, Integer numOfPages) {
         super();
         this.isbn = isbn;
+        this.author = author;
         this.image = image;
         this.title = name;
         this.publishedDate = year;
         this.description = desc;
         this.price = price;
+        this.numOfPages = numOfPages;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
+// <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
 
-    public Author getAutor() {
-        return autor;
+
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAutor(Author autor) {
-        this.autor = autor;
+    public void setAuthor(String autor) {
+        this.author = autor;
     }
 
     public Long getBookid() {
@@ -156,6 +162,14 @@ public class Book {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public Integer getNumOfPages() {
+        return numOfPages;
+    }
+
+    public void setNumOfPages(Integer numOfPages) {
+        this.numOfPages = numOfPages;
     }
 
     @Override

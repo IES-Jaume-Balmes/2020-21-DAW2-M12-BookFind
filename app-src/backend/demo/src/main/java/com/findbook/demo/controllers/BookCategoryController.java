@@ -33,7 +33,7 @@ public class BookCategoryController {
      * @param /{type} Nombre de la categoria
      * @return list of objects
      */
-    //TODO: ADD PAGINATION BY CATEGORY
+
     @GetMapping("/category/{type}")
     public List<Book> showOne(@PathVariable("type") String categoryType, Pageable pageable) {
 
@@ -42,5 +42,6 @@ public class BookCategoryController {
 
         return booksByCategory;
     }
+    //TODO: Get by one, none pagination
 
 }

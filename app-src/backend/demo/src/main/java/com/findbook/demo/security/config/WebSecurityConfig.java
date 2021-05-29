@@ -56,37 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         });
 
-
-//        TODO: CSRF AUTH, MUST BE ENABLE
-/*        http
-                .csrf().disable()
-                .authorizeRequests().antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-                .and()
-                .authorizeRequests().antMatchers("/cart/**").hasAnyAuthority("USER")
-                .and()
-                .authorizeRequests().antMatchers("/**").permitAll()
-                .anyRequest()
-                .authenticated().and()
-                .formLogin();
-        ;*/
-
-/*        http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/**", "/h2-console/**") //Permit any conection in this endpoint
-                .permitAll()
-                .anyRequest()
-                .authenticated().and()
-                .formLogin();*/
-
-        //H2
-        http.headers().frameOptions().disable();
-
-
-        http.formLogin()
-                .failureUrl("/login_error");
-
-
+/*    http.formLogin()
+                .failureUrl("/login_error");*/
     }
 
 
