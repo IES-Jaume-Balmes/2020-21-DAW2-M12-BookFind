@@ -2,7 +2,7 @@
   <v-list-item>
     <v-list-item-avatar>
       <v-avatar rounded size="56">
-        <img src="https://picsum.photos/300/300" />
+        <img :src="book.image" />
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
