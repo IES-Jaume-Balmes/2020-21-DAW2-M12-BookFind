@@ -107,12 +107,11 @@ public class BookController {
     }
 
     //AUTHOR
-/*    @GetMapping("/author/{type}")
-    public Page<Book> showByAuthor(@PathVariable("type") String categoryType, Pageable pageable) {
-        Category find = categoryService.findByCategory(categoryType);
-
-        return booksService.findAllByCategories(find, pageable);
-    }*/
+    @GetMapping("/author/{name}")
+    public Page<Book> showByAuthor(@PathVariable("name") String fullName, Pageable pageable) {
+        Author author = authorService.findByAuthorName(fullName);
+        return booksService.getAllBooksByAuthor(author, pageable);
+    }
 
     /**
      * @param authorId id of author to find

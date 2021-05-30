@@ -28,8 +28,8 @@ public class AuthorService {
         return author.get();
     }
 
- /*   public Author findByCategory(String category) {
-        return authorRepository.findByFullName(category);
+    public Author findByAuthorName(String name) {
+        return authorRepository.findOneByFullName(name);
     }
-*/
+
 }
