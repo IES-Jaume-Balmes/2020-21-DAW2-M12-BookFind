@@ -6,7 +6,7 @@ INSERT INTO category
 VALUES (2, 'Horror');
 
 INSERT INTO category
-VALUES (3, 'Science Fiction');
+VALUES (3, 'Science_Fiction');
 
 INSERT INTO category
 VALUES (4, 'Romance');
@@ -15,7 +15,7 @@ INSERT INTO category
 VALUES (5, 'Art');
 
 INSERT INTO category
-VALUES (6, 'Historical Fiction');
+VALUES (6, 'Historical_Fiction');
 
 INSERT INTO category
 VALUES (7, 'History');
@@ -48,13 +48,13 @@ INSERT INTO category
 VALUES (16, 'Biography');
 
 INSERT INTO category
-VALUES (17, 'Mind, body and spirit');
+VALUES (17, 'Mind,_body_and_spirit');
 
 INSERT INTO category
-VALUES (18, 'Crimes and mystery');
+VALUES (18, 'Crimes_and_mystery');
 
 INSERT INTO category
-VALUES (18, 'Literary essays');
+VALUES (19, 'Literary_essays');
 
 
 
