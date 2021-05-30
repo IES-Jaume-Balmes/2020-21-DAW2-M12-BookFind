@@ -4,6 +4,7 @@ import com.findbook.demo.entities.Book;
 
 import com.findbook.demo.entities.User;
 import com.findbook.demo.services.BooksService;
+import com.findbook.demo.services.ImageService;
 import com.findbook.demo.services.UserService;
 import com.findbook.demo.utils.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,38 +27,41 @@ public class AdminController {
     private BooksService booksService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ImageService imageService;
 
     @PostMapping("/books/new")
-    public ResponseEntity create(@RequestBody Book product) {
-
+    public ResponseEntity<Book> create(@RequestBody Book product) {
         return booksService.createBook(product);
     }
 
-    @PutMapping("/books//update")
+    @PutMapping("/books/update")
     public Book updateProduct(@RequestBody Book product) {
         return booksService.updateBook(product);
     }
 
 
     @DeleteMapping("/books/delete/{id}")
-    public ResponseEntity deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
         return booksService.deleteBook(id);
     }
 
 
     @PostMapping("/books/save/img")
-    public ResponseEntity saveBookWithImage(@RequestParam("image") MultipartFile multipartFile, Book product) {
+    public HttpStatus saveBookWithImage(@RequestParam("image") MultipartFile multipartFile, Book product) {
         try {
-            FileUploadUtil.saveImage(multipartFile);
+            imageService.uploadImage(multipartFile);
+            if (product != null)
+                create(product);
         } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return HttpStatus.BAD_REQUEST;
         }
-        create(product);
-        return new ResponseEntity(HttpStatus.OK);
+
+        return HttpStatus.OK;
     }
 
     //Admin user methods, update, delete and create (assign roles)
-    @DeleteMapping("/vdelete/{email}")
+    @DeleteMapping("/delete/{email}")
     public ResponseEntity<User> deleteAcount(@PathVariable("email") String email) {
         User delete = userService.findOne(email);
         if (delete != null) {
@@ -79,4 +83,5 @@ public class AdminController {
             return ResponseEntity.badRequest().build();
         }
     }
+
 }

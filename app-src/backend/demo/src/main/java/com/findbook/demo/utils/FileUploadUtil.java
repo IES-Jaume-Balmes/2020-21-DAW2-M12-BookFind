@@ -15,7 +15,8 @@ public class FileUploadUtil {
     @SneakyThrows
     public static void saveImage(MultipartFile image) {
         /*Folder in the server*/
-        String folderMain = "/media/images/books/";
+
+        String folderMain = "/home/barbara/";
 
         byte[] bytes = image.getBytes();
         Path path = Paths.get(folderMain + image.getOriginalFilename());
@@ -29,4 +30,5 @@ public class FileUploadUtil {
         }
 
     }
+
 }

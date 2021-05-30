@@ -32,18 +32,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {//Acces to http security
+
         http.csrf().disable();
         http.headers().disable();
 
-        http.authorizeRequests().antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+        http.authorizeRequests().antMatchers("/no/**").hasAnyAuthority("ADMIN")
                 .and()
                 .authorizeRequests().antMatchers("/cart/**").hasAnyAuthority("USER")
                 .and()
                 .authorizeRequests().antMatchers("/**").permitAll()
                 .anyRequest()
-                .authenticated();/*.and()
-                .formLogin();
-        */
+                .authenticated();
+
 
         http.httpBasic().authenticationEntryPoint(new AuthenticationEntryPoint() {
 
