@@ -86,5 +86,11 @@ public class BooksService {
         return bookRepository.findByTitleContainingIgnoreCase(title);
     }
 
+    public Page<Book> findAllByCategories(Category category, Pageable pageable) {
+        return bookRepository.findAllByCategories(category, pageable);
+    }
 
+/*    public Page<Book> findByAuthorPage(String author, Pageable pageable) {
+        return bookRepository.findByAuthorContainingIgnoreCase(author, pageable);
+    }*/
 }

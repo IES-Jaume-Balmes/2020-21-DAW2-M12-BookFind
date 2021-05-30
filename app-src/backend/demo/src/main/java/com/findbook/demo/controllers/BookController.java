@@ -4,6 +4,7 @@ import com.findbook.demo.entities.Book;
 
 import com.findbook.demo.entities.Category;
 import com.findbook.demo.services.BooksService;
+import com.findbook.demo.services.CategoryService;
 import com.findbook.demo.utils.FileUploadUtil;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ import java.util.Objects;
 public class BookController {
     @Autowired
     private BooksService booksService;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("/{bookId}")
     public Book showOne(@PathVariable("bookId") Long bookId) {
@@ -70,4 +73,28 @@ public class BookController {
     public List<Book> showByBookAuthor(@PathVariable("author") String bookName, Pageable pageable) {
         return booksService.findByTitle(bookName);
     }
+
+    /**
+     * @param categoryType String for example 'Classics'
+     * @param pageable     Classics?pageSize=5&pageNumber=0
+     * @return Page<Books> list of books by category
+     */
+    @GetMapping("/category/{type}")
+    public Page<Book> showByCategory(@PathVariable("type") String categoryType, Pageable pageable) {
+        Category find = categoryService.findByCategory(categoryType);
+        return booksService.findAllByCategories(find, pageable);
+    }
+
+    /**
+     * @param categoryType the id of the category
+     * @param pageable     /category/id/1?pageSize=5&pageNumber=0
+     * @return Page<Books> list of books by category
+     */
+    @GetMapping("/category/id/{number}")
+    public Page<Book> showByCategoryId(@PathVariable("number") Long categoryType, Pageable pageable) {
+        Category find = categoryService.findOneByCategoryId(categoryType);
+        return booksService.findAllByCategories(find, pageable);
+    }
+
+
 }

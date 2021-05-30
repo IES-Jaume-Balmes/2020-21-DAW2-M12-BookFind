@@ -58,4 +58,17 @@ public class UserController {
         }
 
     }
+
+    //Delete the own username
+    @DeleteMapping("/delete/{email}")
+    public ResponseEntity<User> deleteAcount(@PathVariable("email") String email, Principal principal) {
+        // userService.ge
+        if (principal.getName().equals(email)) {
+            User delete = userService.findOne(email);
+            userService.deleteUser(delete);
+            if (userService.findOne(email) == null)
+                return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
+    }
 }

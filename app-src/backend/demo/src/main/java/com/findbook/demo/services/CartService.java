@@ -1,11 +1,8 @@
 package com.findbook.demo.services;
 
 import com.findbook.demo.dao.*;
-import com.findbook.demo.entities.Cart;
-import com.findbook.demo.entities.LineItems;
+import com.findbook.demo.entities.*;
 
-import com.findbook.demo.entities.OrderProducts;
-import com.findbook.demo.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

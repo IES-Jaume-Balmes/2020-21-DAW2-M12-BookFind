@@ -5,6 +5,8 @@ import com.findbook.demo.entities.Book;
 import com.findbook.demo.entities.Category;
 import com.findbook.demo.entities.ConfirmationToken;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,8 +22,14 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findByCategories(Category category);
 
-  
+
     List<Book> findByTitleContainingIgnoreCase(String title);
 
+    Page<Book> findAllByCategories(Category category, Pageable pageable);
+
+
+    List<Book> findBookByAuthorContainingIgnoreCase(String Author);
+
+    //TODO: FIND ALL
 
 }

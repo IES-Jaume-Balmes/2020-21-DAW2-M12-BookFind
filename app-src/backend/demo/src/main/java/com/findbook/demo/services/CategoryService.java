@@ -2,14 +2,14 @@ package com.findbook.demo.services;
 
 import com.findbook.demo.dao.CategoryRepository;
 import com.findbook.demo.entities.Category;
+import com.findbook.demo.exception.CategoryExistsException;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,5 +32,12 @@ public class CategoryService {
         return categoryRepository.findAllByCategory(category, pageable);
     }
 
+    @SneakyThrows
+    public Category findOneByCategoryId(Long id) {
+        Optional<Category> category = categoryRepository.findById(id);
+        if (!category.isPresent())
+            throw new CategoryExistsException();
+        return category.get();
+    }
 
 }
