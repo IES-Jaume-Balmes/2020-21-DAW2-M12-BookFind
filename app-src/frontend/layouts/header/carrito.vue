@@ -7,14 +7,22 @@
         </v-btn>
       </template>
 
-      <v-list>
-        <v-card>
+      
+        <v-card elevation="0" class="mx-auto my-12">
           <v-card-text>
             <v-list v-for="book in books" :key="book.id">
-              <v-list-item>
+              <v-list-item
+                @click="
+                  () =>
+                    $router.push({
+                      path:
+                        $route.name == 'index' ? `book/${book.id}` : `/book/${book.id}`,
+                    })
+                "
+              >
                 <v-list-item-avatar>
                   <v-avatar rounded size="56">
-                    <img src="https://picsum.photos/300/300" />
+                    <img :src="book.book.image" />
                   </v-avatar>
                 </v-list-item-avatar>
                 <v-list-item-content>
@@ -29,10 +37,9 @@
             </v-list>
           </v-card-text>
           <v-card-actions class="d-flex flex-row-reverse">
-            <v-btn class="mr-4" color="primary" to="/register">BUY</v-btn>
+            <v-btn class="mr-4" color="primary" to="/pay">BUY</v-btn>
           </v-card-actions>
         </v-card>
-      </v-list>
     </v-menu>
   </div>
 </template>
@@ -48,6 +55,7 @@ export default {
     menu: false,
     books: null,
   }),
+ 
 };
 </script>
 

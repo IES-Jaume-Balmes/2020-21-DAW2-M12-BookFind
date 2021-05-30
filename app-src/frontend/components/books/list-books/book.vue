@@ -14,7 +14,7 @@
         {{ book.author.fullName }}
 
         <div v-for="categoria in book.categories" :key="categoria.category_id">
-          <v-chip x-small outlined>{{ categoria.category }}</v-chip>
+          <v-chip x-small outlined style="margin-left: 10px;" disabled>{{ categoria.category }}</v-chip>
         </div>
       </v-list-item-subtitle>
     </v-list-item-content>
@@ -34,13 +34,6 @@
 export default {
   props: ["book"],
 
-  mounted() {},
-  // watch: {
-  //   cantidad() {
-  //     this.$emit("update-carrito");
-  //   },
-  // },
-
   data() {
     return {
       cantidad: 0,
@@ -55,8 +48,7 @@ export default {
         book: this.book,
         cantidad: this.cantidad,
       });
-      // console.log(this.book);
-      // this.$emit("update-carrito");
+
     },
     delBook() {
       this.cantidad--;
@@ -65,7 +57,6 @@ export default {
         book: this.book,
         cantidad: this.cantidad,
       });
-      // this.$emit("update-carrito");
     },
   },
 };

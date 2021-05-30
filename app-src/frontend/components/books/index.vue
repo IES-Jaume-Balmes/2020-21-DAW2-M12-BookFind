@@ -9,10 +9,9 @@
 import ListBooks from "./list-books";
 import ActionBar from "./action-bar";
 import Filters from "./filters";
-import Header from "./header";
 
 export default {
-  components: { ListBooks, ActionBar, Filters, Header },
+  components: { ListBooks, ActionBar, Filters },
 
 
   mounted() {

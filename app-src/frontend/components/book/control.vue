@@ -2,6 +2,9 @@
   <v-card elevation="0" class="mx-auto my-12">
     <v-card-title>{{ book.title }}</v-card-title>
     <v-card-subtitle>{{ book.price }}</v-card-subtitle>
+    <v-card-text>
+      {{ book.description }}
+    </v-card-text>
 
     <v-card-actions class="d-flex flex-row-reverse">
       <v-btn
@@ -21,10 +24,13 @@
       </v-btn>
     </v-card-actions>
     <v-card-actions class="d-flex flex-row-reverse">
-      <v-btn color="primary" :disabled="!$store.state.books.userType"
+      <v-btn
+        color="primary"
+        :disabled="!$store.state.books.userType"
+        @click="add"
         >Add</v-btn
       >
-      <v-btn class="mr-4" :disabled="!$store.state.books.userType">buy</v-btn>
+      <v-btn class="mr-4" :disabled="!$store.state.books.userType" to="/pay">buy</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -35,5 +41,15 @@ export default {
   data: () => ({
     cantidad: 1,
   }),
+  methods:{
+    add(){
+     
+      this.$store.commit("books/setCarrito", {
+        id: this.book.bookId,
+        book: this.book,
+        cantidad: this.cantidad,
+      });
+    }
+  }
 };
 </script>
