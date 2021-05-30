@@ -14,7 +14,6 @@
             :book="book"
             @update-carrito="$emit('update-carrito')"
           />
-            <!-- :carrito="carrito" -->
           <v-divider></v-divider>
         </v-list>
       </div>
