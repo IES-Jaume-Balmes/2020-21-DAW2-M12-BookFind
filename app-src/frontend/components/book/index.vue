@@ -4,6 +4,9 @@
       <Detalle :book="book" />
     </v-col>
     <v-col md="4"> {{ book_id }}</v-col>
+    <v-col md="12">
+
+    </v-col>
     <!-- <v-col md="12" v-for="categoria in books_categoria" :key="categoria.id">
       <v-card>
         <v-card-title
@@ -48,8 +51,11 @@ export default {
   components: { Detalle },
   mounted() {
     this.getBook();
+    this.getBooks();
   },
+
   data: () => ({
+    url:"http://localhost:8080/",
     book: null,
     books_categoria: [],
     model: null,
@@ -61,20 +67,16 @@ export default {
       });
     },
 
-    getBooks(id, name) {
+    getBooks() {
       this.$axios
-        .get(`https://www.etnassoft.com/api/v1/get/?category_id=${id}`)
+        .get(`http://localhost:8080/books/category/Classics?pageSize=50&pageNumber=0&sort=id,desc`)
         .then((response) => {
-          this.books_categoria.push({
-            id: id,
-            name: name,
-            books: response.data,
-          });
+          console.log(response);
         });
     },
     getBook() {
       this.$axios
-        .get(`http://localhost:8080/books/${this.book_id}`)
+        .get(`${this.url}books/${this.book_id}`)
         .then((response) => {
           console.log(response.data);
            this.book = response.data;

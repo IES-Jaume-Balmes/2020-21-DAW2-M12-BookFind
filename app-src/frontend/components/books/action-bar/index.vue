@@ -1,99 +1,82 @@
 <template>
-  <v-row v-if="params">
-    <v-col cols="12" sm="6" md="8" style="display: flex">
-      <!-- <v-select
-        label="Ordenar"
-        dense
-        outlined
-        :items="itemsPerPage"
-        small-chips
-        @change="(val) => (params.items = val)"
-        :value="params.items"
-      ></v-select>  -->
-    </v-col>
-    <v-col cols="6" md="4" class="d-flex flex-row-reverse">
-      <v-btn icon v-if="btnFilters" @click="btnFilters = false">
+  <v-row>
+    <v-col cols="12" md="5"> </v-col>
+
+    <v-col cols="6" md="7" class="d-flex flex-row-reverse">
+      <!-- <v-btn icon v-if="btnFilters" @click="btnFilters = false">
         <v-icon>mdi-dock-left</v-icon>
       </v-btn>
       <v-btn icon v-else @click="btnFilters = true">
         <v-icon>mdi-dock-right</v-icon>
-      </v-btn>
+      </v-btn> -->
 
-      <v-btn icon @click="params.page++" :disabled="btnStatus">
+      <v-btn icon @click="collectionParams.pageNumber++">
         <v-icon> mdi-chevron-right</v-icon>
       </v-btn>
-      <v-chip label>{{ params.page }}</v-chip>
-      <v-btn icon @click="params.page--" :disabled="params.page === 0">
+      <v-chip disabled label outlined>{{ numPag }}</v-chip>
+      <v-btn
+        icon
+        @click="collectionParams.pageNumber--"
+        :disabled="collectionParams.pageNumber === 0"
+      >
         <v-icon> mdi-chevron-left</v-icon>
       </v-btn>
-
-      <!-- <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
-            <v-icon> mdi-cart-outline</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item v-for="(item, i) in carrito" :key="i">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-      <v-chip label outlined>
-        {{ carrito.length }}
-      </v-chip> -->
       <v-select
-        label="libros"
+        label="Sort"
         dense
         outlined
-        :items="itemsPerPage"
+        :items="sort"
         small-chips
-        @change="(val) => (params.items = val)"
-        :value="params.items"
-      ></v-select>
+        @change="(val) => (collectionParams.sort = val)"
+        :value="collectionParams.sort"
+      />
+      <v-select
+        label="Sort by"
+        dense
+        outlined
+        :items="sortBy"
+        small-chips
+        @change="(val) => (collectionParams.sortBy = val)"
+        :value="collectionParams.sortBy"
+      />
+      <v-select
+        label="Books"
+        dense
+        outlined
+        :items="pageSizes"
+        small-chips
+        @change="(val) => (collectionParams.pageSize = val)"
+        :value="collectionParams.pageSize"
+      />
     </v-col>
   </v-row>
 </template>
 
 <script>
 export default {
-  props: ["collectionParams", "carrito"],
+  props: ["collectionParams"],
   watch: {
-    params: {
-      handler() {
-        this.$emit("change-params", this.params);
-      },
-      deep: true,
-    },
     btnFilters(val) {
       this.$emit("change-view", val);
     },
+    collectionParams: {
+      handler() {
+        this.numPag = this.collectionParams.pageNumber + 1;
+      },
+      deep: true,
+    },
   },
   mounted() {
-    this.params = this.collectionParams;
-    this.statusBtn();
+    this.numPag = this.collectionParams.pageNumber + 1;
   },
   data() {
     return {
-      numCarrito: 0,
-      params: null,
-      btnStatus: null,
-      itemsPerPage: [2,4,6],
+      numPag: 0,
+      pageSizes: [2, 4, 6],
+      sortBy: ["title", "publishedDate", "description", "price", "categories"],
+      sort: ["asc", "desc"],
       btnFilters: null,
     };
-  },
-
-  methods: {
-    async statusBtn() {
-      let page = this.params.page;
-      const response = await this.$axios(
-        `https://www.etnassoft.com/api/v1/get/?results_range=${page++},${
-          this.params.items
-        }`
-      );
-      this.btnStatus = response.data.length == 0;
-    },
   },
 };
 </script>

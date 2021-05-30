@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <pre v-for="book in books" :key="book.bookId">{{book}}</pre> -->
     <v-progress-circular
       v-if="loading"
       :size="100"
@@ -13,10 +12,9 @@
         <v-list v-for="book in books" :key="book.bookId">
           <Book
             :book="book"
-            @add-book="pushCarrito"
-            @del-book="deleteBook"
-            :carrito="carrito"
+            @update-carrito="$emit('update-carrito')"
           />
+            <!-- :carrito="carrito" -->
           <v-divider></v-divider>
         </v-list>
       </div>
@@ -39,41 +37,28 @@ export default {
       },
       deep: true,
     },
-    carrito(val) {
-      this.$emit("carrito", val);
-      console.info("carrito ", val);
-    },
+    // carrito(val) {
+    //   this.$emit("carrito", val);
+    //   // console.info("carrito ", val);
+    // },
   },
   data() {
     return {
       loading: false,
       books: [],
-      carrito: [],
-      url:"http://localhost:8080/books/page"
-      // url: "https://www.etnassoft.com/api/v1/get/",
+      // carrito: [],
+      url: "http://localhost:8080/books/page",
     };
   },
   methods: {
-    pushCarrito(book) {
-      this.carrito.push(book);
-    },
-    deleteBook(book) {
-      this.carrito.forEach((b, i) => {
-        if (b === book) {
-          this.carrito.splice(i, 1);
-        }
-      });
-    },
     getBooks() {
       this.loading = true;
       this.$axios
         .get(
-          // `${this.url}?results_range=${this.collectionParams.page},${this.collectionParams.items}`
-          `${this.url}?pageSize=${this.collectionParams.items}&pageNumber=${this.collectionParams.page}`
+          `${this.url}?pageSize=${this.collectionParams.pageSize}&pageNumber=${this.collectionParams.pageNumber}&sort=${this.collectionParams.sortBy},${this.collectionParams.sort}`
         )
         .then((response) => {
           this.loading = false;
-          // console.log(response.data.content);
           this.books = response.data.content;
         });
     },

@@ -13,7 +13,12 @@
       ></v-text-field>
     </v-col>
     <v-col class="d-flex flex-row-reverse">
-      <v-menu offset-y v-model="menu" :close-on-content-click="false">
+      <v-menu
+        offset-y
+        v-model="menu"
+        :close-on-content-click="false"
+        v-if="!$store.state.books.userType"
+      >
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on" x-large>
             <v-icon> mdi-account-circle</v-icon>
@@ -22,43 +27,62 @@
 
         <v-list>
           <v-list-item>
-            <Login />
+            <Login @update-user="$emit('update-user')" />
           </v-list-item>
         </v-list>
       </v-menu>
-      <v-menu offset-y :close-on-content-click="false">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on" x-large>
-            <v-icon> mdi-cart-outline</v-icon>
-          </v-btn>
-        </template>
 
-        <v-list>
-          <!-- <v-list-item v-for="(item, i) in carrito" :key="i">
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item> -->
-        </v-list>
-      </v-menu>
-      <v-btn icon x-large>
-        <v-icon @click="()=>$router.push({ path: 'add-stock/'  })"> mdi-plus-circle-outline</v-icon>
-      </v-btn>
+      <div v-if="$store.state.books.userType">
+
+        <Carrito />
+        <!-- <v-menu
+          offset-y
+          :close-on-content-click="false"
+          v-if="$store.state.books.userType == 'user'"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on" x-large>
+              <v-icon> mdi-cart-outline</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list>
+            <Carrito />
+          </v-list>
+        </v-menu> -->
+
+        
+
+        <v-btn
+          icon
+          x-large
+          @click="() => $router.push({ path: 'add-stock/' })"
+          v-if="$store.state.books.userType == 'admin'"
+        >
+          <v-icon>mdi-plus-circle-outline</v-icon>
+        </v-btn>
+        <v-btn icon x-large @click="logout()">
+          <v-icon>mdi-logout</v-icon>
+        </v-btn>
+      </div>
     </v-col>
   </v-row>
 </template>
 
 <script>
 import Login from "./login";
+import Carrito from "./carrito";
 export default {
-  components: { Login },
+  components: { Login, Carrito },
   data: () => ({
     menu: false,
   }),
-  methods:{
-    // foo(){
-    //         this.$router.push({ path: "add-stock/"  });
-
-    // }
-  }
+  methods: {
+    logout() {
+      this.$store.commit("books/setUserType", null);
+      this.$emit("update-user");
+    },
+  },
 };
 </script>
 
