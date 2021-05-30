@@ -90,7 +90,10 @@ public class BooksService {
         return bookRepository.findAllByCategories(category, pageable);
     }
 
-/*    public Page<Book> findByAuthorPage(String author, Pageable pageable) {
-        return bookRepository.findByAuthorContainingIgnoreCase(author, pageable);
-    }*/
+    /*    public Page<Book> findByAuthorPage(String author, Pageable pageable) {
+            return bookRepository.findByAuthorContainingIgnoreCase(author, pageable);
+        }*/
+    public List<Book> findAll() {
+        return bookRepository.findAll();
+    }
 }

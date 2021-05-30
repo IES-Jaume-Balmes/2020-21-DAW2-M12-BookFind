@@ -49,6 +49,12 @@ public class BookController {
         return bookInfo;
     }
 
+    @GetMapping("/all")
+    public List<Book> showAll() {
+        return booksService.findAll();
+    }
+
+
     @GetMapping("/title/{bookName}")
     public List<Book> showByBookName(@PathVariable("bookName") String bookName) {
         return booksService.findByTitle(bookName);
@@ -96,5 +102,16 @@ public class BookController {
         return booksService.findAllByCategories(find, pageable);
     }
 
+    //AUTHOR
+    @GetMapping("/author/{type}")
+    public Page<Book> showByAuthor(@PathVariable("type") String categoryType, Pageable pageable) {
+        Category find = categoryService.findByCategory(categoryType);
+        return booksService.findAllByCategories(find, pageable);
+    }
 
+    @GetMapping("/author/id/{number}")
+    public Page<Book> showByAuthorId(@PathVariable("number") Long categoryType, Pageable pageable) {
+        Category find = categoryService.findOneByCategoryId(categoryType);
+        return booksService.findAllByCategories(find, pageable);
+    }
 }

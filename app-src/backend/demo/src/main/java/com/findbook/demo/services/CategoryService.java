@@ -35,7 +35,7 @@ public class CategoryService {
     @SneakyThrows
     public Category findOneByCategoryId(Long id) {
         Optional<Category> category = categoryRepository.findById(id);
-        if (!category.isPresent())
+        if (category.isEmpty())
             throw new CategoryExistsException();
         return category.get();
     }
