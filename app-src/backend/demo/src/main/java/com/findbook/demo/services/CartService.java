@@ -66,8 +66,12 @@ public class CartService {
 
     @Transactional
     public void delete(Long itemId, User user) {
-        var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId())).findFirst();
+        Cart userCart = user.getCart();
+        var op = userCart.getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId())).findFirst();
         op.ifPresent(lineItemInOrder -> {
+            BigDecimal totalToUpdate = new BigDecimal(lineItemInOrder.getTotalPrice().toString());
+            BigDecimal total = new BigDecimal(userCart.getTotalMoney().toString());
+            userCart.setTotalMoney(new BigDecimal(total.subtract(totalToUpdate).toString()));
             lineItemInOrder.setCart(null);
             lineItemsRepository.deleteById(itemId);
         });

@@ -2,10 +2,13 @@ package com.findbook.demo.controllers;
 
 import com.findbook.demo.entities.*;
 import com.findbook.demo.dto.ItemForm;
+import com.findbook.demo.exception.CartItemsException;
+import com.findbook.demo.exception.IsbnException;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.CartService;
 import com.findbook.demo.services.LineItemService;
 import com.findbook.demo.services.UserService;
+import lombok.SneakyThrows;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,21 +28,27 @@ public class CartController {
     @Autowired
     private UserService userService;
     @Autowired
-    private BooksService booksService; //Get info about the product
+    private BooksService booksService;
     @Autowired
     private CartService cartService;
     @Autowired
     private LineItemService lineItemService;
 
+    /**
+     * @param principal the logged in user
+     * @return all items and info of the logged in user cart
+     */
     @GetMapping("")
     public Cart getCart(Principal principal) {
         User user = userService.findOne(principal.getName());
         return cartService.getCart(user);
     }
 
-
-    // TODO: REFACTOR, MABY THIS METHOD IS NOT NECESARY
-
+    /**
+     * @param lineItems all items to buy
+     * @param principal the logged in user
+     * @return cart with new items
+     */
     @PostMapping("")
     public ResponseEntity<Cart> mergeCart(@RequestBody Collection<LineItems> lineItems, Principal principal) {
         User user = userService.findOne(principal.getName()); //Find user by email
@@ -48,18 +57,19 @@ public class CartController {
         } catch (Exception e) {
             ResponseEntity.badRequest().body("Merge Cart Failed");
         }
-        return ResponseEntity.ok(cartService.getCart(user)); //Retorna el carrito actualizado
+        return ResponseEntity.ok(cartService.getCart(user));
     }
 
 
     /**
-     * @param itemIdAndQuantity cantidad de producto y productId
-     * @param principal         Spring Security Actual logued user
+     * @param itemIdAndQuantity product quantity and productId
+     * @param principal         the logged in user (spring security)
      * @return HTTP
+     * <p>
+     * this method adds new items to the cart
      */
 
-    //TODO: returns http
-    // @SneakyThrows
+
     @PostMapping("/add")
     public String addToCart(@RequestBody ItemForm itemIdAndQuantity, Principal principal) {
 
@@ -73,8 +83,12 @@ public class CartController {
         return principal.getName();
     }
 
-    //Modificar lineitem (add más cantidad o menos ) //cart/3?quantity=1 cart/id json 1
-    //TODO: Añadir más seguridad, @Request param
+    /**
+     * @param itemId    item to be modified
+     * @param quantity  the new quantity
+     * @param principal actual user
+     * @return returns the item with the new values
+     */
     @PutMapping(path = "/{itemId}")
     public LineItems modifyItem(@PathVariable("itemId") String itemId, @RequestBody int quantity, Principal principal) {
         User user = userService.findOne(principal.getName());
@@ -86,16 +100,15 @@ public class CartController {
     public void deleteItem(@PathVariable("itemId") Long itemId, Principal principal) {
         User user = userService.findOne(principal.getName());
         cartService.delete(itemId, user);
-        // flush memory into DB
     }
-
-    //TODO: Al hacer checkout no puede esatar EMPTY el carrito
-    //We need more info like direction or somethin
+    
+    @SneakyThrows
     @PostMapping("/checkout")
     public ResponseEntity<OrderProducts> checkout(Principal principal) {
-        //Instance of Principal object use "the string of the username
-        User user = userService.findOne(principal.getName());// Email as username
+        User user = userService.findOne(principal.getName());// Email
+        if (user.getCart().getLineItems() == null)
+            throw new CartItemsException("The cart cannot be empty");
         OrderProducts orderProducts = cartService.checkout(user);
-        return new ResponseEntity<OrderProducts>(orderProducts, HttpStatus.OK);
+        return new ResponseEntity<>(orderProducts, HttpStatus.OK);
     }
 }

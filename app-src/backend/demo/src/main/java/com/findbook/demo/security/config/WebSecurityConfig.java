@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().disable();
 
-        http.authorizeRequests().antMatchers("/no/**").hasAnyAuthority("ADMIN")
+        http.authorizeRequests().antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .and()
                 .authorizeRequests().antMatchers("/cart/**").hasAnyAuthority("USER")
                 .and()

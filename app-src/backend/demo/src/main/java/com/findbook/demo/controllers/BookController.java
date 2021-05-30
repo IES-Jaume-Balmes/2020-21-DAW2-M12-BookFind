@@ -45,16 +45,11 @@ public class BookController {
     private ImageService imageService;
 
     @GetMapping("/{bookId}")
-    public Book showOne(@PathVariable("bookId") Long bookId) {
-
+    public ResponseEntity<Book> showOne(@PathVariable("bookId") Long bookId) {
         Book bookInfo = booksService.findOne(bookId);
-        //TODO:
-        //        // Product is not available
-        //        if (productInfo.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
-        //            productInfo = null;
-        //        }
-
-        return bookInfo;
+        if (bookInfo == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(bookInfo, HttpStatus.OK);
     }
 
     @GetMapping("/all")
@@ -129,7 +124,7 @@ public class BookController {
     }
 
 
-    /*Get image by its name*/
+    /*Get image by name*/
     @SneakyThrows
     @GetMapping(value = "/images/{name}")
     public ResponseEntity<byte[]> getImage(@PathVariable("name") String name) {
