@@ -1,6 +1,7 @@
 package com.findbook.demo.services;
 
 import com.findbook.demo.dao.BookRepository;
+import com.findbook.demo.entities.Author;
 import com.findbook.demo.entities.Book;
 import com.findbook.demo.entities.Category;
 import com.findbook.demo.exception.BookExistsException;
@@ -95,5 +96,9 @@ public class BooksService {
         }*/
     public List<Book> findAll() {
         return bookRepository.findAll();
+    }
+
+    public Page<Book> getAllBooksByAuthor(Author author, Pageable pageable) {
+        return bookRepository.findAllByAuthor(author, pageable);
     }
 }

@@ -1,8 +1,10 @@
 package com.findbook.demo.controllers;
 
+import com.findbook.demo.entities.Author;
 import com.findbook.demo.entities.Book;
 
 import com.findbook.demo.entities.Category;
+import com.findbook.demo.services.AuthorService;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.CategoryService;
 import com.findbook.demo.utils.FileUploadUtil;
@@ -35,6 +37,8 @@ public class BookController {
     private BooksService booksService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private AuthorService authorService;
 
     @GetMapping("/{bookId}")
     public Book showOne(@PathVariable("bookId") Long bookId) {
@@ -103,15 +107,21 @@ public class BookController {
     }
 
     //AUTHOR
-    @GetMapping("/author/{type}")
+/*    @GetMapping("/author/{type}")
     public Page<Book> showByAuthor(@PathVariable("type") String categoryType, Pageable pageable) {
         Category find = categoryService.findByCategory(categoryType);
-        return booksService.findAllByCategories(find, pageable);
-    }
 
-    @GetMapping("/author/id/{number}")
-    public Page<Book> showByAuthorId(@PathVariable("number") Long categoryType, Pageable pageable) {
-        Category find = categoryService.findOneByCategoryId(categoryType);
         return booksService.findAllByCategories(find, pageable);
+    }*/
+
+    /**
+     * @param authorId id of author to find
+     * @param pageable /books/author/id/1?pageSize=5&pageNumber=0
+     * @return Page<Books> list of books by category
+     */
+    @GetMapping("/author/id/{number}")
+    public Page<Book> showByAuthorId(@PathVariable("number") Long authorId, Pageable pageable) {
+        Author author = authorService.findOneByCategoryId(authorId);
+        return booksService.getAllBooksByAuthor(author, pageable);
     }
 }

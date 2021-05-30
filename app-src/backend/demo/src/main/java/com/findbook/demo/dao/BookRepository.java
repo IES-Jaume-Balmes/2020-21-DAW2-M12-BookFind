@@ -1,5 +1,6 @@
 package com.findbook.demo.dao;
 
+import com.findbook.demo.entities.Author;
 import com.findbook.demo.entities.Book;
 
 import com.findbook.demo.entities.Category;
@@ -29,4 +30,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Override
     List<Book> findAll();
+
+    Page<Book> findAllByAuthor(Author author, Pageable pageable);
 }
