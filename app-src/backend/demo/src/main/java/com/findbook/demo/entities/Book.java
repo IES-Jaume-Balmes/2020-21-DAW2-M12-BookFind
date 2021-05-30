@@ -17,7 +17,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
-    private Long Book_id;
+    private Long bookId;
     @Column(unique = true)
     private String isbn;
     private String image;
@@ -45,15 +45,16 @@ public class Book {
     @ManyToMany
     List<Category> categories;
 
-    /*    @ManyToOne
-        private Author autor;*/
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "authorId")
+    private Author author;
+
 
     public Book() {
 
     }
 
-    public Book(String isbn, String author, String image, String name, Date year, String desc, BigDecimal price, Integer numOfPages) {
+    public Book(String isbn, Author author, String image, String name, Date year, String desc, BigDecimal price, Integer numOfPages) {
         super();
         this.isbn = isbn;
         this.author = author;
@@ -68,20 +69,20 @@ public class Book {
 // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
 
 
-    public String getAuthor() {
-        return author;
+    public Author getAuthor() {
+        return this.author;
     }
 
-    public void setAuthor(String autor) {
-        this.author = autor;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
-    public Long getBook_id() {
-        return Book_id;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(Long bookId) {
-        this.Book_id = bookId;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 
     public String getIsbn() {
@@ -176,7 +177,7 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "bookId=" + Book_id +
+                "bookId=" + bookId +
                 ", isbn='" + isbn + '\'' +
                 ", image='" + image + '\'' +
                 ", title='" + title + '\'' +
