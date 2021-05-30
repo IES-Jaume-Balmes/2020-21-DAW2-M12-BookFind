@@ -7,8 +7,8 @@
     </v-list-item-avatar>
     <v-list-item-content>
       <v-list-item-title
-        @click="() => $router.push({ path: 'book/' + book.bookId })"
-        >{{ book.title }}
+        @click="() => $router.push({ path: 'book/' + book.bookid })"
+        >{{ book.title }} - #{{ book.bookid }}
       </v-list-item-title>
       <v-list-item-subtitle style="display: flex">
         {{ book.autor.firstName }}
@@ -21,7 +21,7 @@
     </v-list-item-content>
     <v-list-item-action>
       <v-list-item-action-text> {{ book.price }} eur </v-list-item-action-text>
-      <v-list-item-action-text>
+      <v-list-item-action-text v-if="$store.state.books.userType == 'user'">
         <v-btn icon x-small @click="delBook" :disabled="cantidad == 0"
           ><v-icon>mdi-minus</v-icon></v-btn
         >
@@ -33,14 +33,14 @@
 
 <script>
 export default {
-  props: ["book", "carrito"],
+  props: ["book"],
 
   mounted() {},
-  watch: {
-    cantidad(val) {
-      console.log(val);
-    },
-  },
+  // watch: {
+  //   cantidad() {
+  //     this.$emit("update-carrito");
+  //   },
+  // },
 
   data() {
     return {
@@ -51,11 +51,23 @@ export default {
   methods: {
     addBook() {
       this.cantidad++;
-      // this.$emit("add-book", this.book);
+      this.$store.commit("books/setCarrito", {
+        id: this.book.bookid,
+        book: this.book,
+        cantidad: this.cantidad,
+      });
+      // this.$emit("update-carrito");
+
     },
     delBook() {
       this.cantidad--;
-      // this.$emit("del-book", this.book);
+      this.$store.commit("books/setCarrito", {
+        id: this.book.bookid,
+        book: this.book,
+        cantidad: this.cantidad,
+      });
+      // this.$emit("update-carrito");
+
     },
   },
 };

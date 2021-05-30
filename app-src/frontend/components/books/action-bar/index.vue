@@ -3,12 +3,12 @@
     <v-col cols="12" md="5"> </v-col>
 
     <v-col cols="6" md="7" class="d-flex flex-row-reverse">
-      <v-btn icon v-if="btnFilters" @click="btnFilters = false">
+      <!-- <v-btn icon v-if="btnFilters" @click="btnFilters = false">
         <v-icon>mdi-dock-left</v-icon>
       </v-btn>
       <v-btn icon v-else @click="btnFilters = true">
         <v-icon>mdi-dock-right</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <v-btn icon @click="collectionParams.pageNumber++">
         <v-icon> mdi-chevron-right</v-icon>
