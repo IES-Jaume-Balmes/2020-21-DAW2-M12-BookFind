@@ -24,8 +24,10 @@ import java.util.Optional;
 public class AdminController {
     @Autowired
     private BooksService booksService;
+/*
     @Autowired
     private UserService userService;
+*/
 
     @PostMapping("/books/new")
     public ResponseEntity create(@RequestBody Book product) {
@@ -56,7 +58,7 @@ public class AdminController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    //Admin user methods, update, delete and create (assign roles)
+/*    //Admin user methods, update, delete and create (assign roles)
     @DeleteMapping("/vdelete/{email}")
     public ResponseEntity<User> deleteAcount(@PathVariable("email") String email) {
         User delete = userService.findOne(email);
@@ -78,5 +80,5 @@ public class AdminController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
-    }
+    }*/
 }

@@ -45,18 +45,19 @@ public class Book {
     @ManyToMany
     List<Category> categories;
 
-    /*    @ManyToOne
-        private Author autor;*/
-    private String author;
+
+  /*  @ManyToOne
+    private Author author;
+*/
 
     public Book() {
 
     }
 
-    public Book(String isbn, String author, String image, String name, Date year, String desc, BigDecimal price, Integer numOfPages) {
+    public Book(String isbn,  String image, String name, Date year, String desc, BigDecimal price, Integer numOfPages) {
         super();
         this.isbn = isbn;
-        this.author = author;
+     /*   this.author = author*/;
         this.image = image;
         this.title = name;
         this.publishedDate = year;
@@ -68,13 +69,13 @@ public class Book {
 // <editor-fold defaultstate="collapsed" desc=" GETTERS AND SETTERS ">
 
 
-    public String getAuthor() {
+/*    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String autor) {
-        this.author = autor;
-    }
+    public void setAuthor(Author author) {
+        this.author = author;
+    }*/
 
     public Long getBook_id() {
         return Book_id;

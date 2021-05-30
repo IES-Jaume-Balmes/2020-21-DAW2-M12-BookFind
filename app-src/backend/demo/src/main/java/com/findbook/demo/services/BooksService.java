@@ -55,7 +55,7 @@ public class BooksService {
         existingBook.setImage(book.getImage());
         existingBook.setTitle(book.getTitle());
         existingBook.setPublishedDate(book.getPublishedDate());
-        existingBook.setAuthor(book.getAuthor());
+      /*  existingBook.setAuthor(book.getAuthor());*/
         existingBook.setDescription(book.getDescription());
         existingBook.setPrice(book.getPrice());
         return bookRepository.save(existingBook);
