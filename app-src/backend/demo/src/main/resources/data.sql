@@ -32,11 +32,19 @@ VALUES (15, 'Novel');
 INSERT INTO category
 VALUES (16, 'Biography');
 INSERT INTO category
-VALUES (17, 'Mind,_body_and_spirit');
+
+VALUES (17, 'Mind, body and spirit');
+
 INSERT INTO category
-VALUES (18, 'Crimes_and_mystery');
+VALUES (18, 'Crimes and mystery');
+
 INSERT INTO category
-VALUES (19, 'Literary_essays');
+VALUES (19, 'Literary essays');
+
+
+
+
+
 INSERT INTO AUTHOR (AUTHOR_ID, NAME)
 values (1, 'Harper Lee');
 INSERT INTO book (
@@ -336,4 +344,6 @@ VALUES (
                 452
         );
 INSERT INTO book_categories
+
 VALUES (10, 18);
+
