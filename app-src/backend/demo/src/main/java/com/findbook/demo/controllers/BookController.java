@@ -7,7 +7,8 @@ import com.findbook.demo.entities.Category;
 import com.findbook.demo.services.AuthorService;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.CategoryService;
-import com.findbook.demo.utils.FileUploadUtil;
+import com.findbook.demo.services.ImageService;
+
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -39,18 +41,15 @@ public class BookController {
     private CategoryService categoryService;
     @Autowired
     private AuthorService authorService;
+    @Autowired
+    private ImageService imageService;
 
     @GetMapping("/{bookId}")
-    public Book showOne(@PathVariable("bookId") Long bookId) {
-
+    public ResponseEntity<Book> showOne(@PathVariable("bookId") Long bookId) {
         Book bookInfo = booksService.findOne(bookId);
-        //TODO:
-        //        // Product is not available
-        //        if (productInfo.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
-        //            productInfo = null;
-        //        }
-
-        return bookInfo;
+        if (bookInfo == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(bookInfo, HttpStatus.OK);
     }
 
     @GetMapping("/all")
@@ -122,5 +121,14 @@ public class BookController {
     public Page<Book> showByAuthorId(@PathVariable("number") Long authorId, Pageable pageable) {
         Author author = authorService.findOneByCategoryId(authorId);
         return booksService.getAllBooksByAuthor(author, pageable);
+    }
+
+
+    /*Get image by name*/
+    @SneakyThrows
+    @GetMapping(value = "/images/{name}")
+    public ResponseEntity<byte[]> getImage(@PathVariable("name") String name) {
+        byte[] image = imageService.getImageWithMediaType(name);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
     }
 }

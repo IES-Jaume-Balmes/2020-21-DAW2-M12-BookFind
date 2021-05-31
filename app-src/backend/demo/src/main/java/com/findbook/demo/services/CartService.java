@@ -66,27 +66,29 @@ public class CartService {
 
     @Transactional
     public void delete(Long itemId, User user) {
-        var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId())).findFirst();
+        Cart userCart = user.getCart();
+        var op = userCart.getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId())).findFirst();
         op.ifPresent(lineItemInOrder -> {
+            BigDecimal totalToUpdate = new BigDecimal(lineItemInOrder.getTotalPrice().toString());
+            BigDecimal total = new BigDecimal(userCart.getTotalMoney().toString());
+            userCart.setTotalMoney(new BigDecimal(total.subtract(totalToUpdate).toString()));
             lineItemInOrder.setCart(null);
             lineItemsRepository.deleteById(itemId);
         });
     }
 
-    ///Checkout
-    //TODO: SI LA ORDEN NO EXISTE, ELIMINAR EN CASCADA LOS LINE ITEMS
     @Transactional
     public OrderProducts checkout(User user) {
         OrderProducts order = new OrderProducts(user);
 
         order.setTotal(user.getCart().getTotalMoney());
         orderRepository.save(order);
-
+        //TODO: ¿FRONT OR BACKEND?
         user.getCart().getLineItems().forEach(lineItems -> {
             lineItems.setCart(null);
             user.getCart().setTotalMoney(new BigDecimal(0));
             lineItems.setOrder(order);
-            booksService.delateFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
+            booksService.deleteFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
             //Update each line-item y save it into the databases
             lineItemsRepository.save(lineItems);
         });

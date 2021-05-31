@@ -32,4 +32,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findAll();
 
     Page<Book> findAllByAuthor(Author author, Pageable pageable);
+
+    //bUSCAR POR AUTHORES SIMILARES
+
+
 }

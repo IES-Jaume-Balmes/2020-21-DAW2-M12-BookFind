@@ -8,8 +8,5 @@ import Register from "@/components/register";
 export default {
   components: { Register },
 
-  data() {
-    return {};
-  },
 };
 </script>

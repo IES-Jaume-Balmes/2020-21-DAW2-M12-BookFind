@@ -1,24 +1,16 @@
 <template>
-  <div>
-    <v-progress-circular
-      v-if="loading"
-      :size="100"
-      color="primary"
-      indeterminate
-    ></v-progress-circular>
-    <div v-else>
-      <div v-if="books.length == 0">no hay resultados</div>
-      <div v-else>
-        <v-list v-for="book in books" :key="book.bookId">
-          <Book
-            :book="book"
-            @update-carrito="$emit('update-carrito')"
-          />
-            <!-- :carrito="carrito" -->
-          <v-divider></v-divider>
-        </v-list>
-      </div>
-    </div>
+  <v-progress-circular
+    v-if="loading"
+    :size="100"
+    color="primary"
+    indeterminate
+  ></v-progress-circular>
+  <div v-else>
+    <div v-if="books.length == 0">no hay resultados</div>
+    <v-list v-else v-for="book in books" :key="book.bookId">
+      <Book :book="book" @update-carrito="$emit('update-carrito')" />
+      <v-divider></v-divider>
+    </v-list>
   </div>
 </template>
 
@@ -37,16 +29,12 @@ export default {
       },
       deep: true,
     },
-    // carrito(val) {
-    //   this.$emit("carrito", val);
-    //   // console.info("carrito ", val);
-    // },
+
   },
   data() {
     return {
       loading: false,
       books: [],
-      // carrito: [],
       url: "http://localhost:8080/books/page",
     };
   },

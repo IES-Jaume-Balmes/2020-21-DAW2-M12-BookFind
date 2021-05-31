@@ -5,6 +5,7 @@ import com.findbook.demo.entities.Author;
 import com.findbook.demo.entities.Book;
 import com.findbook.demo.entities.Category;
 import com.findbook.demo.exception.BookExistsException;
+import com.findbook.demo.exception.IsbnException;
 import com.findbook.demo.exception.NotEnoughProductsInStockException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -25,6 +26,8 @@ public class BooksService {
     //TODO: Validation --> github proyect example (ALL CRUD CONTROLLERS/METHODS)
     @Autowired
     BookRepository bookRepository;
+    @Autowired
+    private final IsbnValidator isbnValidator;
 
     @SneakyThrows
     public Book findOne(Long productId) {
@@ -39,6 +42,10 @@ public class BooksService {
 
     @SneakyThrows
     public ResponseEntity<Book> createBook(Book book) {
+        boolean isValidIsbn = isbnValidator.test(book.getIsbn());
+        if (!isValidIsbn) {
+            throw new IsbnException("This isbn is not valid...");
+        }
         boolean bookExists = bookRepository.findByIsbn(book.getIsbn()).isPresent();
         if (bookExists) {
             throw new BookExistsException();
@@ -69,7 +76,7 @@ public class BooksService {
 
     @SneakyThrows
     @Transactional //All or any
-    public void delateFromStock(Long bookId, Integer quantityOfBooks) {
+    public void deleteFromStock(Long bookId, Integer quantityOfBooks) {
         Book bookToUpdate = findOne(bookId);
         int updateStock = bookToUpdate.getProductStock() - quantityOfBooks;
         if (updateStock <= 0) throw new NotEnoughProductsInStockException();
@@ -91,9 +98,6 @@ public class BooksService {
         return bookRepository.findAllByCategories(category, pageable);
     }
 
-    /*    public Page<Book> findByAuthorPage(String author, Pageable pageable) {
-            return bookRepository.findByAuthorContainingIgnoreCase(author, pageable);
-        }*/
     public List<Book> findAll() {
         return bookRepository.findAll();
     }

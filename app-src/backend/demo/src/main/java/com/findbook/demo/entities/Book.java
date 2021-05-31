@@ -26,6 +26,8 @@ public class Book {
     @Lob
     @Column(length = 100000)
     private String description;
+    @NotNull
+    @Min(0)
     private BigDecimal price;
     //New features
     @NotNull

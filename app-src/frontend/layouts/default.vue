@@ -1,11 +1,8 @@
 <template>
   <v-app dark>
-    <!-- <v-container> -->
-      <!-- <Header /> -->
-    <!-- </v-container> -->
-   
     <v-main>
       <v-container>
+        <Header @update-user="() => (typeUser = $store.state.books.userType)" />
         <nuxt />
       </v-container>
     </v-main>
