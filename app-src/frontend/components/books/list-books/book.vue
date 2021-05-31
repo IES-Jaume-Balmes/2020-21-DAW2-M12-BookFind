@@ -8,7 +8,7 @@
     <v-list-item-content>
       <v-list-item-title
         @click="() => $router.push({ path: 'book/' + book.bookId })"
-        >{{ book.title }} - #{{ book.bookId }}
+        >{{ book.title }} 
       </v-list-item-title>
       <v-list-item-subtitle style="display: flex">
         {{ book.author.fullName }}

@@ -9,6 +9,7 @@
         <Control :book="book" />
       </v-col>
       <v-col md="12">
+        <Recomendation :author="book.author"/>
         <Recomendation
           v-for="(categoria, i) in book.categories"
           :key="i"
