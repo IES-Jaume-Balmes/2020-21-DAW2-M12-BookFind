@@ -32,15 +32,13 @@ VALUES (15, 'Novel');
 INSERT INTO category
 VALUES (16, 'Biography');
 INSERT INTO category
-
 VALUES (17, 'Mind, body and spirit');
-
 INSERT INTO category
 VALUES (18, 'Crimes and mystery');
-
 INSERT INTO category
 VALUES (19, 'Literary essays');
-
+INSERT INTO category
+VALUES (20, 'Comedia');
 
 
 
@@ -558,3 +556,35 @@ INSERT INTO book_categories
 VALUES (17, 8);
 INSERT INTO book_categories
 VALUES (17, 10);
+
+--18
+INSERT INTO AUTHOR (AUTHOR_ID, NAME)
+values (11, 'Elbananero');
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                18,
+                11,
+                'EL peluca sapee',
+                'https://i.picsum.photos/id/1071/282/450.jpg?hmac=ivV_0q1n5DO5rp8ubElXzlub49fPik2CI91j_rf78R8',
+                '0-8779-4695-7',
+                'Harry el Sucio Potter',
+                69.69,
+                '2007-10-31',
+                100,
+                666
+        );
+INSERT INTO book_categories
+VALUES (18, 1);
+INSERT INTO book_categories
+VALUES (18, 20);
