@@ -347,3 +347,214 @@ INSERT INTO book_categories
 
 VALUES (10, 18);
 
+--11
+INSERT INTO AUTHOR (AUTHOR_ID, NAME)
+values (10, 'J. K. Rowling');
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                11,
+                10,
+                '"Con las manos temblorosas, Harry le dio la vuelta al sobre y vio un sello de lacre púrpura con un escudo de armas: un león, un águila, un tejón y una serpiente, que rodeaban una gran letra H." Harry Potter nunca ha oído hablar de Hogwarts hasta que empiezan a caer cartas en el felpudo del número 4 de Privet Drive. Llevan la dirección escrita con tinta verde en un sobre de pergamino amarillento con un sello de lacre púrpura, y sus horripilantes tíos se apresuran a confiscarlas. Más tarde, el día que Harry cumple once años, Rubeus Hagrid, un hombre gigantesco cuyos ojos brillan como escarabajos negros, irrumpe con una noticia extraordinaria: Harry Potter es un mago, y le han concedido una plaza en el Colegio Hogwarts de Magia y Hechicería. ¡Está a punto de comenzar una aventura increíble!',
+                'https://i.picsum.photos/id/313/282/450.jpg?hmac=pByXORQgx5xJp9J1XfU_BjgDnOj6vqt3m6xJ6zAoCVQ',
+                '0-9916-3885-9',
+                'HARRY POTTER Y LA PIEDRA FILOSOFAL',
+                14.25,
+                '1999-03-01',
+                100,
+                264
+        );
+INSERT INTO book_categories
+VALUES (11, 8);
+INSERT INTO book_categories
+VALUES (11, 10);
+
+--12
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                12,
+                10,
+                'El verano de Harry Potter ha incluido el peor cumpleaños de su vida, las funestas advertencias de un elfo doméstico llamado Dobby y el rescate de casa de los Dursley protagonizado por su amigo Ron Weasley al volante de un coche mágico volador. De vuelta en el Colegio Hogwarts de Magia y Hechicería, donde va a empezar su segundo curso, Harry oye unos extraños susurros que resuenan por los pasillos vacíos. Y entonces empiezan los ataques y varios alumnos aparecen petrificados... Por lo visto, las siniestras predicciones de Dobby se están cumpliendo....',
+                'https://i.picsum.photos/id/125/282/450.jpg?hmac=gQBA2omrDPbzEoI78Q7_p9J4KmMHKBLT4mflCBwqNkA',
+                '0-4486-3890-8',
+                'HARRY POTTER Y LA CAMARA SECRETA',
+                15.20,
+                '1999-10-18',
+                100,
+                296
+        );
+INSERT INTO book_categories
+VALUES (12, 8);
+INSERT INTO book_categories
+VALUES (12, 10);
+
+--13
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                13,
+                10,
+                'Cuando el autobús noctámbulo irrumpe en una calle oscura y frena con fuertes chirridos delante de Harry, comienza para él un nuevo curso en Hogwarts, lleno de acontecimientos extraordinarios. Sirius Black, asesino y seguidor de lord Voldemort, se ha fugado, y dicen que va en busca de Harry. En su primera clase de Adivinación, la profesora Trelawney ve un augurio de muerte en las hojas de té de la taza de Harry... Pero quizá lo más aterrador sean los dementores que patrullan por los jardines del colegio, capaces de sorberte el alma con su beso...',
+                'https://i.picsum.photos/id/1005/282/450.jpg?hmac=5FFna0PwMRF3kG4LqOeWnhOIkee_ZucBsaBtxMIj5X0',
+                '0-3460-1505-7',
+                'HARRY POTTER Y EL PRISIONERO DE AZKABAN',
+                17.10,
+                '2000-10-01',
+                100,
+                360
+        );
+INSERT INTO book_categories
+VALUES (13, 8);
+INSERT INTO book_categories
+VALUES (13, 10);
+
+--14
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                14,
+                10,
+                'Se va a celebrar en Hogwarts el Torneo de los Tres Magos. Sólo los alumnos mayores de diecisiete años pueden participar en esta competición, pero, aun así, Harry sueña con ganarla. En Halloween, cuando el cáliz de fuego elige a los campeones, Harry se lleva una sorpresa al ver que su nombre es uno de los escogidos por el cáliz mágico. Durante el torneo deberá enfrentarse a desafíos mortales, dragones y magos tenebrosos, pero con la ayuda de Ron y Hermione, sus mejores amigos, ¡quizá logre salir con vida!',
+                'https://i.picsum.photos/id/829/282/450.jpg?hmac=lAWFsx4mlbS0bycxA6pRW7T4P24PvlauEyhkt8tjX0k',
+                '0-9186-2875-X',
+                'HARRY POTTER Y EL CALIZ DE FUEGO',
+                21.85,
+                '2001-03-09',
+                100,
+                672
+        );
+INSERT INTO book_categories
+VALUES (14, 8);
+INSERT INTO book_categories
+VALUES (14, 10);
+
+--15
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                15,
+                10,
+                'Son malos tiempos para Hogwarts. Tras el ataque de los dementores a su primo Dudley, Harry Potter comprende que Voldemort no se detendrá ante nada para encontrarlo. Muchos niegan que el Señor Tenebroso haya regresado, pero Harry no está solo: una orden secreta se reúne en Grimmauld Place para luchar contra las fuerzas oscuras. Harry debe permitir que el profesor Snape le enseñe a protegerse de las brutales incursiones de Voldemort en su mente. Pero éstas son cada vez más potentes, y a Harry se le está agotando el tiempo...',
+                'https://i.picsum.photos/id/634/282/450.jpg?hmac=-c221_Qw_aPZzg4kMtabRSbsBRCJ_CVKHHrezd1X8vg',
+                '0-1734-0837-0',
+                'HARRY POTTER Y LA ORDEN DEL FENIX',
+                23.75,
+                '2004-02-21',
+                100,
+                928
+        );
+INSERT INTO book_categories
+VALUES (15, 8);
+INSERT INTO book_categories
+VALUES (15, 10);
+
+--16
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                16,
+                10,
+                'Con dieciseis años cumplidos, Harry inicia el sexto curso en Hogwarts en medio de terribles acontecimientos que asolan Inglaterra. Elegido capitán del equipo de quidditch, los ensayos, los exámenes y las chicas ocupan todo su tiempo, pero la tranquilidad dura poco. A pesar de los ferreos controles de seguridad que protegen la escuela, dos alumnos son brutalmente atacados. Dumbledore sabe que se acerca el momento, anunciado por la Profecía, en que Harry y Voldemort se enfrentarán a muerte: "El único con poder para vencer al Señor Tenebroso se acerca... Uno de los dos debe morir a manos del otro, pues ninguno de los dos podrá vivir mientras siga el otro con vida."',
+                'https://i.picsum.photos/id/13/282/450.jpg?hmac=nGHkUnpMgRLTAqXKs0deqrx-M5-UAgyMbhiPCzuP2-g',
+                '0-2635-7992-1',
+                'HARRY POTTER Y EL MISTERIO DEL PRINCIPE',
+                20.90,
+                '2006-02-23',
+                100,
+                576
+        );
+INSERT INTO book_categories
+VALUES (16, 8);
+INSERT INTO book_categories
+VALUES (16, 10);
+
+--17
+INSERT INTO book (
+                book_id,
+                author_id,
+                description,
+                image,
+                isbn,
+                title,
+                price,
+                published_date,
+                product_stock,
+                num_of_pages
+        )
+VALUES (
+                17,
+                10,
+                'Cuando se monta en el sidecar de la moto de Hagrid y se eleva en el cielo, dejando Privet Drive por última vez, Harry Potter sabe que lord Voldemort y sus mortífagos se hallan cerca. El encantamiento protector que había mantenido a salvo a Harry se ha roto, pero el no puede seguir escondiendose. El Señor Tenebroso se dedica a aterrorizar a todos los seres queridos de Harry, y, para detenerlo, este habrá de encontrar y destruir los horrocruxes que quedan. La batalla definitiva debe comenzar: Harry tendrá que alzarse y enfrentarse a su enemigo...',
+                'https://i.picsum.photos/id/847/282/450.jpg?hmac=VTmvlYIglbFNOTHDMqKcuBtEKl9E_idHsf7Dgx2llyw',
+                '0-2304-6692-3',
+                'HARRY POTTER Y LAS RELIQUIAS DE LA MUERTE',
+                21.85,
+                '2008-02-21',
+                100,
+                640
+        );
+INSERT INTO book_categories
+VALUES (17, 8);
+INSERT INTO book_categories
+VALUES (17, 10);
