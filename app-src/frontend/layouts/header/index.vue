@@ -9,6 +9,7 @@
       <v-autocomplete
         chips
         outlined
+        deletable-chips
         dense
         item-text="title"
         item-value="id"
@@ -60,7 +61,7 @@ export default {
     search: null,
     books: null,
     path: null,
-    url: "http://localhost:8080/books/page?pageSize=50&pageNumber=0",
+    url: "http://localhost:8080/books/all",
   }),
 
   mounted() {
@@ -68,12 +69,11 @@ export default {
   },
 
   methods: {
-
-
     getAllBooks() {
       let libros = [];
       this.$axios.get(`${this.url}`).then((response) => {
-        response.data.content.forEach((element) => {
+        // console.log(response);
+        response.data.forEach((element) => {
           libros.push({
             id: element.bookId,
             title: element.title,

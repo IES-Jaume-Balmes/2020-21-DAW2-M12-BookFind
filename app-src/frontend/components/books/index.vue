@@ -23,7 +23,7 @@ export default {
     typeUser: null,
 
     collectionParams: {
-      pageSize: 2,
+      pageSize: 20,
       pageNumber: 0,
       sortBy: "price",
       sort: "asc",

@@ -1,12 +1,17 @@
 <template>
-  <v-progress-circular
-    v-if="loading"
-    :size="100"
-    color="primary"
-    indeterminate
-  ></v-progress-circular>
+  <div class="text-center" v-if="loading" >
+    <v-progress-circular 
+      :size="100"
+      color="primary"
+      indeterminate
+    ></v-progress-circular>
+  </div>
   <div v-else>
-    <div v-if="books.length == 0">no hay resultados</div>
+    <v-card elevation="0" class="text-center" v-if="books.length == 0">
+      <v-card-title class="justify-center">There is no book here </v-card-title>
+      <v-card-subtitle>404</v-card-subtitle>
+    </v-card>
+
     <v-list v-else v-for="book in books" :key="book.bookId">
       <Book :book="book" @update-carrito="$emit('update-carrito')" />
       <v-divider></v-divider>
@@ -29,7 +34,6 @@ export default {
       },
       deep: true,
     },
-
   },
   data() {
     return {
