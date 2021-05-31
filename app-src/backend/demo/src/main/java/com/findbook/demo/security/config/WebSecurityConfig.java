@@ -57,13 +57,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we 
     @Override
     protected void configure(HttpSecurity http) throws Exception {//Acces to http security
 //  http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+/*
         http.formLogin()
                 .loginPage("/user/login").permitAll();
+*/
+        /*
+         * JWT ARE STATELESS, HERE WE SET THAT CAN NOT BE STORE INTO THE DATABASE
+         */
+        http.csrf().disable();
+        http.headers().disable();
 
-        http.csrf().disable().
-                /*
-                 * JWT ARE STATELESS, HERE WE SET THAT CAN NOT BE STORE INTO THE DATABASE
-                 */sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        http.authorizeRequests()
+                .and()
+                .authorizeRequests().antMatchers("/**").permitAll()
+                .anyRequest()
+                .authenticated();
+/*
+        http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
@@ -76,10 +86,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we 
                 .authorizeRequests().antMatchers(HttpMethod.POST, "/**").permitAll()
                 .anyRequest()
                 .authenticated()
-                .and()
-                .httpBasic();
+                .and();
+*/
 
-        http.httpBasic().authenticationEntryPoint(new AuthenticationEntryPoint() {
+/*        http.httpBasic().authenticationEntryPoint(new AuthenticationEntryPoint() {
 
             @Override
             public void commence(HttpServletRequest request, HttpServletResponse response,
@@ -88,7 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we 
 
             }
 
-        });
+        });*/
 
 
     }
@@ -104,6 +114,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we 
 
         return new InMemoryUserDetailsManager(user);
     }
-
 }
+
+
 
