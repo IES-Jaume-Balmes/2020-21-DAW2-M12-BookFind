@@ -67,7 +67,7 @@ export default {
     return {
       numPag: 0,
       pageSizes: [2, 4, 6],
-      sortBy: ["title", "publishedDate", "description", "price", "categories"],
+      sortBy: ["title", "description", "price", "categories"],
       sort: ["asc", "desc"],
       btnFilters: null,
     };

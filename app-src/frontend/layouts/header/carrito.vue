@@ -31,8 +31,8 @@
                 <v-list-item-action>
                   <v-list-item-action-text>
                     {{ book.cantidad }}
-                  </v-list-item-action-text></v-list-item-action
-                >
+                  </v-list-item-action-text>
+                </v-list-item-action>
               </v-list-item>
             </v-list>
           </v-card-text>

@@ -18,7 +18,7 @@
       <v-btn
         icon
         @click="() => --cantidad"
-        :disabled="cantidad == 1 && !$store.state.books.userType"
+        :disabled="cantidad == 1 || !$store.state.books.userType"
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
