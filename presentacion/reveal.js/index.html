@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/beige.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -18,32 +18,98 @@
 			<div class="slides">
 				<section>
 					<section>
-						<h2>BookFind</h2>
+						<h1>BookFind</h1>
 					</section>
 					<section>
-						<h3>Integrantes:</h3>
+						<h4>Integrantes:</h4>
 						<p>Barbara Herrera</p>
 						<p>Christian Miranda</p>
 						<p>Pol Barcia</p>
-						<h3>Tutor: Pere Comelles</h3>
+						<br>
+						<h4>Tutor:</h4>
+						<p>Pere Guitart</p>
 					</section>
 				</section>
 				<section>
-					<section>Descripción</section>
-					<section>Objetivos Generales</section>
+					<section><h2>Descripción</h2></section>
+					<section><h4>Objetivos Generales</h4></section>
+					<section>
+						<h4>Tecnologias</h4>
+						<img src="./dist/theme/img/logomysql.png" alt="logomysql" width="300">
+						<img src="./dist/theme/img/logoSpring.png" alt="logospring" width="300">
+						<img src="./dist/theme/img/logovue.png" alt="logovue" width="300">
+					</section>
 				</section>
 				<section>
-					<section>Arquitectura de la Aplicación</section>
-					<section>Arquitectura de la Aplicación</section>
+					<section><h2>Arquitectura & Diseños</h2></section>
+					<section>
+						<h4>Aplicación</h4>
+						<img src="./dist/theme/img/aplicacion.png" alt="Arquitectura" width="100%">
+					</section>
+					<section>
+						<h4>Base de Datos</h4>
+						<img src="./dist/theme/img/mysql.jpeg" alt="basededatos">
+					</section>
+					<section>
+						<h4>Backend</h4>
+						<img src="./dist/theme/img/umlfinal.jpeg" alt="uml" width="70%">
+					</section>
+					<section>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="|4-7|9-12|14-21|22-29">
+							@Entity
+							public class Book {
+
+    						@Id
+    						@GeneratedValue(strategy = GenerationType.AUTO)
+    						@Column(unique = true)
+    						private Long bookId;
+    						@Column(unique = true)
+    						private String isbn;
+    						private String image;
+    						private String title;
+    						private Date publishedDate;
+							@Lob
+    						@Column(length = 100000)
+    						private String description;
+    						private BigDecimal price;
+    						//New features
+    						@NotNull
+    						@Min(0)
+    						private Integer productStock;
+    						private Integer numOfPages;
+    						/**		
+     						* 0: on-sale 1: off-sale
+     						*/
+    						@ColumnDefault("0")
+    						private Integer productStatus;
+    						@JsonIgnore
+    						@OneToMany(mappedBy = "book", orphanRemoval = true, fetch = FetchType.EAGER)
+    						private List<LineItems> cartItems;
+						</code></pre>
+					</section>
+					<section>
+						<h4>Frontend</h4>
+						<img src="./dist/theme/img/wireframes.png" alt="dibujofront" >
+					</section>
 				</section>
 				<section>
-					<section>Diseños Iniciales</section>
-					<section>Diseños Finales</section>
+					<section>
+						<h2>Funcionamiento</h2>
+						<a href="http://localhost:3000" target="_blank">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
 				</section>
-				<section>Funcionamiento</section>
 				<section>
-					<section>Propuestas de desarrollo Futuro</section>
-					<section>Reflexion y Conclusiones</section>
+					<section>
+						<h2>Propuestas de desarrollo Futuro</h2>
+						<p>amazon web services</p>
+						<p>mejorar las vistas</p>
+						<p>Logo personalizado</p>
+						<p>aumentar stock</p>
+						<p>introducir descuentos</p>
+					</section>
+					<section><h2>Reflexion y Conclusiones</h2></section>
 				</section>
 			</div>
 		</div>
