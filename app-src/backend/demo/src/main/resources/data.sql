@@ -4,13 +4,13 @@ VALUES (1, 'Classics');
 INSERT INTO category
 VALUES (2, 'Horror');
 INSERT INTO category
-VALUES (3, 'Science_Fiction');
+VALUES (3, 'Science Fiction');
 INSERT INTO category
 VALUES (4, 'Romance');
 INSERT INTO category
 VALUES (5, 'Art');
 INSERT INTO category
-VALUES (6, 'Historical_Fiction');
+VALUES (6, 'Historical Fiction');
 INSERT INTO category
 VALUES (7, 'History');
 INSERT INTO category
@@ -97,7 +97,7 @@ VALUES (
                 2,
                 'The Great Gatsby, F. Scott Fitzgerald''s third book, stands as the supreme achievement of his career. This exemplary novel of the Jazz Age has been acclaimed by generations of readers. The story is of the fabulously wealthy Jay Gatsby and his new love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted "gin was the national drink and sex the national obsession," it is an exquisitely crafted tale of America in the 1920s.
 The Great Gatsby is one of the great classics of twentieth-century literature.',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/717/282/450.jpg?hmac=O0ZyNq5DwcfyhIBfCyMUCtV5xzYk31JCXld-uyo8BlY',
                 '0743273567',
                 'The Great Gatsby',
                 6.09,
@@ -128,7 +128,7 @@ VALUES (
                 3,
                 3,
                 'En El humor de mi vida no esperéis encontrar una morbosa tragedia romántica de sufrimiento y dolor. Si era justo lo deseado, Shakespeare está al fondo del tercer pasillo, en el segundo estante a mano derecha. ',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/90/282/450.jpg?hmac=InXYyQFmsDwP65jhQVJCHhTis8OlRtMJblJaZo-F6K4',
                 '0-3483-9987-1',
                 'El humor de mi vida',
                 18.90,
@@ -157,7 +157,7 @@ VALUES (
                 4,
                 4,
                 'Cuatro destinos. Dos misiones. Una mujer.Vuelve a sumergirte en un tiempo inolvidable.Después de El tiempo entre costuras, SIRA, la nueva novela de María Dueñas. La Segunda Gran Guerra llega a su fin y el mundo emprende una tortuosa reconstrucción. Concluidas sus funciones como colaboradora de los Servicios Secretos británicos, Sira afronta el futuro con ansias de serenidad. No lo logrará, sin embargo.',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/154/282/450.jpg?hmac=sJz9mkH6aaAT8og5UJ3rYHNocrH7m7iybCd94pozWCI',
                 '0-1271-8027-3',
                 'Sira',
                 21.76,
@@ -186,7 +186,7 @@ VALUES (
                 5,
                 5,
                 'Después de alcanzar el millón de ejemplares vendidos, Javier Castillo pone en jaque al lector en su quinta novela¿Quieres jugar?Nueva York, 2011. Una chica de quince años aparece crucificada en un suburbio a las afueras. Miren Triggs, periodista de investigación del Manhattan Press, recibe de manera inesperada un extraño sobre.',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/182/282/450.jpg?hmac=sz5qk2IJoVEdphFDFn-Un3sVxsbVnfZ9rJYG6cjxRTY',
                 '0-3790-0083-0',
                 'El juego del alma',
                 17.95,
@@ -219,7 +219,7 @@ VALUES (
                 6,
                 6,
                 'Una aspirante a actriz cansada de hacer castings...Un artista reconocido en plena crisis creativa...Unos valiosos cuadros encontrados en un desván...Y el arte del engaño para cambiar las leyes del karma.',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/382/282/450.jpg?hmac=gpRwbU841EfVpZuyBGlLkeFx7H1KP32wA5hl9IUAzbE',
                 '0-3912-4458-2',
                 'El arte de engañar al karma',
                 17.95,
@@ -248,7 +248,7 @@ VALUES (
                 7,
                 7,
                 '¡Llega por fin la novela juvenil que está triunfando en Wattpad! Raquel lleva toda la vida loca por Ares, su atractivo y misterioso vecino. Lo observa sin ser vista desde su ventana y es que, muy a su pesar, no han intercambiado ni una triste palabra. Lo que Raquel no sabe es que eso está a punto de cambiar... Ares comenzará a cruzarse en su camino hasta en los lugares más inesperados y descubrirá que, en realidad, Raquel no es la niña inocente que creía. ',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/408/282/450.jpg?hmac=37tuVksPdpIXcGwWzYwmCvpAuSLDK0uCSxkGmknBY2w',
                 '0-2845-0443-2',
                 'A través de mi ventana',
                 18,
@@ -277,7 +277,7 @@ VALUES (
                 8,
                 8,
                 'La épica revuelta de las gentes de Castilla contra el abuso de poder de Carlos v culminó en la batalla de Villalar, el 23 de abril de 1521. Las tropas imperiales arrollaron a las de las Comunidades de Castilla y decapitaron a sus principales capitanes: Padilla, Bravo y Maldonado. Aquella jornada marcó el declive definitivo de un próspero reino que se extendía a lo largo de tres continentes y cuya disolución dio lugar a un nuevo Imperio que se sirvió de sus gentes y sus recursos.',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/358/282/450.jpg?hmac=1mKJr1AjY9wzW2Fi1FkhLLwND0PwJkox6sSjZHvmHzw',
                 '0-5030-5439-9',
                 'Castellano',
                 19.85,
@@ -306,7 +306,7 @@ VALUES (
                 9,
                 7,
                 'Una de las historias más exitosas de Wattpad con millones de lectores: una historia altamente adictiva de una de las autoras estrella de la plataforma, Ariana Godoy. El pueblo de Wilson es tranquilo, regido por unas costumbres y creencias religiosas muy estrictas, donde Leigh ha crecido, siguiendo cada regla y pauta como se le ha indicado.',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/743/282/450.jpg?hmac=Rn63uojbCjIZYReHk77j1-Bs73SqE7pMehqSnbaT0dY',
                 '0-9700-7505-7',
                 'Heist',
                 17.05,
@@ -316,9 +316,10 @@ VALUES (
         );
 INSERT INTO book_categories
 VALUES (9, 4);
+
 --10
 INSERT INTO AUTHOR (AUTHOR_ID, NAME)
-values (10, 'Irene Vallejo Moreu');
+values (9, 'Irene Vallejo Moreu');
 INSERT INTO book (
                 book_id,
                 author_id,
@@ -335,7 +336,7 @@ VALUES (
                 10,
                 10,
                 'Este es un libro sobre la historia de los libros. Un recorrido por la vida de ese fascinante artefacto que inventamos para que las palabras pudieran viajar en el espacio y en el tiempo. La historia de su fabricación, de todos los tipos que hemos ensayado a lo largo de casi treinta siglos: libros de humo, de piedra, de arcilla, de juncos, de seda, de piel, de árboles y, los últimos llegados, de plástico y luz.',
-                'https://i.picsum.photos/id/527/282/450.jpg?hmac=zhJViD1L3DLE2FjdU99-50WMTc2T_fzm2Bn2Uv7FPPE',
+                'https://i.picsum.photos/id/475/282/450.jpg?hmac=shiwrNipzuRpd4qnAskNwV_U_0wVyWuB95BZpOIyTXM',
                 '0-4014-9427-6',
                 'El infinito en un junco: La invención de los libros en el mundo antiguo',
                 23.70,
@@ -344,7 +345,6 @@ VALUES (
                 452
         );
 INSERT INTO book_categories
-
 VALUES (10, 18);
 
 --11
