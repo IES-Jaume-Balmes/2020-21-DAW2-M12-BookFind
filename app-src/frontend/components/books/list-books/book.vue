@@ -2,20 +2,19 @@
   <v-list-item>
     <v-list-item-avatar>
       <v-avatar rounded size="56">
-        <img src="https://picsum.photos/295/295" />
+        <img :src="book.image" />
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
       <v-list-item-title
-        @click="() => $router.push({ path: 'book/' + book.bookid })"
-        >{{ book.title }} - #{{ book.bookid }}
+        @click="() => $router.push({ path: 'book/' + book.bookId })"
+        >{{ book.title }} - #{{ book.bookId }}
       </v-list-item-title>
       <v-list-item-subtitle style="display: flex">
-        {{ book.autor.firstName }}
-        {{ book.autor.lastName }}
+        {{ book.author.fullName }}
 
         <div v-for="categoria in book.categories" :key="categoria.category_id">
-          <v-chip x-small outlined>{{ categoria.category }}</v-chip>
+          <v-chip x-small outlined style="margin-left: 10px;" disabled>{{ categoria.category }}</v-chip>
         </div>
       </v-list-item-subtitle>
     </v-list-item-content>
@@ -35,13 +34,6 @@
 export default {
   props: ["book"],
 
-  mounted() {},
-  // watch: {
-  //   cantidad() {
-  //     this.$emit("update-carrito");
-  //   },
-  // },
-
   data() {
     return {
       cantidad: 0,
@@ -52,22 +44,19 @@ export default {
     addBook() {
       this.cantidad++;
       this.$store.commit("books/setCarrito", {
-        id: this.book.bookid,
+        id: this.book.bookId,
         book: this.book,
         cantidad: this.cantidad,
       });
-      // this.$emit("update-carrito");
 
     },
     delBook() {
       this.cantidad--;
       this.$store.commit("books/setCarrito", {
-        id: this.book.bookid,
+        id: this.book.bookId,
         book: this.book,
         cantidad: this.cantidad,
       });
-      // this.$emit("update-carrito");
-
     },
   },
 };
