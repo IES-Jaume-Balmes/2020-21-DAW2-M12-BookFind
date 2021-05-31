@@ -334,7 +334,7 @@ INSERT INTO book (
         )
 VALUES (
                 10,
-                10,
+                9,
                 'Este es un libro sobre la historia de los libros. Un recorrido por la vida de ese fascinante artefacto que inventamos para que las palabras pudieran viajar en el espacio y en el tiempo. La historia de su fabricación, de todos los tipos que hemos ensayado a lo largo de casi treinta siglos: libros de humo, de piedra, de arcilla, de juncos, de seda, de piel, de árboles y, los últimos llegados, de plástico y luz.',
                 'https://i.picsum.photos/id/475/282/450.jpg?hmac=shiwrNipzuRpd4qnAskNwV_U_0wVyWuB95BZpOIyTXM',
                 '0-4014-9427-6',
