@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,6 +17,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -31,18 +33,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProvider());
+    }
+
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
+        provider.setUserDetailsService(userService);
+        return provider;
+    }
+
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {//Acces to http security
-
+//  http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         http.csrf().disable();
-        http.headers().disable();
-
-        http.authorizeRequests().antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+        http.authorizeRequests()
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .and()
                 .authorizeRequests().antMatchers("/cart/**").hasAnyAuthority("USER")
                 .and()
-                .authorizeRequests().antMatchers("/**").permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.GET, "/**").permitAll()
+                .and()
+                .authorizeRequests().antMatchers(HttpMethod.POST, "/**").permitAll()
                 .anyRequest()
-                .authenticated();
+                .authenticated().and()
+                .httpBasic();
 
 
         http.httpBasic().authenticationEntryPoint(new AuthenticationEntryPoint() {
@@ -61,18 +80,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
-    }
-
-    @Bean
-    public DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(bCryptPasswordEncoder);
-        provider.setUserDetailsService(userService);
-        return provider;
-    }
 }
 /*       http
                 .csrf().disable()

@@ -26,8 +26,7 @@ public class LineItemService {
         var op = user.getCart().getLineItems().stream().filter(e -> itemId.equals(e.getLineItemsId().toString())).findFirst();
         op.ifPresent(productInOrder -> { //Si el libro existe
             productInOrder.setQuantity(quantity);
-            //TODO: REVISAR
-            ///NO FUNCIONA, TEST
+
             BigDecimal actualPrice = new BigDecimal(productInOrder.getTotalPrice().toString());
             BigDecimal cartPrice = new BigDecimal(user.getCart().getTotalMoney().toString());
             BigDecimal price = new BigDecimal(String.valueOf(actualPrice.subtract(cartPrice)));

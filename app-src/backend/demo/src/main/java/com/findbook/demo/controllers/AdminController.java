@@ -6,7 +6,7 @@ import com.findbook.demo.entities.User;
 import com.findbook.demo.services.BooksService;
 import com.findbook.demo.services.ImageService;
 import com.findbook.demo.services.UserService;
-import com.findbook.demo.utils.FileUploadUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;

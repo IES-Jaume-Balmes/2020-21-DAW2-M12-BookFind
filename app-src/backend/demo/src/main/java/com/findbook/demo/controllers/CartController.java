@@ -101,7 +101,7 @@ public class CartController {
         User user = userService.findOne(principal.getName());
         cartService.delete(itemId, user);
     }
-    
+
     @SneakyThrows
     @PostMapping("/checkout")
     public ResponseEntity<OrderProducts> checkout(Principal principal) {

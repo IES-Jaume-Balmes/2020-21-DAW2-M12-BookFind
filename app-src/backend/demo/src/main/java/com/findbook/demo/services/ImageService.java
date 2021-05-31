@@ -36,7 +36,6 @@ public class ImageService {
         Path destination = Paths.get(storageDirectory.toString() + "/" + fileName);
 
         try {
-            //TODO: CHECK IF IMAGES ALREADY EXISTS
             Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
 
         } catch (IOException e) {

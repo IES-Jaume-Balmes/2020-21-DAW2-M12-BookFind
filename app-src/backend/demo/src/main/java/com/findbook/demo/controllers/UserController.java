@@ -30,7 +30,6 @@ public class UserController {
         return registrationService.register(user);
     }
 
-
     @GetMapping(path = "/sign-up/confirm")
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);
@@ -62,7 +61,6 @@ public class UserController {
     //Delete the own username
     @DeleteMapping("/delete/{email}")
     public ResponseEntity<User> deleteAcount(@PathVariable("email") String email, Principal principal) {
-        // userService.ge
         if (principal.getName().equals(email)) {
             User delete = userService.findOne(email);
             userService.deleteUser(delete);

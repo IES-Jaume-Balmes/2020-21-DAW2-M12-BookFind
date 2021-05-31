@@ -14,12 +14,7 @@ import java.util.Optional;
 public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
-
-    //find by id
-    //Find by name
-    /*    Optional<Author> findByAuthorId(Long authorId);
-
-    List<Author> findByFullName(String name);*/
+    
     @SneakyThrows
     public Author findOneByCategoryId(Long id) {
         Optional<Author> author = authorRepository.findById(id);

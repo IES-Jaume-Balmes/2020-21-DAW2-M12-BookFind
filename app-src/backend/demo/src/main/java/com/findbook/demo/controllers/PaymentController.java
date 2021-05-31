@@ -18,9 +18,10 @@ public class PaymentController {
     PaymentService paymentService;
 
     /**
-     * @param paymentIntentDto es un objecto dto para crear los datos del pago, los datos se obtendrán de la orden generada despues de hacer checkout
-     * @return
-     * @throws StripeException
+     * @param paymentIntentDto It is a disc object to create the payment data, the data will be obtained from the
+     *                         order generated after checking out
+     * @return http
+     * @throws StripeException external api
      */
     @PostMapping("/payment")
     public ResponseEntity<String> payment(@RequestBody PaymentIntentDto paymentIntentDto) throws StripeException {

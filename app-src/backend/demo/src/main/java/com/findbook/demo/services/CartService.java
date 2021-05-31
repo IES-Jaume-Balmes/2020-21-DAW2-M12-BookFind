@@ -77,20 +77,18 @@ public class CartService {
         });
     }
 
-    ///Checkout
-    //TODO: SI LA ORDEN NO EXISTE, ELIMINAR EN CASCADA LOS LINE ITEMS
     @Transactional
     public OrderProducts checkout(User user) {
         OrderProducts order = new OrderProducts(user);
 
         order.setTotal(user.getCart().getTotalMoney());
         orderRepository.save(order);
-
+        //TODO: ¿FRONT OR BACKEND?
         user.getCart().getLineItems().forEach(lineItems -> {
             lineItems.setCart(null);
             user.getCart().setTotalMoney(new BigDecimal(0));
             lineItems.setOrder(order);
-            booksService.delateFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
+            booksService.deleteFromStock(lineItems.getBook().getBookId(), lineItems.getQuantity());
             //Update each line-item y save it into the databases
             lineItemsRepository.save(lineItems);
         });

@@ -76,7 +76,7 @@ public class BooksService {
 
     @SneakyThrows
     @Transactional //All or any
-    public void delateFromStock(Long bookId, Integer quantityOfBooks) {
+    public void deleteFromStock(Long bookId, Integer quantityOfBooks) {
         Book bookToUpdate = findOne(bookId);
         int updateStock = bookToUpdate.getProductStock() - quantityOfBooks;
         if (updateStock <= 0) throw new NotEnoughProductsInStockException();
@@ -98,9 +98,6 @@ public class BooksService {
         return bookRepository.findAllByCategories(category, pageable);
     }
 
-    /*    public Page<Book> findByAuthorPage(String author, Pageable pageable) {
-            return bookRepository.findByAuthorContainingIgnoreCase(author, pageable);
-        }*/
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
