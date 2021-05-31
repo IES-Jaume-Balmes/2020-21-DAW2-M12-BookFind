@@ -16,7 +16,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
@@ -53,6 +57,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we 
     @Override
     protected void configure(HttpSecurity http) throws Exception {//Acces to http security
 //  http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+        http.formLogin()
+                .loginPage("/user/login").permitAll();
+
         http.csrf().disable().
                 /*
                  * JWT ARE STATELESS, HERE WE SET THAT CAN NOT BE STORE INTO THE DATABASE
@@ -71,19 +78,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we 
                 .authenticated()
                 .and()
                 .httpBasic();
-        ;/*.and()
-                .httpBasic();*/
-/*     http.csrf().disable();
-        http.authorizeRequests()
-                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-                .and()
-                .authorizeRequests().antMatchers("/cart/**").hasAnyAuthority("USER")
-                .and()
-                .authorizeRequests().antMatchers(HttpMethod.GET, "/**").permitAll()
-                .and()
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/**").permitAll()
-                .anyRequest()
-                .authenticated();*/
 
         http.httpBasic().authenticationEntryPoint(new AuthenticationEntryPoint() {
 
@@ -96,17 +90,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we 
 
         });
 
-/*    http.formLogin()
-                .failureUrl("/login_error");*/
+
     }
 
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService() {
+        UserDetails user =
+                User.withUsername("user")
+                        .password(bCryptPasswordEncoder.encode("123"))
+                        .roles("USER")
+                        .build();
+
+        return new InMemoryUserDetailsManager(user);
+    }
 
 }
-/*       http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/user/sign-up/**", "/h2-console/**") //Permit any conection in this endpoint
-                .permitAll()
-                .anyRequest()
-                .authenticated().and()
-                .formLogin();*/
+
