@@ -54,7 +54,7 @@ module.exports = {
         'entrega1',
         'entrega2',
         'entrega3',
-        
+        'entregaFinal'
       ],
     }
   },
