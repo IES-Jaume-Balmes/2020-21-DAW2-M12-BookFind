@@ -1,5 +1,6 @@
 package com.findbook.demo.security.config;
 
+import com.findbook.demo.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import com.findbook.demo.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,7 +29,8 @@ import java.io.IOException;
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter { //When we extend this, we have access
+    // to authenticationManager
     @Autowired
     private final UserService userService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -50,7 +53,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {//Acces to http security
 //  http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        http.csrf().disable();
+        http.csrf().disable().
+                /*
+                 * JWT ARE STATELESS, HERE WE SET THAT CAN NOT BE STORE INTO THE DATABASE
+                 */sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/cart/**").hasAnyAuthority("USER")
+                .and()
+                .authorizeRequests().antMatchers(HttpMethod.GET, "/**").permitAll()
+                .and()
+                .authorizeRequests().antMatchers(HttpMethod.POST, "/**").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic();
+        ;/*.and()
+                .httpBasic();*/
+/*     http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .and()
@@ -60,9 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers(HttpMethod.POST, "/**").permitAll()
                 .anyRequest()
-                .authenticated().and()
-                .httpBasic();
-
+                .authenticated();*/
 
         http.httpBasic().authenticationEntryPoint(new AuthenticationEntryPoint() {
 
