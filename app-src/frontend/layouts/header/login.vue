@@ -1,8 +1,6 @@
 
 <template>
-
   <v-menu
-  
     offset-y
     :close-on-content-click="false"
     v-if="!$store.state.books.userType"
@@ -62,10 +60,6 @@ export default {
     valid: true,
     email: null,
     password: null,
-    users: [
-      { email: "admin@findbook.com", password: "1234", type: "admin" },
-      { email: "user@findbook.com", password: "1234", type: "user" },
-    ],
   }),
   methods: {
     submit() {
@@ -74,11 +68,12 @@ export default {
         password: this.password,
       };
 
-      this.users.forEach((user) => {
+      this.$store.state.books.users.forEach((user) => {
         if (user.email == u.email && user.password == u.password) {
           this.$store.commit("books/setUserType", user.type);
-          this.$emit("update-user");
+          this.$store.commit("books/setUser", user.name);
 
+          this.$emit("update-user");
         }
       });
     },

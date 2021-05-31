@@ -19,8 +19,7 @@
         @change="
           (val) =>
             $router.push({
-              path:
-                $route.name == 'index' ? `book/${val}` : `/book/${val}`,
+              path: $route.name == 'index' ? `book/${val}` : `/book/${val}`,
             })
         "
       />
@@ -48,6 +47,7 @@
         </v-btn>
       </div>
     </v-col>
+    
   </v-row>
 </template>
 
@@ -56,7 +56,7 @@ import Login from "./login";
 import Carrito from "./carrito";
 export default {
   components: { Login, Carrito },
- 
+
   data: () => ({
     search: null,
     books: null,
@@ -85,6 +85,7 @@ export default {
     },
     logout() {
       this.$store.commit("books/setUserType", null);
+      this.$store.commit("books/setUser", null);
       this.$emit("update-user");
     },
   },

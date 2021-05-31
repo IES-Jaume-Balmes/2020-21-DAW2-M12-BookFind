@@ -12,7 +12,7 @@ import Filters from "./filters";
 
 export default {
   components: { ListBooks, ActionBar, Filters },
-
+  
 
   mounted() {
     if (this.$store.state.books.userType) {

@@ -1,6 +1,12 @@
 export default {
     namespaced: true,
     state: {
+        books: null,
+        book: null,
+        users: [
+            { email: "admin@findbook.com", password: "1234", type: "admin" ,name:"admin"},
+            { email: "user@findbook.com", password: "1234", type: "user",name:"user" }],
+            user:null,
         userType: null,
         carrito: null
     },
@@ -8,6 +14,10 @@ export default {
         setUserType(state, val) {
             if (val == 'user') state.carrito = []
             state.userType = val
+        },
+        setUser(state, val) {
+      
+            state.user = val
         },
         setCarrito(state, val) {
             let busca = false
@@ -23,8 +33,24 @@ export default {
             } else {
                 state.carrito.push(val)
             }
-
         },
+        setUsersAll(state, val) {
+            state.users = val
+        },
+        setUsers(state, val) {
+            state.users.push(val);
+        },
+        //arranco el array de libros
+        setBooks(state, val) {
+            state.books = val
+        },
+        //añado libro a esta cosa
+        setBook(state, val) {
+            if (state.books) {
+                state.books.push(val)
+            }
+        }
+
 
 
     }
