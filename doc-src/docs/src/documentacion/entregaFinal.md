@@ -9,8 +9,14 @@ La arquitectura del proyecto no ha sufrido muchas modificaciones con el paso de 
 
 ![Arquitectura](/2020-21-DAW2-M12-BookFind/img/bd.png )
 
+
 ## Diseños finales
 
+![final](/2020-21-DAW2-M12-BookFind/img/wireframes.png )
+![final](/2020-21-DAW2-M12-BookFind/img/uml.jpeg )
+![final](/2020-21-DAW2-M12-BookFind/img/menu.jpeg )
+![final](/2020-21-DAW2-M12-BookFind/img/registro.jpeg )
+![final](/2020-21-DAW2-M12-BookFind/img/detalle.jpeg )
 
 
 ## Propuestas de desarrollo futuro
@@ -19,9 +25,11 @@ La arquitectura del proyecto no ha sufrido muchas modificaciones con el paso de 
 - Acabar de implementar los metodos de pago
 - Mejorar la seguridad con JWT (JSON Web Tokens)
 
+
 ## Reflexión y conclusiones
 
 Ha sido un proyecto ambicioso, donde hemos trabajado con tecnologia que nunca habiamos utilizado antes, con lo cual ha habido un trabajo de investigacion con pruebas, dificultades y errores pero tambien con muchos exitos, y gracias a ello ha salido un proyecto sobresaliente y funcional.
+
 
 ## Código fuente del proyecto.
 
